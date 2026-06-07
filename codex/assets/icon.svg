@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Wa-Tor fish and shark circles">
+  <rect width="512" height="512" rx="96" fill="#063b55"/>
+  <circle cx="190" cy="272" r="92" fill="#55d66b"/>
+  <circle cx="316" cy="220" r="112" fill="#4a9dff"/>
+  <circle cx="232" cy="250" r="34" fill="#063b55" opacity="0.36"/>
+  <circle cx="354" cy="188" r="42" fill="#063b55" opacity="0.36"/>
+  <circle cx="150" cy="238" r="18" fill="#eaf7ff"/>
+  <circle cx="280" cy="174" r="20" fill="#eaf7ff"/>
+</svg>
