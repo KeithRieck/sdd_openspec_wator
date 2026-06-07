@@ -257,23 +257,30 @@ export class SimulationScene extends Phaser.Scene {
     const buttonWidth = Math.min(controls.width, 132);
     let y = controls.y + 4;
 
-    const speedButtonWidth = Math.max(34, Math.floor((controls.width - rowGap * 4) / 5));
-    SPEEDS.forEach((speed, index) => {
-      this.addButton({
-        label: `${speed}x`,
-        x: controls.x + index * (speedButtonWidth + rowGap),
-        y,
-        width: speedButtonWidth,
-        height: buttonHeight,
-        onClick: () => this.setSpeed(speed),
-        getState: () => ({
-          active: this.selectedSpeed === speed,
-          disabled: false
-        })
-      });
-    });
+    const maxSpeedButtonsPerRow = 3;
+    const speedButtonWidth = 42;
+    for (let startIndex = 0; startIndex < SPEEDS.length; startIndex += maxSpeedButtonsPerRow) {
+      const rowSpeeds = SPEEDS.slice(startIndex, startIndex + maxSpeedButtonsPerRow);
 
-    y += buttonHeight + rowGap * 2;
+      rowSpeeds.forEach((speed, index) => {
+        this.addButton({
+          label: `${speed}x`,
+          x: controls.x + index * (speedButtonWidth + rowGap),
+          y,
+          width: speedButtonWidth,
+          height: buttonHeight,
+          onClick: () => this.setSpeed(speed),
+          getState: () => ({
+            active: this.selectedSpeed === speed,
+            disabled: false
+          })
+        });
+      });
+
+      y += buttonHeight + rowGap;
+    }
+
+    y += rowGap;
     this.addButton({
       label: () => (this.isRunning ? "Pause" : "Play"),
       x: controls.x,
