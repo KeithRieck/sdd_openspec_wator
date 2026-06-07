@@ -1,11 +1,11 @@
 # Project Spec for Wa-Tor Phaser Web App
 ## Context
-The project is a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation implemented as a static ES2020 JavaScript web app. Phaser version 4 is used to own the entire browser window and render the simulation, controls, statistics, and population history chart. The simulation engine itself is framework-independent and must not depend on Phaser.
+The project is a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation implemented as a static ES2020 JavaScript web app. Phaser version 4.x is used to own the entire browser window and render the simulation, controls, statistics, and population history chart. The simulation engine itself is framework-independent and must not depend on Phaser.
 
 Wa-Tor is a predator-prey cellular automaton on a toroidal water world. Fish and sharks move orthogonally across a rectangular grid, reproduce over time, and sharks hunt fish while managing starvation energy.
 
 ### Background
-Time passes in discrete jumps, which I shall call chronons. During each chronon a fish or shark may move north, east, south or west to an adjacent point, provided the point is not already occupied by a member of its own species. A random-number generator makes the actual choice. For a fish the choice is simple: select one unoccupied adjacent point at random and move there. If all four adjacent points are occupied, the fish does not move. Since hunting for fish takes priority over mere movement, the rules for a shark are more complicated: from the adjacent points occupied by fish, select one at random, move there and devour the fish. If no fish are in the neighborhood, the shark moves just as a fish does, avoiding its fellow sharks
+Time passes in discrete jumps, which I shall call chronons. During each chronon a fish or shark may move north, east, south or west to an adjacent point. A fish may move only to an adjacent unoccupied point. A shark first selects an adjacent point occupied by a fish, moves there, and devours the fish; if no fish are adjacent, the shark may move only to an adjacent unoccupied point. A random-number generator makes the actual choice when more than one valid destination exists. If no valid destination exists, no movement takes place.
 
 #### Rules for Fish:
 1. At each chronon, a fish moves randomly to one of the adjacent unoccupied squares. If there are no free squares, no movement takes place.
@@ -49,7 +49,7 @@ Once a shark has survived a certain number of chronons it may reproduce in exact
 - The app is deployable as a static site, including from a repository subpath.
 - PWA support is lightweight and best-effort because Phaser loads from a CDN.
     - An acceptable Phaser download site is:  https://cdn.jsdelivr.net/npm/phaser@4.1.0/dist/phaser.min.js
-    - Assume the minimum tablet viewport dimensions are for an iPad mini:  1488 x 2266
+    - Assume the minimum tablet CSS viewport dimensions are for an iPad mini: `744 x 1133` CSS pixels.
     - Icon design should show circles suggesting the shark and fish symbols.
 - Initial randomness uses `Math.random()`.
 - Default grid dimensions are `100 x 70`.
@@ -70,7 +70,7 @@ Once a shark has survived a certain number of chronons it may reproduce in exact
 ## Acceptance Criteria
 1. WHEN the app launches, THEN the system SHALL start directly in a running Wa-Tor simulation at `10x` speed with no landing page or instruction screen.
 2. WHERE the project files are organized, THEN the system SHALL include `index.html`, `src/main.js`, `src/config.js`, `src/simulation/WatorSimulation.js`, `src/scenes/BootScene.js`, `src/scenes/SimulationScene.js`, `sw.js`, `manifest.webmanifest`, and an `assets/` directory for PWA assets.
-3. WHEN `index.html` loads the app, THEN the system SHALL load Phaser version 4 from a CDN script tag and SHALL load the app through ES2020 JavaScript modules.
+3. WHEN `index.html` loads the app, THEN the system SHALL load Phaser version 4.x from a CDN script tag and SHALL load the app through ES2020 JavaScript modules.
 4. WHERE the simulation engine is implemented, THEN the system SHALL keep all Wa-Tor rules independent from Phaser APIs and Phaser scene objects.
 5. WHERE Phaser is used, THEN the system SHALL render and control the entire app window through Phaser-native scene rendering and input.
 6. WHEN the simulation initializes, THEN the system SHALL create a rectangular toroidal grid using code constants for width and height with defaults of `100` columns and `70` rows.
