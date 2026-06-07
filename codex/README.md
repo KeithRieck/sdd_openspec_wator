@@ -5,4 +5,4 @@ Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation
 
 # Development:
 1.  First prompt:
-    * `[$openspec-propose](.codex/skills/openspec-propose/SKILL.md) Create docs for a wa-tor simulation based on the file spec-v001.md`
+    * [`$openspec-propose`](.codex/skills/openspec-propose/SKILL.md) Create docs for a wa-tor simulation based on the file spec-v001.md`
