@@ -10,9 +10,9 @@ export const POPULATION = {
 
 export const MODEL = {
   fishBreedTime: 3,
-  sharkBreedTime: 10,
+  sharkBreedTime: 25,
   initialSharkEnergy: 5,
-  sharkEnergyGain: 4,
+  sharkEnergyGain: 3,
   sharkEnergyCostPerChronon: 1
 };
 

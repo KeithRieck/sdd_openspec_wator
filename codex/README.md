@@ -13,4 +13,4 @@ Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation
     * The result works, but the speed buttons extend a little off the right of the screen.
     * `The speed buttons are too wide for the given side panel.  Change the 'rebuildButtons' method so it splits these buttons over multiple rows and  displays at most 3 speed buttons per row.`
     * `Change the speed buttons so they are of fixed size, and as narrow as possible.  They should not expand to fill all the horizontal space on each row.`
-    * The result works and looks good.  However, the sharks always die off, which doesn't make sense.
+    * The result works and looks good.  However, the sharks always overpopulate.  Tweaking the shark configurations make for a more interesting simulation.
