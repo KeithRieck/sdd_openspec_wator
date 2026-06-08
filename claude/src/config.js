@@ -18,11 +18,11 @@ export const CONFIG = {
 
   // --- Breeding ---
   fishBreedTime: 3,
-  sharkBreedTime: 10,
+  sharkBreedTime: 25,
 
   // --- Shark energy ---
   initialSharkEnergy: 5,
-  sharkEnergyGain: 4,
+  sharkEnergyGain: 3,
   sharkEnergyCostPerChronon: 1,
 
   // --- Speed (chronons per second) ---

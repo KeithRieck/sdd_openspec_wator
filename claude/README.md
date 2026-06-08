@@ -15,4 +15,6 @@ This project the claude-opus-4.8 model.  I'm bought an API-key for $5 this, and 
 3. Third step:
     * `/opsx:apply`
     * Code generated.  Total cost so far has been $4.31.
-
+4. Fourth step:
+    * `/opsx:archive`
+    * This used up all my credits, so I had to stop.
