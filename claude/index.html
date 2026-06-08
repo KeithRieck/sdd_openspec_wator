@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Wa-Tor</title>
+    <meta name="theme-color" content="#04121d" />
+    <meta
+      name="description"
+      content="A browser-based Wa-Tor predator-prey simulation."
+    />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/icon.svg" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #04121d;
+        overflow: hidden;
+        font-family: system-ui, sans-serif;
+        touch-action: none;
+      }
+      #game {
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+    <!-- Phaser 4.x loaded from CDN as a global before the app module runs. -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@4.1.0/dist/phaser.min.js"></script>
+  </head>
+  <body>
+    <div id="game"></div>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

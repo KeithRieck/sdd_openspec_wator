@@ -5,7 +5,7 @@ The repository has a complete specification (`spec-v001.md`, 57 acceptance crite
 Two sets of conventions govern the work and occasionally pull in different directions:
 
 - **The spec** mandates a framework-free simulation engine and `Graphics`-based rendering with creatures stored as plain data records (not sprites or game objects).
-- **The `phaser-game` skill** prefers an object-oriented entity pattern (a `Bouncer` base class, concrete entities extending it) and a `src/game/` layout.
+- **The `phaser-game` skill** prefers an object-oriented entity pattern and a `src/game/` layout.
 
 The spec is the more specific, deliberate choice for this domain, so it governs the simulation/rendering model; the skill governs the outer conventions (BootScene-first flow, no build step, relative URLs, small ES modules, PWA). This document records that resolution and the architecture that follows from it.
 

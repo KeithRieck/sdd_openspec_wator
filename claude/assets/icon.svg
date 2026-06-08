@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#081c2c"/>
+  <!-- Shark: larger blue circle -->
+  <circle cx="200" cy="220" r="120" fill="#4aa8ff"/>
+  <!-- Fish: smaller green circle -->
+  <circle cx="340" cy="330" r="78" fill="#3ddc84"/>
+</svg>

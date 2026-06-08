@@ -1,0 +1,19 @@
+{
+  "name": "Wa-Tor Simulation",
+  "short_name": "Wa-Tor",
+  "description": "A browser-based Wa-Tor predator-prey simulation.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#04121d",
+  "theme_color": "#04121d",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
