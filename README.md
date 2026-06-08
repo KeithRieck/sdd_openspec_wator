@@ -9,4 +9,18 @@ Each sub-project will create a browser-based [Wa-Tor](https://en.wikipedia.org/w
 
 Before starting, I created a baseline specification that all the projects work from.   I used the [`grill-me`](.agents/skills/grill-me/SKILL.md) skill to harvest requirements and then the [`spec-writer`](.agents/skills/spec-writer/SKILL.md) skill to create the [`spec-v001.md`](spec-v001.md) file.
 
-All the development is done with [OpenSpec](https://openspec.pro/) to coordinate the Spec Driven Development.
+Unless noted, the development was done with [OpenSpec](https://openspec.pro/) to coordinate the [Spec Driven Development](https://en.wikipedia.org/wiki/Spec-driven_development).
+
+## OpenAI Codex with GPT 5.5
+
+This is OpenAI's top frontier model.
+
+# Claude Code with claude-opus-4.8 model
+
+This is Anthropic's top frontier model.
+
+# Antigravity with Google's Gemini 3.5 Flash
+
+This is not Google's top model.   I ran this test to see how a cheaper model would work.
+
+

@@ -1,9 +1,11 @@
 Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/claude/index.html
 
-# Wa-Tor simulations
+# Wa-Tor simulations with Claude Code.
 Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation that emphasizes correct predator-prey cellular automaton behavior.
 
-This project the claude-opus-4.8 model.  I'm bought an API-key for $5.00 this, and I will get billed for each action.
+This project the claude-opus-4.8 model.  At the time of this writing, this is Anthropic's top frontier model.
+
+I'm bought an API-key for $5.00 this, and I will get billed for each action.
 
 # Development:
 1. First step:

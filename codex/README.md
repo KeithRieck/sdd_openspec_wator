@@ -1,9 +1,9 @@
 Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/codex/index.html
 
-# Wa-Tor simulations
+# Wa-Tor simulations with OpenAI Codex
 Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation that emphasizes correct predator-prey cellular automaton behavior.
 
-This project used OpenAI's GPT 5.5 model at Medium reasoning level.
+This project used GPT 5.5 model at Medium reasoning level.  At the time of this writing, this is OpenAI's top frontier model.
 
 # Development:
 1. First step:
