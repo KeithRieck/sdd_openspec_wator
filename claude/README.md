@@ -3,7 +3,7 @@ Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/claude/index.html
 # Wa-Tor simulations
 Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation that emphasizes correct predator-prey cellular automaton behavior.
 
-This project the claude-opus-4.8 model.  I'm bought an API-key for $5 this, and I get billed for each action.
+This project the claude-opus-4.8 model.  I'm bought an API-key for $5.00 this, and I will get billed for each action.
 
 # Development:
 1. First step:
@@ -17,4 +17,4 @@ This project the claude-opus-4.8 model.  I'm bought an API-key for $5 this, and 
     * Code generated.  Total cost so far has been $4.31.
 4. Fourth step:
     * `/opsx:archive`
-    * This used up all my credits, so I had to stop.
+    * Attempting this used up all my credits.  I temporarily switch to Codex to finish the archive task.
