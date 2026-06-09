@@ -19,4 +19,4 @@ I'm bought an API-key for $5.00 this, and I will get billed for each action.
     * Code generated.  Total cost so far has been $4.31.
 4. Fourth step:
     * `/opsx:archive`
-    * Attempting this used up all my credits.  I temporarily switch to Codex to finish the archive task.
+    * Attempting this used up all my credits.  I temporarily switch to Codex to finish the archive task.  So, this project cost would have cost just over $5 in tokens.
