@@ -7,6 +7,10 @@ This project used DeepSeek V4 Pro.   I use [OpenCode](https://opencode.ai/) to i
 
 # Development:
 1. First step:
-    * `/openspec-explore`
+    * `/opsx-explore`
+    * OpenCode spontaneously reads the `spec-v001.md` file.
+    * `Change the shark breed time to 25 and the shark energy gain from eating to 3`
+    * `For this project, do not use Phaser Sprites.`
 2. Second step:
-    * `/opsx:propose`
+    * `/opsx-propose`
+    * OpenCode suggests that this simulation has a large scope.  It asks if I just want to slice off the simulation engine, or something smaller.   I tell it: `Make the full v1 implementation.`
