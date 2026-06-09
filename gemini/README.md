@@ -16,7 +16,7 @@ This project used Google's [Gemini 3.5 Flash](https://deepmind.google/models/gem
     * `/opsx:propose`
 3. Third step:
     * `/opsx:apply`
-    * Code was generated and Antigravity started testing.  Part way through testing, it announced that my quota had been reached.
+    * Code was generated and Antigravity started testing.  Part way through testing, it announced that my weekly quota had been reached.
 4. Fourth step:
     * `/opsx:archive`
     
