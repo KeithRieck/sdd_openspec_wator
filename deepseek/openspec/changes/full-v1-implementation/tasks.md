@@ -6,7 +6,7 @@ Tasks are ordered by dependency. Each builds on the previous.
 
 ---
 
-### 1. Create `src/config.js` — Simulation and Rendering Constants
+### 1. [x] Create `src/config.js` — Simulation and Rendering Constants
 
 **Depends on:** Nothing
 
@@ -24,7 +24,7 @@ Export all configurable constants from a single module:
 
 ---
 
-### 2. Create `src/simulation/WatorSimulation.js` — Core Simulation Engine
+### 2. [x] Create `src/simulation/WatorSimulation.js` — Core Simulation Engine
 
 **Depends on:** Task 1 (config.js)
 
@@ -53,7 +53,7 @@ No Phaser imports. Uses only `Math.random()`.
 
 ---
 
-### 3. Create `src/scenes/BootScene.js` — Minimal Boot Scene
+### 3. [x] Create `src/scenes/BootScene.js` — Minimal Boot Scene
 
 **Depends on:** Nothing (Phaser-only, no simulation)
 
@@ -65,7 +65,7 @@ Extend `Phaser.Scene` with key `"BootScene"`:
 
 ---
 
-### 4. Create `src/scenes/SimulationScene.js` — World Rendering
+### 4. [x] Create `src/scenes/SimulationScene.js` — World Rendering
 
 **Depends on:** Tasks 1, 2, 3
 
@@ -82,7 +82,7 @@ Cell size: `cellSize = floor(min(availableWorldWidth / GRID_W, availableWorldHei
 
 ---
 
-### 5. Add Stats Panel to SimulationScene
+### 5. [x] Add Stats Panel to SimulationScene
 
 **Depends on:** Task 4
 
@@ -96,7 +96,7 @@ Phaser `Text` objects with fixed positions. Status shows: `"Running"`, `"Paused"
 
 ---
 
-### 6. Add Controls to SimulationScene
+### 6. [x] Add Controls to SimulationScene
 
 **Depends on:** Task 5
 
@@ -121,7 +121,7 @@ When terminal (extinction): disable Play/Pause, disable Step, disable speed butt
 
 ---
 
-### 7. Add Population History Chart
+### 7. [x] Add Population History Chart
 
 **Depends on:** Task 5
 
@@ -140,7 +140,7 @@ Chart rendering:
 
 ---
 
-### 8. Implement Responsive Layout and Extinction Handling
+### 8. [x] Implement Responsive Layout and Extinction Handling
 
 **Depends on:** Tasks 4, 5, 6, 7
 
@@ -161,7 +161,7 @@ Chart rendering:
 
 ---
 
-### 9. Create PWA Files
+### 9. [x] Create PWA Files
 
 **Depends on:** Nothing (independent)
 
@@ -185,7 +185,7 @@ Chart rendering:
 
 ---
 
-### 10. Create `index.html` and `src/main.js` — Entry Point
+### 10. [x] Create `index.html` and `src/main.js` — Entry Point
 
 **Depends on:** All prior tasks
 

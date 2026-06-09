@@ -14,19 +14,19 @@ Unless noted, the development was done with [OpenSpec](https://openspec.pro/) to
 
 ## OpenAI Codex with GPT 5.5
 
-This is OpenAI's top frontier model.
+[GPT 5.5](https://artificialanalysis.ai/models/gpt-5-5-high/) is OpenAI's top frontier model.
 
 ## Claude Code with claude-opus-4.8 model
 
-This is Anthropic's top frontier model.
+[Opus 4.8](https://artificialanalysis.ai/models/claude-opus-4-8) is Anthropic's top frontier model.
 
 ## Antigravity with Google's Gemini 3.5 Flash
 
-This is not Google's top model.   I ran this test to see how a cheaper model would work.
+[Gemini 3.5 Flash](https://artificialanalysis.ai/models/gemini-3-5-flash) not Google's top model.   I ran this test to see how a cheaper model would work.
 
 ## OpenCode with DeepSeek V4 Pro
 
-This is an inexpensive open weight model that receives good scores for coding.
+[DeepSeek V4 Pro](https://artificialanalysis.ai/models/deepseek-v4-pro) is an inexpensive open weight model that receives good scores for coding.
 
 
 

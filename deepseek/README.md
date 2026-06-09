@@ -14,3 +14,6 @@ This project used DeepSeek V4 Pro.   I use [OpenCode](https://opencode.ai/) to i
 2. Second step:
     * `/opsx-propose`
     * OpenCode suggests that this simulation has a large scope.  It asks if I just want to slice off the simulation engine, or something smaller.   I tell it: `Make the full v1 implementation.`
+3. Third Step:
+    * `/opsx-apply`
+    
