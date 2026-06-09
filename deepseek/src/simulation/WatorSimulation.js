@@ -13,15 +13,6 @@ import {
 export class WatorSimulation {
     /**
      * @param {object} [opts] overrideable simulation parameters
-     * @param {number} [opts.width=GRID_W] grid columns
-     * @param {number} [opts.height=GRID_H] grid rows
-     * @param {number} [opts.fishDensity=FISH_DENSITY] initial fish population fraction
-     * @param {number} [opts.sharkDensity=SHARK_DENSITY] initial shark population fraction
-     * @param {number} [opts.fishBreedTime=FISH_BREED_TIME] chronons until fish can breed
-     * @param {number} [opts.sharkBreedTime=SHARK_BREED_TIME] chronons until shark can breed
-     * @param {number} [opts.initialSharkEnergy=INITIAL_SHARK_ENERGY] energy for newborns
-     * @param {number} [opts.sharkEnergyGain=SHARK_ENERGY_GAIN] energy from eating a fish
-     * @param {number} [opts.sharkEnergyCost=SHARK_ENERGY_COST] energy lost per chronon
      */
     constructor(opts = {}) {
         this.width = opts.width ?? GRID_W;
@@ -72,10 +63,7 @@ export class WatorSimulation {
         this.populateRandom();
     }
 
-    /**
-     * Randomly populates the grid with fish and sharks at configured densities.
-     * Fish are placed first to ensure they don't overlap with sharks.
-     */
+    /** Randomly populates the grid with fish and sharks at configured densities. */
     populateRandom() {
         const totalCells = this.width * this.height;
         const targetFish = Math.floor(totalCells * this.fishDensity);
@@ -86,7 +74,6 @@ export class WatorSimulation {
             if (idx < 0) break;
             this.placeEntity('fish', idx);
         }
-
         for (let i = 0; i < targetSharks; i++) {
             const idx = this.findEmptyCell();
             if (idx < 0) break;
@@ -96,7 +83,6 @@ export class WatorSimulation {
 
     /**
      * Finds a random empty cell index. Returns -1 if grid is full.
-     * Uses rejection sampling — efficient when density is not near 100%.
      * @returns {number} grid index or -1
      */
     findEmptyCell() {
@@ -133,10 +119,8 @@ export class WatorSimulation {
 
     /**
      * Advances the simulation by one chronon.
-     *
-     * Entity turn order is randomized. Entities that die or are eaten before their
-     * turn are skipped. Entities born during the current chronon do not act.
-     *
+     * Entity turn order is randomized. Dead/eaten entities are skipped.
+     * Entities born this chronon do not act.
      * @returns {TickResult} counters for events during this chronon
      */
     tick() {
@@ -319,17 +303,14 @@ export class WatorSimulation {
         const w = this.width;
         const h = this.height;
         return [
-            { x: (x + 1) % w,     y,                 idx: y * w + (x + 1) % w },
-            { x: (x - 1 + w) % w, y,                 idx: y * w + (x - 1 + w) % w },
-            { x,                   y: (y + 1) % h,    idx: ((y + 1) % h) * w + x },
-            { x,                   y: (y - 1 + h) % h, idx: ((y - 1 + h) % h) * w + x },
+            { x: (x + 1) % w,       y,                   idx: y * w + (x + 1) % w },
+            { x: (x - 1 + w) % w,   y,                   idx: y * w + (x - 1 + w) % w },
+            { x,                     y: (y + 1) % h,      idx: ((y + 1) % h) * w + x },
+            { x,                     y: (y - 1 + h) % h,  idx: ((y - 1 + h) % h) * w + x },
         ];
     }
 
-    /**
-     * Fischer-Yates in-place shuffle.
-     * @param {Array} arr
-     */
+    /** Fischer-Yates in-place shuffle. */
     fisherYatesShuffle(arr) {
         for (let i = arr.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -337,33 +318,16 @@ export class WatorSimulation {
         }
     }
 
-    /**
-     * Returns current population statistics.
-     * @returns {{ chronon: number, fish: number, sharks: number }}
-     */
+    /** @returns {{ chronon: number, fish: number, sharks: number }} */
     getStats() {
-        return {
-            chronon: this.chronon,
-            fish: this.fishCount,
-            sharks: this.sharkCount,
-        };
+        return { chronon: this.chronon, fish: this.fishCount, sharks: this.sharkCount };
     }
 
-    /**
-     * Returns the raw grid array for rendering.
-     * @returns {Int32Array}
-     */
-    getGrid() {
-        return this.grid;
-    }
+    /** @returns {Int32Array} raw grid for rendering */
+    getGrid() { return this.grid; }
 
-    /**
-     * Returns the entity map for rendering.
-     * @returns {Map<number, EntityRecord>}
-     */
-    getEntities() {
-        return this.entities;
-    }
+    /** @returns {Map<number, EntityRecord>} entity map for rendering */
+    getEntities() { return this.entities; }
 }
 
 /**
