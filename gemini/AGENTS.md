@@ -1,6 +1,6 @@
 ## OpenSpec
 * When creating a `design.md` file, include a section with class diagrams in Mermaid format for all classes that are involved in the latest change.
-* When creating any diagrams in markdown files, use Mermaid if possible.
+* When creating any diagrams in markdown files, use Mermaid instead of ASCII diagrams, if possible.
 * When archiving changes, move files using `git mv`.
 
 ## Code comments

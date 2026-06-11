@@ -56,14 +56,15 @@ Once a shark has survived a certain number of chronons it may reproduce in exact
 - Default fish density is `30%`.
 - Default shark density is `5%`.
 - Default `fishBreedTime` is `3` chronons.
-- Default `sharkBreedTime` is `10` chronons.
+- Default `sharkBreedTime` is `25` chronons.
 - Default `initialSharkEnergy` is `5`.
-- Default `sharkEnergyGain` is `4`.
+- Default `sharkEnergyGain` is `3`.
 - Default `sharkEnergyCostPerChronon` is `1`.
 - Default speed is `10x`.
 - Supported speed choices are `1x`, `5x`, `10x`, `30x`, and `60x`.
 - Fish are green circles.
 - Sharks are blue circles and slightly larger than fish.
+- Phaser Sprites are not used. All rendering uses Phaser `Graphics` drawing.
 - Each class has a JSDoc documentation comment.
 - Each static method and each public method longer than 8 lines has a JSDoc documentation comment.
 
