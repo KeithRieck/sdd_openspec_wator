@@ -1,5 +1,6 @@
 ## OpenSpec
-* When creating a `design.md` file, include a section with class diagrams in Mermaid format for all classes that are involved in the latest change.
+* When creating a `spec.md` file, assign numbers to each requirement.
+* When creating a `design.md` file, include a section with class diagrams in Mermaid format for all classes that are involved in the latest change.  Whenever possible, design decisions should referencne the numbered requirements from a `spec.md` file.
 * When creating any diagrams in markdown files, use Mermaid instead of ASCII diagrams, if possible.
 * When archiving changes, move files using `git mv`.
 

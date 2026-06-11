@@ -10,23 +10,40 @@ Each sub-project will create a browser-based [Wa-Tor](https://en.wikipedia.org/w
 
 Before starting, I created a baseline specification that all the projects work from.   I used the [`grill-me`](.agents/skills/grill-me/SKILL.md) skill to harvest requirements and then the [`spec-writer`](.agents/skills/spec-writer/SKILL.md) skill to create the [`spec-v001.md`](spec-v001.md) file.
 
-Unless noted, the development was done with [OpenSpec](https://openspec.pro/) to coordinate the [Spec Driven Development](https://en.wikipedia.org/wiki/Spec-driven_development).
+Unless noted, the development was done with [OpenSpec](https://openspec.pro/) (version 1.4.1) to coordinate the [Spec Driven Development](https://en.wikipedia.org/wiki/Spec-driven_development).
 
 ## OpenAI Codex with GPT 5.5
 
 [GPT 5.5](https://artificialanalysis.ai/models/gpt-5-5-high/) is OpenAI's top frontier model.
 
+The `proposal.md` document is pretty generic, but generally communicates what sort of web app will be created.
+
+The Codex code made use of a JavaScript object type it called 'entity'.  This probably should have been a class.
+
 ## Claude Code with claude-opus-4.8 model
 
 [Opus 4.8](https://artificialanalysis.ai/models/claude-opus-4-8) is Anthropic's top frontier model.
 
+Claude split the specification into two spcification documents, one for the UI and another for the wa-tor simulation code.  All other models just created one spec. For the `proposal.md` file, Claude added a lot of details that might be better though of as part of the design.  It also lists all the files to be created, but doesn't specify anything about them.
+
+In the `design.md` file, Claude added traceability from design decisions back to numbered requirements in `spec-v001.md`.  Claude created the most detailed diagrams, all in Mermaid.
+
+Claude created one separate package for UI code.  Curiously, all the projects had almost exactly the same number of JavaScript files with exactly the same names.  This additional UI package was the only difference.  All the models created useful documentation comments, but Claude's comments were longer and probably more useful.
+
 ## Antigravity with Google's Gemini 3.5 Flash
 
-[Gemini 3.5 Flash](https://artificialanalysis.ai/models/gemini-3-5-flash) not Google's top model.   I ran this test to see how a cheaper model would work.
+[Gemini 3.5 Flash](https://artificialanalysis.ai/models/gemini-3-5-flash) is not Google's top model.   I ran this test to see how a cheaper model would work.
+
+Gemini didn't create a `spec.md` file, apparently assuming that the `spec-v001.md` file was the spec.  This is a problem, since OpenSpec assumes that it can maintain a synchronized up-to-date specification, as changes are merged in.  The `proposal.md` file gives a general overview.  It lists and describes all files to be created.
+
+Gemini created two independent classes for sharks and fish, as well as a parent class for WatorEntity.  Gemini was the only model that added object-oriented design the simulation.  All of the models did a good job of adding documentation comments; Gemini also added some useful normal comments inside the longer functions.
 
 ## OpenCode with DeepSeek V4 Pro
 
 [DeepSeek V4 Pro](https://artificialanalysis.ai/models/deepseek-v4-pro) is an inexpensive open weight model that receives good scores for coding.
 
+Like Gemini, DeepSeek also didn't create the `spec.md` file.  In this case, I told to create the document. DeepSeek also lists and describes all files to be created in `proposal.md`.  Interestling, the last few sections in this proposal document are different from the previous three.  It lists architectural boundaries, scope, and risks, which I think makes it a better proposal document.  
 
+The `design.md` file has different sections compared to the other projects.  It includes  ASCII-art diagrams, which is nice.  It includes pseudo-code for some of the logic.  The pseudo-code includes comments that trace code back to numbered requirements in `spec-v001.md`.
 
+The DeepSeek code contained a couple of JavaScript object types that probably should have been defined as classes:  EntityRecord and TickResult.
