@@ -282,6 +282,10 @@ export class SimulationScene extends Phaser.Scene {
     // Play/Pause button
     this.createButton('Play', 'Pause', () => {
       this.isRunning = !this.isRunning;
+      if (!this.isTerminalState()) {
+        this.simulation.status = this.isRunning ? 'Running' : 'Paused';
+      }
+      this.updateStatsText();
       this.updateButtonStates();
     });
 
@@ -289,7 +293,11 @@ export class SimulationScene extends Phaser.Scene {
     this.createButton('Step', 'Step', () => {
       if (!this.isRunning && !this.isTerminalState()) {
         this.simulation.tick();
+        if (!this.isTerminalState()) {
+          this.simulation.status = 'Paused';
+        }
         this.updateStatsText();
+        this.updateButtonStates();
         this.drawWorld();
         this.drawChart();
       }
@@ -362,12 +370,7 @@ export class SimulationScene extends Phaser.Scene {
    * Refreshes text parameters in the left/top stats panel.
    */
   updateStatsText() {
-    let statusText = this.simulation.status;
-    
-    // Auto-replace with Paused if simulation is paused and not terminal
-    if (!this.isRunning && !this.isTerminalState()) {
-      statusText = 'Paused';
-    }
+    const statusText = this.simulation.status;
 
     // Format HSL color hex styling matching state
     let stateColor = `#${Config.COLORS.TEXT_MUTED.toString(16)}`;

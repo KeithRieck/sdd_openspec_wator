@@ -24,7 +24,7 @@ The Codex code made use of a JavaScript object type it called 'entity'.  This pr
 
 [Opus 4.8](https://artificialanalysis.ai/models/claude-opus-4-8) is Anthropic's top frontier model.
 
-Claude split the specification into two spcification documents, one for the UI and another for the wa-tor simulation code.  All other models just created one spec. For the `proposal.md` file, Claude added a lot of details that might be better though of as part of the design.  It also lists all the files to be created, but doesn't specify anything about them.
+Claude split the specification into two documents, one for the UI and another for the wa-tor simulation code.  All other models just created one spec. For the `proposal.md` file, Claude added a lot of details that might be better though of as part of the design.  It also lists all the files to be created, but doesn't specify anything about them.
 
 In the `design.md` file, Claude added traceability from design decisions back to numbered requirements in `spec-v001.md`.  Claude created the most detailed diagrams, all in Mermaid.
 

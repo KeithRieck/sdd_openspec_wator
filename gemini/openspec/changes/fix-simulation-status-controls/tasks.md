@@ -12,6 +12,6 @@
 
 ## 3. Verification
 
-- [ ] 3.1 Add or run focused checks proving Pause updates `simulation.status` and statistics display to paused state.
-- [ ] 3.2 Add or run focused checks proving Step preserves paused state for non-terminal ticks and refreshes controls for terminal ticks.
-- [ ] 3.3 Run JavaScript syntax validation for `src/scenes/SimulationScene.js`.
+- [x] 3.1 Add or run focused checks proving Pause updates `simulation.status` and statistics display to paused state.
+- [x] 3.2 Add or run focused checks proving Step preserves paused state for non-terminal ticks and refreshes controls for terminal ticks.
+- [x] 3.3 Run JavaScript syntax validation for `src/scenes/SimulationScene.js`.
