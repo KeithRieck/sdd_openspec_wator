@@ -20,4 +20,14 @@ This project used Google's [Gemini 3.5 Flash](https://deepmind.google/models/gem
     * Code was generated and Antigravity started testing.  Part way through testing, it announced that my weekly quota had been reached.
 4. Fourth step:
     * `/opsx:archive`
-    
+
+## Next iteration
+There were a couple of problems with the resulting code.
+* If the simulation is running and I press the Pause button, it didn't update the status to 'Paused'.
+* If Step causes extinction, button states are not refreshed.
+
+5. Next step:
+    * `/opsx:propose  Fix the stutus problem and step-extinction problem`
+    * New documents were created in a change called `fix-simulation-status-controls`.  These documents and the task list are shorter than the previous iteration.
+6. Another step to apply changes.
+    * `/opsx:apply fix-simulation-status-controls`
