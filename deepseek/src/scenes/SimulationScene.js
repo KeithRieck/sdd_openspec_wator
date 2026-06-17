@@ -431,8 +431,8 @@ export class SimulationScene extends Phaser.Scene {
 
         if (this.chrononAccumulator > interval * 2) this.chrononAccumulator = 0;
 
-        this.renderAll();
         this.checkExtinction();
+        this.renderAll();
     }
 
     /** Handles browser/Phaser resize events by recomputing layout. */

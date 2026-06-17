@@ -29,3 +29,6 @@ There was a problem with the resulting code.  After an extinction, the status wa
     * `/opsx-explore Status is not set correctly after an extinction`
     * `/opsx-propose Fix the status problem after extinction`
     * Again, deepseek failed to create a delta `spec.md` file.  I had to prompt it to do so.  All the documents here are very short and are spcific to the code change, not really an update of requirements.
+6. Apply step:
+    * `/opsx-apply fix-extinction-status-display`
+    * The fix was very simple.  Just reverse the order of two lines.

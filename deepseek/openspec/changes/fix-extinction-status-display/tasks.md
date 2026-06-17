@@ -4,7 +4,7 @@
 
 ---
 
-### 1. [ ] Swap renderAll and checkExtinction in update()
+### 1. [x] Swap renderAll and checkExtinction in update()
 
 **Depends on:** Nothing
 
@@ -26,7 +26,7 @@ this.renderAll();
 
 ---
 
-### 2. [ ] Verify Step button path unaffected
+### 2. [x] Verify Step button path unaffected
 
 **Depends on:** Task 1
 
