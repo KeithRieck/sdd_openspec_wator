@@ -31,5 +31,5 @@ There were a couple of problems with the resulting code.
     * New documents were created in a change called `fix-simulation-status-controls`.  These documents and the task list are shorter than the previous iteration.
 6. Another step to apply changes.
     * `/opsx:apply fix-simulation-status-controls`
-7. Fourth step:
+7. Archive step:
     * `/opsx:archive`

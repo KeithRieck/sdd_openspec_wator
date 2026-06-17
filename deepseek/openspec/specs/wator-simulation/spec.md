@@ -67,6 +67,8 @@ IF fish and sharks both reach zero, THEN the system SHALL auto-pause and display
 IF only fish reach zero, THEN the system SHALL auto-pause and display `Fish extinct`.
 IF only sharks reach zero, THEN the system SHALL auto-pause and display `Sharks extinct`.
 WHILE terminal, THEN the system SHALL disable all controls except Reset.
+WHEN the simulation reaches extinction during a running tick, THEN the system SHALL evaluate extinction state before rendering, so that the status text displays the correct terminal message in the same frame.
+The system SHALL use the same `check-then-render` ordering in both the natural-tick path and the manual-step path.
 
 ## Population History Chart
 

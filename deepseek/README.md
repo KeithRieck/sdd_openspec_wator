@@ -32,3 +32,6 @@ There was a problem with the resulting code.  After an extinction, the status wa
 6. Apply step:
     * `/opsx-apply fix-extinction-status-display`
     * The fix was very simple.  Just reverse the order of two lines.
+7. Archive step:
+    * `/opsx:archive`
+    
