@@ -38,6 +38,8 @@ Gemini didn't create a `spec.md` file, apparently assuming that the `spec-v001.m
 
 Gemini created two independent classes for sharks and fish, as well as a parent class for WatorEntity.  Gemini was the only model that added object-oriented design the simulation.  All of the models did a good job of adding documentation comments; Gemini also added some useful normal comments inside the longer functions.
 
+Unfortunately, the gemini generated code had two bugs relating to how statuses were set.  Having discovered these gaps, I had openspec implement a fix.
+
 ## OpenCode with DeepSeek V4 Pro
 
 [DeepSeek V4 Pro](https://artificialanalysis.ai/models/deepseek-v4-pro) is an inexpensive open weight model that receives good scores for coding.
@@ -47,3 +49,5 @@ Like Gemini, DeepSeek also didn't create the `spec.md` file.  In this case, I to
 The `design.md` file has different sections compared to the other projects.  It includes  ASCII-art diagrams, which is nice.  It includes pseudo-code for some of the logic.  The pseudo-code includes comments that trace code back to numbered requirements in `spec-v001.md`.
 
 The DeepSeek code contained a couple of JavaScript object types that probably should have been defined as classes:  EntityRecord and TickResult.
+
+The deepseek generated code had a bug relating to how status is set after an extinction.  I had openspec implement a fix.

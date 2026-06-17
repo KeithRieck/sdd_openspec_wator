@@ -21,4 +21,11 @@ This project used DeepSeek V4 Pro.   I use [OpenCode](https://opencode.ai/) to i
     * Based on the DeepSeek portal, it appears that I've only used $0.07 for this project.
 4. Fourth Step:
     * `/opsx-archive`
-    
+
+## Next iteration
+There was a problem with the resulting code.  After an extinction, the status was left at "Running"
+
+5. Next step:
+    * `/opsx-explore Status is not set correctly after an extinction`
+    * `/opsx-propose Fix the status problem after extinction`
+    * Again, deepseek failed to create a delta `spec.md` file.  I had to prompt it to do so.  All the documents here are very short and are spcific to the code change, not really an update of requirements.
