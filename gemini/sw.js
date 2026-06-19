@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wator-v1';
+const CACHE_NAME = 'wator-v1-gemini';
 const ASSETS = [
   './',
   './index.html',

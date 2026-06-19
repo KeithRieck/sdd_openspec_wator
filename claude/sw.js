@@ -6,7 +6,7 @@
  * CDN (cross-origin); it is intentionally not precached, so first-load and
  * offline behavior depend on whether the browser has cached that script.
  */
-const CACHE = 'wator-v1';
+const CACHE = 'wator-v1-claude';
 
 const SHELL = [
   './',

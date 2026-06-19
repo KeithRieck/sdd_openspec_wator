@@ -1,9 +1,9 @@
 Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/copilot/index.html
 
-# Wa-Tor simulations with Github Copilot
+# Wa-Tor simulations with GitHub Copilot
 Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation that emphasizes correct predator-prey cellular automaton behavior.
 
-This project used the Github copilot model.  For this, we are using GitHub's "Raptor mini" model, which is a tuned variant of "GPT-5 mini".
+This project used the GitHub copilot model.  For this, we are using GitHub's "Raptor mini" model, which is a tuned variant of "GPT-5 mini".
 
 # Development:
 1. Exploration step:
@@ -18,4 +18,9 @@ This project used the Github copilot model.  For this, we are using GitHub's "Ra
     - The `spec.md` file is finally created.
 3. Apply step:
     - `/opsx-apply`
-    - Code is generated, including a `test-harness.html` which is the first time I've seen a web page to test the simulation.
+    - Code is generated, including a `test-harness.html` which is the first time I've seen a web page to test the simulation.  However, for the first time, an app is created that doesn't run.  The page is blank.
+    - `Within main.js you create a config object which contains a "scene" element which should contain a list of all the game's scenes.  You must add SimulationScene to this list.`
+    - `The serviceWorker is not getting started during the window load event.`
+    - `Start the serviceWorker in main.js, not index.html`
+    - Finally, I have to manually fix `main.js` to load the serviceWorker.   Also, I rewrite `sw.js` entirely.
+    - Still, nothing is displaying, and there are no errors on the console.   I ask Copilot to figure it out.  Copilot spends a *long* time trying to figure it out.

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wator-v1';
+const CACHE_NAME = 'wator-v1-deepseek';
 
 const PRECACHE_URLS = [
     './', './index.html', './src/main.js', './src/config.js',
