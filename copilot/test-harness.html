@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wa-Tor Engine Test Harness</title>
+</head>
+<body>
+  <script type="module">
+    import WatorSimulation from './src/simulation/WatorSimulation.js';
+
+    const sim = new WatorSimulation();
+    sim.reset();
+    console.log('Initial stats', sim.getStats());
+    for (let i = 0; i < 5; i++) {
+      sim.step();
+      console.log(`After ${i + 1} chronon(s):`, sim.getStats());
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+/**
+ * Application constants for the Wa-Tor simulation.
+ */
+export const CONFIG = {
+  GRID_WIDTH: 100,
+  GRID_HEIGHT: 70,
+  FISH_DENSITY: 0.3,
+  SHARK_DENSITY: 0.05,
+  FISH_BREED_TIME: 3,
+  SHARK_BREED_TIME: 25,
+  INITIAL_SHARK_ENERGY: 5,
+  SHARK_ENERGY_GAIN: 3,
+  SHARK_ENERGY_COST_PER_CHRONON: 1,
+  SPEED_OPTIONS: [1, 5, 10, 30, 60],
+  DEFAULT_SPEED: 10,
+  HISTORY_WINDOW: 500,
+  COLORS: {
+    WATER: 0x001a33,
+    FISH: 0x00ff00,
+    SHARK: 0x0000ff
+  }
+};
