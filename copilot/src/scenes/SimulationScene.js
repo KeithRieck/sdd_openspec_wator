@@ -121,7 +121,7 @@ export default class SimulationScene extends Phaser.Scene {
     this.historyChart.layout(0, height - chartHeight, width, chartHeight);
     this.uiControls.layout(width - sideWidth, 20, sideWidth, worldHeight);
 
-    const statsX = sideWidth + 20;
+    const statsX = 20;
     const statsY = 20;
     const lineHeight = 26;
     this.statsTexts.chronon.setPosition(statsX, statsY);
