@@ -120,5 +120,13 @@ export default class SimulationScene extends Phaser.Scene {
     this.worldRenderer.layout(sideWidth, 20, worldWidth, worldHeight, CONFIG.GRID_WIDTH, CONFIG.GRID_HEIGHT);
     this.historyChart.layout(0, height - chartHeight, width, chartHeight);
     this.uiControls.layout(width - sideWidth, 20, sideWidth, worldHeight);
+
+    const statsX = sideWidth + 20;
+    const statsY = 20;
+    const lineHeight = 26;
+    this.statsTexts.chronon.setPosition(statsX, statsY);
+    this.statsTexts.fish.setPosition(statsX, statsY + lineHeight);
+    this.statsTexts.sharks.setPosition(statsX, statsY + lineHeight * 2);
+    this.statsTexts.status.setPosition(statsX, statsY + lineHeight * 3);
   }
 }

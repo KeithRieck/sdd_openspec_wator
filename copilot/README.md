@@ -3,7 +3,7 @@ Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/copilot/index.html
 # Wa-Tor simulations with GitHub Copilot
 Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation that emphasizes correct predator-prey cellular automaton behavior.
 
-This project used the GitHub copilot model.  For this, we are using GitHub's "Raptor mini" model, which is a tuned variant of "GPT-5 mini".
+This project used the GitHub copilot model, using the free tier.  For this, we are using GitHub's "Raptor mini" model, which is a tuned variant of "GPT-5 mini".
 
 # Development:
 1. Exploration step:
@@ -24,3 +24,4 @@ This project used the GitHub copilot model.  For this, we are using GitHub's "Ra
     - `Start the serviceWorker in main.js, not index.html`
     - Finally, I have to manually fix `main.js` to load the serviceWorker.   Also, I rewrite `sw.js` entirely.
     - Still, nothing is displaying, and there are no errors on the console.   I ask Copilot to figure it out.  Copilot spends a *long* time trying to figure it out.
+    - `In SimulationScene, the statsTexts object puts all four text objects at the same location, so they overlap.  Change this so each text item is on a separate line.`
