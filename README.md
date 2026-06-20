@@ -56,3 +56,10 @@ The deepseek generated code had a bug relating to how status is set after an ext
 
 ## Visual Studio Code with Github Copilot
 
+This project used the GitHub copilot model, using the free tier.  For this, we are using GitHub's "Raptor mini" model, which is a tuned variant of [GPT-5 mini](https://artificialanalysis.ai/models/gpt-5-mini-medium).
+
+Like Gemini and DeepSeek, copilot also didn't create the `spec.md` file.  It created the document when I insisted that it do so, but the Acceptance criteria in this document merely cites `spec-v001.md` instead of copying out the requirements.
+
+Of all the Wa-tor apps, this was the first one that didn't work immedietly.  I had to do a lot of debugging and prodding to get things working.  I had copilot do much of the debugging; it ultimately found that the problem was missing field in the Phaser config object.
+
+This app did the best about breaking out functionality into object oriented classes, but this may have been because I insisted that that was important.
