@@ -16,3 +16,9 @@ This project used the open-weight model GLM-5.2 on Medium level.  I'm developing
 3. Apply step:
     - `/opsx-apply`
     - Code is generated.  This step cost around 70 more cents. It consumed 2,075,000 input tokens and generated 20,625 output tokens.
+    - The result looks good and the simulation runs, but the new buttons don't work.  Also, the history chart doesn't display.
+    - `The PhaserButton objects do not respond to mouse clicks.`
+    - GLM does some analysis and says that the 'hit area' isn't right.
+    - `The HistoryChart does not display.`
+    - 
+

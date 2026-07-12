@@ -52,8 +52,8 @@ export default class SimulationScene extends Phaser.Scene {
             status: this.add.text(0, 0, '', this._statsStyle())
         };
 
-        // History chart.
-        this.chart = new HistoryChart(this);
+        // History chart — reads directly from the simulation's rolling history.
+        this.chart = new HistoryChart(this, this.sim.history);
 
         // Build controls.
         this._createButtons();
@@ -242,7 +242,6 @@ export default class SimulationScene extends Phaser.Scene {
      */
     onReset() {
         this.sim.reset();
-        this.chart.clear();
         this.accumulator = 0;
         this._updateControlStates();
         this.drawWorld();
@@ -399,21 +398,21 @@ export default class SimulationScene extends Phaser.Scene {
         let cx = x + pad;
         for (let i = 0; i < this.speedButtons.length; i++) {
             this.speedButtons[i].setPosition(cx, cy);
-            this.speedButtons[i].width = speedBtnW;
+            this.speedButtons[i].setSize(speedBtnW, LAYOUT.buttonHeight);
             cx += speedBtnW + LAYOUT.buttonSpacing;
         }
         cy += LAYOUT.buttonHeight + LAYOUT.buttonSpacing;
 
         // Action buttons, each on its own row.
         this.playPauseBtn.setPosition(x + pad, cy);
-        this.playPauseBtn.width = btnW;
+        this.playPauseBtn.setSize(btnW, LAYOUT.buttonHeight);
         cy += LAYOUT.buttonHeight + LAYOUT.buttonSpacing;
 
         this.stepBtn.setPosition(x + pad, cy);
-        this.stepBtn.width = btnW;
+        this.stepBtn.setSize(btnW, LAYOUT.buttonHeight);
         cy += LAYOUT.buttonHeight + LAYOUT.buttonSpacing;
 
         this.resetBtn.setPosition(x + pad, cy);
-        this.resetBtn.width = btnW;
+        this.resetBtn.setSize(btnW, LAYOUT.buttonHeight);
     }
 }

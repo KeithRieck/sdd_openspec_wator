@@ -12,32 +12,13 @@ export default class HistoryChart {
      * Create the chart helper.
      *
      * @param {Phaser.Scene} scene - The owning scene.
+     * @param {Array<{fish: number, sharks: number}>} history - The simulation's rolling history array to read from.
      */
-    constructor(scene) {
+    constructor(scene, history) {
         this.scene = scene;
         this.graphics = scene.add.graphics();
-        this.samples = [];
+        this.history = history;
         this.maxSamples = HISTORY_WINDOW;
-    }
-
-    /**
-     * Append a population sample, trimming to the rolling window.
-     *
-     * @param {number} fish - Current fish count.
-     * @param {number} sharks - Current shark count.
-     */
-    push(fish, sharks) {
-        this.samples.push({ fish, sharks });
-        if (this.samples.length > this.maxSamples) {
-            this.samples.shift();
-        }
-    }
-
-    /**
-     * Clear all samples (used on reset).
-     */
-    clear() {
-        this.samples = [];
     }
 
     /**
@@ -62,13 +43,14 @@ export default class HistoryChart {
         this.graphics.lineStyle(1, COLORS.panelBorder, 1);
         this.graphics.strokeRect(x, y, w, h);
 
-        if (this.samples.length < 2) {
+        const samples = this.history;
+        if (samples.length < 2) {
             return;
         }
 
         // Auto-scale to max population in window.
         let maxPop = 0;
-        for (const s of this.samples) {
+        for (const s of samples) {
             if (s.fish > maxPop) maxPop = s.fish;
             if (s.sharks > maxPop) maxPop = s.sharks;
         }
@@ -76,18 +58,18 @@ export default class HistoryChart {
             return;
         }
 
-        const n = this.samples.length;
+        const n = samples.length;
         const dx = w / (this.maxSamples - 1);
         const offsetX = w - (n - 1) * dx; // right-align most recent samples
 
         // Draw fish polyline (green).
         this.graphics.lineStyle(2, COLORS.fish, 1);
         this.graphics.beginPath();
-        this.graphics.moveTo(x + offsetX, y + h - (this.samples[0].fish / maxPop) * h);
+        this.graphics.moveTo(x + offsetX, y + h - (samples[0].fish / maxPop) * h);
         for (let i = 1; i < n; i++) {
             this.graphics.lineTo(
                 x + offsetX + i * dx,
-                y + h - (this.samples[i].fish / maxPop) * h
+                y + h - (samples[i].fish / maxPop) * h
             );
         }
         this.graphics.strokePath();
@@ -95,11 +77,11 @@ export default class HistoryChart {
         // Draw sharks polyline (blue).
         this.graphics.lineStyle(2, COLORS.shark, 1);
         this.graphics.beginPath();
-        this.graphics.moveTo(x + offsetX, y + h - (this.samples[0].sharks / maxPop) * h);
+        this.graphics.moveTo(x + offsetX, y + h - (samples[0].sharks / maxPop) * h);
         for (let i = 1; i < n; i++) {
             this.graphics.lineTo(
                 x + offsetX + i * dx,
-                y + h - (this.samples[i].sharks / maxPop) * h
+                y + h - (samples[i].sharks / maxPop) * h
             );
         }
         this.graphics.strokePath();

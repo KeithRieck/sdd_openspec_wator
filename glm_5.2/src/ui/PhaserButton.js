@@ -33,6 +33,7 @@ export default class PhaserButton {
         this.pressed = false;
 
         this.bg = scene.add.graphics();
+        this.bg.setPosition(x, y);
         this.text = scene.add.text(x + width / 2, y + height / 2, label, {
             fontFamily: 'Arial, sans-serif',
             fontSize: `${LAYOUT.fontSize}px`,
@@ -94,12 +95,12 @@ export default class PhaserButton {
 
         const alpha = this.enabled ? 1.0 : 0.5;
         this.bg.fillStyle(fill, alpha);
-        this.bg.fillRoundedRect(this.x, this.y, this.width, this.height, LAYOUT.cornerRadius);
+        this.bg.fillRoundedRect(0, 0, this.width, this.height, LAYOUT.cornerRadius);
 
         // Border: stronger for selected, subtle otherwise.
         const borderColor = this.selected ? COLORS.buttonSelectedBorder : COLORS.panelBorder;
         this.bg.lineStyle(2, borderColor, alpha);
-        this.bg.strokeRoundedRect(this.x, this.y, this.width, this.height, LAYOUT.cornerRadius);
+        this.bg.strokeRoundedRect(0, 0, this.width, this.height, LAYOUT.cornerRadius);
 
         this.text.setText(this.label);
         this.text.setAlpha(this.enabled ? 1.0 : 0.5);
@@ -136,6 +137,21 @@ export default class PhaserButton {
     }
 
     /**
+     * Resize the button and refresh its interactive hit area.
+     *
+     * @param {number} width - New width.
+     * @param {number} height - New height.
+     */
+    setSize(width, height) {
+        this.width = width;
+        this.height = height;
+        this.bg.removeInteractive();
+        const hitArea = new Phaser.Geom.Rectangle(0, 0, width, height);
+        this.bg.setInteractive(hitArea, Phaser.Geom.Rectangle.Contains);
+        this.draw();
+    }
+
+    /**
      * Move the button to a new position.
      *
      * @param {number} x - New left position.
@@ -144,11 +160,8 @@ export default class PhaserButton {
     setPosition(x, y) {
         this.x = x;
         this.y = y;
+        this.bg.setPosition(x, y);
         this.text.setPosition(x + this.width / 2, y + this.height / 2);
-        // Re-register hit area at new position.
-        this.bg.removeInteractive();
-        const hitArea = new Phaser.Geom.Rectangle(0, 0, this.width, this.height);
-        this.bg.setInteractive(hitArea, Phaser.Geom.Rectangle.Contains);
         this.draw();
     }
 
