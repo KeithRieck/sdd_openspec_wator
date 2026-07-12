@@ -34,8 +34,8 @@
 
 ## 5. Verification
 
-- [ ] 5.1 Run the app and confirm the world, stats, chart, and buttons render identically to before the refactor
-- [ ] 5.2 Confirm Play/Pause, Step, Reset, and all five speed buttons behave correctly
-- [ ] 5.3 Confirm resize triggers re-layout and all components reposition correctly in both wide and narrow modes
-- [ ] 5.4 Confirm extinction states (fish extinct, sharks extinct, ecosystem collapsed) display correctly in the stats panel and disable the right buttons
+- [x] 5.1 Run the app and confirm the world, stats, chart, and buttons render identically to before the refactor
+- [x] 5.2 Confirm Play/Pause, Step, Reset, and all five speed buttons behave correctly
+- [x] 5.3 Confirm resize triggers re-layout and all components reposition correctly in both wide and narrow modes
+- [x] 5.4 Confirm extinction states (fish extinct, sharks extinct, ecosystem collapsed) display correctly in the stats panel and disable the right buttons
 - [x] 5.5 Grep the codebase to confirm no remaining `'energy' in` duck-typing and no remaining `_drawChart` / `_updateControlStates` references
