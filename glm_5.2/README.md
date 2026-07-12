@@ -23,5 +23,6 @@ This project used the open-weight model GLM-5.2 on Medium level.  I'm developing
     - GLM figures out that it hasn't been sending the chart data out.  The result works better, but there are still problems.
     - `After onReset is called, the HistoryChart does not reset.`
     - `When we pause the simulation, the displayed Status value does not change.`
-    
-
+    - The bug fixes have cost an additional 54 cents.
+4. Archive step
+    - `/openspec-archive-change `
