@@ -1,9 +1,11 @@
 import Entity from './Entity.js';
 import {
+    COLORS,
     SHARK_BREED_TIME,
     INITIAL_SHARK_ENERGY,
     SHARK_ENERGY_GAIN,
-    SHARK_ENERGY_COST_PER_CHRONON
+    SHARK_ENERGY_COST_PER_CHRONON,
+    SHARK_RADIUS_FACTOR
 } from '../config.js';
 
 /**
@@ -106,5 +108,23 @@ export default class Shark extends Entity {
      */
     canBreed() {
         return this.breedAge >= SHARK_BREED_TIME;
+    }
+
+    /**
+     * The render-time color of a shark.
+     *
+     * @returns {number} The shark color constant.
+     */
+    get color() {
+        return COLORS.shark;
+    }
+
+    /**
+     * The render-time circle radius factor for a shark.
+     *
+     * @returns {number} The shark radius factor constant.
+     */
+    get radiusFactor() {
+        return SHARK_RADIUS_FACTOR;
     }
 }

@@ -48,4 +48,22 @@ export default class Entity {
     canBreed() {
         throw new Error('Entity.canBreed() must be overridden by a subclass');
     }
+
+    /**
+     * The render-time color of this entity as a numeric Phaser color.
+     *
+     * @returns {number} The color constant from `src/config.js`.
+     */
+    get color() {
+        throw new Error('Entity.color must be overridden by a subclass');
+    }
+
+    /**
+     * The render-time circle radius as a fraction of cell size.
+     *
+     * @returns {number} The radius factor constant from `src/config.js`.
+     */
+    get radiusFactor() {
+        throw new Error('Entity.radiusFactor must be overridden by a subclass');
+    }
 }

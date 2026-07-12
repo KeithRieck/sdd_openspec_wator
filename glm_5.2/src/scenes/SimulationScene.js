@@ -1,26 +1,25 @@
 import WatorSimulation from '../simulation/WatorSimulation.js';
 import PhaserButton from '../ui/PhaserButton.js';
 import HistoryChart from '../ui/HistoryChart.js';
+import WatorWorld from '../ui/WatorWorld.js';
+import StatsPanel from '../ui/StatsPanel.js';
 import {
-    COLORS,
     LAYOUT,
     SPEED_OPTIONS,
     DEFAULT_SPEED,
     STATUS,
-    FISH_RADIUS_FACTOR,
-    SHARK_RADIUS_FACTOR,
     GRID_WIDTH,
     GRID_HEIGHT
 } from '../config.js';
 
 /**
- * The main simulation scene.
+ * The main simulation scene — a thin orchestrator.
  *
- * Owns the WatorSimulation engine instance and renders the full app window
- * through Phaser: stats panel (left), world display (center), controls panel
- * (right), and population history chart (bottom). Drives the engine via an
- * accumulator in update() and redraws every frame. All UI is Phaser-native
- * (Graphics + Text + PhaserButton); no DOM overlays.
+ * Owns the WatorSimulation engine instance and drives it via an accumulator
+ * in update(). Per-chronon drawing is delegated to UI components: WatorWorld
+ * (world), StatsPanel (stats text), and HistoryChart (population chart).
+ * Button creation, event handlers, and all layout logic remain in this scene.
+ * All UI is Phaser-native (Graphics + Text + PhaserButton); no DOM overlays.
  */
 export default class SimulationScene extends Phaser.Scene {
     /**
@@ -41,16 +40,9 @@ export default class SimulationScene extends Phaser.Scene {
         this.speed = DEFAULT_SPEED;
         this.accumulator = 0;
 
-        // World rendering graphics.
-        this.worldGraphics = this.add.graphics();
-
-        // Stats text objects (left panel).
-        this.statsTexts = {
-            chronon: this.add.text(0, 0, '', this._statsStyle()),
-            fish: this.add.text(0, 0, '', this._statsStyle()),
-            sharks: this.add.text(0, 0, '', this._statsStyle()),
-            status: this.add.text(0, 0, '', this._statsStyle())
-        };
+        // Per-chronon renderers (delegated drawing).
+        this.world = new WatorWorld(this, this.sim);
+        this.statsPanel = new StatsPanel(this, this.sim);
 
         // History chart — reads directly from the simulation's rolling history.
         this.chart = new HistoryChart(this, this.sim.history);
@@ -69,20 +61,6 @@ export default class SimulationScene extends Phaser.Scene {
         // Initial draw.
         this.drawWorld();
         this.drawStats();
-    }
-
-    /**
-     * Return the Phaser text style object for stats text.
-     *
-     * @returns {object} Phaser text style config.
-     * @private
-     */
-    _statsStyle() {
-        return {
-            fontFamily: 'Arial, sans-serif',
-            fontSize: `${LAYOUT.statsFontSize}px`,
-            color: '#e0e0e0'
-        };
     }
 
     /**
@@ -108,15 +86,13 @@ export default class SimulationScene extends Phaser.Scene {
             this.speedButtons.push(btn);
         }
 
-        this._updateControlStates();
+        this.updateControlStates();
     }
 
     /**
      * Update enabled/selected states of all buttons based on sim state.
-     *
-     * @private
      */
-    _updateControlStates() {
+    updateControlStates() {
         const terminal = this.sim.isTerminal();
         const running = this.sim.running;
 
@@ -152,68 +128,30 @@ export default class SimulationScene extends Phaser.Scene {
 
         this.drawWorld();
         this.drawStats();
-        this._drawChart();
-        this._updateControlStates();
+        this.drawChart();
+        this.updateControlStates();
     }
 
     /**
-     * Draw the world: water background plus fish and shark circles.
-     *
-     * No grid lines. Fish are green circles; sharks are larger blue circles.
+     * Draw the world by delegating to WatorWorld with the current world region.
      */
     drawWorld() {
-        const g = this.worldGraphics;
-        g.clear();
-
-        const region = this.worldRegion;
-        if (!region) return;
-
-        // Water background.
-        g.fillStyle(COLORS.water, 1);
-        g.fillRect(region.x, region.y, region.w, region.h);
-
-        const cellW = region.w / this.sim.width;
-        const cellH = region.h / this.sim.height;
-        const fishR = Math.min(cellW, cellH) * FISH_RADIUS_FACTOR;
-        const sharkR = Math.min(cellW, cellH) * SHARK_RADIUS_FACTOR;
-
-        for (const entity of this.sim.entities.values()) {
-            const cx = region.x + (entity.x + 0.5) * cellW;
-            const cy = region.y + (entity.y + 0.5) * cellH;
-            // Distinguish by checking for energy field (shark-only).
-            const isShark = 'energy' in entity;
-            if (isShark) {
-                g.fillStyle(COLORS.shark, 1);
-                g.fillCircle(cx, cy, sharkR);
-            } else {
-                g.fillStyle(COLORS.fish, 1);
-                g.fillCircle(cx, cy, fishR);
-            }
-        }
+        const r = this.worldRegion;
+        if (!r) return;
+        this.world.draw(r.x, r.y, r.w, r.h);
     }
 
     /**
-     * Update the stats text objects from simulation state.
-     *
-     * For non-terminal states, the displayed status reflects the running flag
-     * (Running or Paused) rather than relying on status being set elsewhere.
+     * Update the stats text by delegating to StatsPanel.
      */
     drawStats() {
-        this.statsTexts.chronon.setText(`Chronon: ${this.sim.chronon}`);
-        this.statsTexts.fish.setText(`Fish: ${this.sim.fishCount}`);
-        this.statsTexts.sharks.setText(`Sharks: ${this.sim.sharkCount}`);
-        const displayStatus = this.sim.isTerminal()
-            ? this.sim.status
-            : (this.sim.running ? STATUS.RUNNING : STATUS.PAUSED);
-        this.statsTexts.status.setText(`Status: ${displayStatus}`);
+        this.statsPanel.draw();
     }
 
     /**
      * Draw the population history chart into its layout region.
-     *
-     * @private
      */
-    _drawChart() {
+    drawChart() {
         const r = this.chartRegion;
         if (!r) return;
         this.chart.draw(r.x, r.y, r.w, r.h);
@@ -227,7 +165,7 @@ export default class SimulationScene extends Phaser.Scene {
         this.sim.running = !this.sim.running;
         this.sim.status = this.sim.running ? STATUS.RUNNING : STATUS.PAUSED;
         this.accumulator = 0;
-        this._updateControlStates();
+        this.updateControlStates();
         this.drawStats();
     }
 
@@ -241,8 +179,8 @@ export default class SimulationScene extends Phaser.Scene {
         this.sim.step();
         this.drawWorld();
         this.drawStats();
-        this._drawChart();
-        this._updateControlStates();
+        this.drawChart();
+        this.updateControlStates();
     }
 
     /**
@@ -251,7 +189,7 @@ export default class SimulationScene extends Phaser.Scene {
     onReset() {
         this.sim.reset();
         this.accumulator = 0;
-        this._updateControlStates();
+        this.updateControlStates();
         this.drawWorld();
         this.drawStats();
     }
@@ -368,6 +306,8 @@ export default class SimulationScene extends Phaser.Scene {
     /**
      * Position stats text objects within a panel region.
      *
+     * Delegates to StatsPanel, which owns its text objects.
+     *
      * @param {number} x - Panel left.
      * @param {number} y - Panel top.
      * @param {number} w - Panel width.
@@ -375,14 +315,7 @@ export default class SimulationScene extends Phaser.Scene {
      * @private
      */
     _layoutStats(x, y, w, h) {
-        const pad = LAYOUT.panelPadding;
-        const lh = LAYOUT.statsLineHeight;
-        const tx = x + pad;
-        let ty = y + pad;
-        this.statsTexts.chronon.setPosition(tx, ty); ty += lh;
-        this.statsTexts.fish.setPosition(tx, ty); ty += lh;
-        this.statsTexts.sharks.setPosition(tx, ty); ty += lh;
-        this.statsTexts.status.setPosition(tx, ty);
+        this.statsPanel.layout(x, y, w, h);
     }
 
     /**

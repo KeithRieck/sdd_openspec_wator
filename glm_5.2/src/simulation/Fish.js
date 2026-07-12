@@ -1,5 +1,5 @@
 import Entity from './Entity.js';
-import { FISH_BREED_TIME } from '../config.js';
+import { COLORS, FISH_BREED_TIME, FISH_RADIUS_FACTOR } from '../config.js';
 
 /**
  * A fish entity in the Wa-Tor simulation.
@@ -56,5 +56,23 @@ export default class Fish extends Entity {
      */
     canBreed() {
         return this.breedAge >= FISH_BREED_TIME;
+    }
+
+    /**
+     * The render-time color of a fish.
+     *
+     * @returns {number} The fish color constant.
+     */
+    get color() {
+        return COLORS.fish;
+    }
+
+    /**
+     * The render-time circle radius factor for a fish.
+     *
+     * @returns {number} The fish radius factor constant.
+     */
+    get radiusFactor() {
+        return FISH_RADIUS_FACTOR;
     }
 }

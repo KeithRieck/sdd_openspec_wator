@@ -36,3 +36,5 @@ This project used the open-weight model GLM-5.2 on Medium level.  I'm developing
 2. Proposal step:
     - `/opsx-propose`
     - Documents created.
+3. Apply step:
+    - `/opsx-apply`
