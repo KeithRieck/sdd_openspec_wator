@@ -38,3 +38,5 @@ This project used the open-weight model GLM-5.2 on Medium level.  I'm developing
     - Documents created.
 3. Apply step:
     - `/opsx-apply`
+4. Archive step
+    - `/openspec-archive-change `

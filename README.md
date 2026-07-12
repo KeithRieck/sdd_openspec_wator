@@ -76,3 +76,5 @@ The code generated had a series of problems.  Instead of just diagnosing it myse
 The [`design.md`](glm_5.2/openspec/changes/archive/2026-07-11-add-wator-simulation/design.md) contains some nice mermaid diagrams showing what will be built.  GLM did a good job of designing the Entity/Fish/Shark classes, although perhaps this was because I specifically prompted it to do so.
 
 The code looks reasonable and simple and well commented.  There are a some nice traceability comments in the Shark/Fish/WatorSimulation classes that trace back to PRD requirements; it might be even nicer if this was done in other classes.
+
+In this case, I went through an additional iteration for refactoring the code to make it cleaner and more maintainable.
