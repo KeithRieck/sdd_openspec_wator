@@ -68,3 +68,11 @@ This app did the best about breaking out functionality into object oriented clas
 ## Visual Studio Code with GLM-5.2
 
 This version of the project used the open-weight model [GLM-5.2](https://artificialanalysis.ai/models/glm-5-2) served up by [OpenRouter](https://openrouter.ai/).  I did the work within Visual Studio Code's [Chat panel](https://code.visualstudio.com/docs/chat/chat-overview).
+
+At this point, I've renamed the basic specification to [`prd-v001.md`](glm_5.2/prd-v001.md), so we don't have the misunderstanding about what is the specification.
+
+The code generated had a series of problems.  Instead of just diagnosing it myself, I told GLM to figure them out, and it did.  So, my role on this one was more of a Quality Assurance engineer, than a Software Engineer.
+
+The [`design.md`](glm_5.2/openspec/changes/archive/2026-07-11-add-wator-simulation/design.md) contains some nice mermaid diagrams showing what will be built.  GLM did a good job of designing the Entity/Fish/Shark classes, although perhaps this was because I specifically prompted it to do so.
+
+The code looks reasonable and simple and well commented.  There are a some nice traceability comments in the Shark/Fish/WatorSimulation classes that trace back to PRD requirements; it might be even nicer if this was done in other classes.

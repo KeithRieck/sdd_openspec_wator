@@ -5,7 +5,7 @@ Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation
 
 This project used the open-weight model GLM-5.2 on Medium level.  I'm developing with Visual Studio Code's [chat panel](https://code.visualstudio.com/docs/chat/chat-overview).
 
-# Development:
+# First iteration: Initial Development:
 1. Exploration step:
     - `/opsx-explore I want to create a web app that runs the wa-tor simulation, using the requiremetns from  the prd-v001.md file.`
     - GLM analyzes the PRD file and asks questions.
@@ -26,3 +26,13 @@ This project used the open-weight model GLM-5.2 on Medium level.  I'm developing
     - The bug fixes have cost an additional 54 cents.
 4. Archive step
     - `/openspec-archive-change `
+
+# Second iteration : Refactoring
+1. Explore:
+    - `/openspec-explore  I want to refactor SimulationScene so some of the user interface elements are factored out into separate classes under the  'src/ui' directory.`
+    - I already have ideas on where to take this, but GLM immedietly comes back with _lots_ of analysis and suggestions.  I have to read through its text and negotiate how it relates to my own ideas of simplifying the app.
+    - `I suggest that the only functions to be factored out are the ones with a 'draw' method. The buttons and button calllbacks can stay in SimulationScene, because they don't need to be redrawn every chronon. Create the WorldRenderer class, but name it 'WatorWorld'. Create the StatsPanel class. The SimulationScene can handle layout, so do not create a new layout class.`
+    - Lots more smart response from GLM.
+2. Proposal step:
+    - `/opsx-propose`
+    - Documents created.
