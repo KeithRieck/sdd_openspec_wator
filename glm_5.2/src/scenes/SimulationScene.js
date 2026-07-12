@@ -194,12 +194,18 @@ export default class SimulationScene extends Phaser.Scene {
 
     /**
      * Update the stats text objects from simulation state.
+     *
+     * For non-terminal states, the displayed status reflects the running flag
+     * (Running or Paused) rather than relying on status being set elsewhere.
      */
     drawStats() {
         this.statsTexts.chronon.setText(`Chronon: ${this.sim.chronon}`);
         this.statsTexts.fish.setText(`Fish: ${this.sim.fishCount}`);
         this.statsTexts.sharks.setText(`Sharks: ${this.sim.sharkCount}`);
-        this.statsTexts.status.setText(`Status: ${this.sim.status}`);
+        const displayStatus = this.sim.isTerminal()
+            ? this.sim.status
+            : (this.sim.running ? STATUS.RUNNING : STATUS.PAUSED);
+        this.statsTexts.status.setText(`Status: ${displayStatus}`);
     }
 
     /**
@@ -219,8 +225,10 @@ export default class SimulationScene extends Phaser.Scene {
     onPlayPause() {
         if (this.sim.isTerminal()) return;
         this.sim.running = !this.sim.running;
+        this.sim.status = this.sim.running ? STATUS.RUNNING : STATUS.PAUSED;
         this.accumulator = 0;
         this._updateControlStates();
+        this.drawStats();
     }
 
     /**

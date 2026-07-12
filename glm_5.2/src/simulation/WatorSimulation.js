@@ -50,7 +50,8 @@ export default class WatorSimulation {
         this.nextId = 0;
         this.fishCount = 0;
         this.sharkCount = 0;
-        this.history = [];
+        // Mutate in place so external references (e.g. HistoryChart) stay valid.
+        this.history.length = 0;
         this.status = STATUS.RUNNING;
         this.running = true;
 

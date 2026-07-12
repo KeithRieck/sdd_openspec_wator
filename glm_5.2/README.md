@@ -20,5 +20,8 @@ This project used the open-weight model GLM-5.2 on Medium level.  I'm developing
     - `The PhaserButton objects do not respond to mouse clicks.`
     - GLM does some analysis and says that the 'hit area' isn't right.
     - `The HistoryChart does not display.`
-    - 
+    - GLM figures out that it hasn't been sending the chart data out.  The result works better, but there are still problems.
+    - `After onReset is called, the HistoryChart does not reset.`
+    - `When we pause the simulation, the displayed Status value does not change.`
+    
 
