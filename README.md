@@ -66,3 +66,5 @@ Of all the Wa-tor apps, this was the first one that didn't work immedietly.  I h
 This app did the best about breaking out functionality into object oriented classes, but this may have been because I insisted that that was important.
 
 ## Visual Studio Code with GLM-5.2
+
+This version of the project used the open-weight model [GLM-5.2](https://artificialanalysis.ai/models/glm-5-2) served up by [OpenRouter](https://openrouter.ai/).  I did the work within Visual Studio Code's [Chat panel](https://code.visualstudio.com/docs/chat/chat-overview).

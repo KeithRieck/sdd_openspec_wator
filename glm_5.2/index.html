@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a1929">
+    <title>Wa-Tor Simulation</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #0a1929;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Phaser 4.x loaded from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@4.1.0/dist/phaser.min.js"></script>
+    <!-- App entry as ES2020 module -->
+    <script type="module" src="src/main.js"></script>
+    <!-- Register service worker for PWA app-shell caching -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch((err) => {
+                    console.warn('Service worker registration failed:', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
