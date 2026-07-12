@@ -39,4 +39,6 @@ This project used the open-weight model GLM-5.2 on Medium level.  I'm developing
 3. Apply step:
     - `/opsx-apply`
 4. Archive step
-    - `/openspec-archive-change `
+    - `/openspec-archive-change`
+5. Another bug.
+    - After asking DeepSeek to do a code review of the Javscript, it finds that PhaserButtons may become disfunctional after the page is resized.  A little user testing verfies that this is a real problem.  I have the AI fix it.

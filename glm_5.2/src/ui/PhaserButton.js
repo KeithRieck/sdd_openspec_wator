@@ -145,9 +145,12 @@ export default class PhaserButton {
     setSize(width, height) {
         this.width = width;
         this.height = height;
-        this.bg.removeInteractive();
-        const hitArea = new Phaser.Geom.Rectangle(0, 0, width, height);
-        this.bg.setInteractive(hitArea, Phaser.Geom.Rectangle.Contains);
+        // Update the existing hit area geometry in-place to avoid tearing
+        // down and re-creating the interactive setup (which would drop all
+        // pointer event listeners wired in _setupInput).
+        if (this.bg.input) {
+            this.bg.input.hitArea.setTo(0, 0, width, height);
+        }
         this.draw();
     }
 
