@@ -8,3 +8,6 @@ This project used the open-weight model Grok 4.5 on High level.  I'm developing 
 # First iteration: Initial Development:
 1. Exploration step:
     - `/opsx-explore I want to create a web app that runs the wa-tor simulation, using the requiremetns from  the prd-v001.md file.`
+2. Proposal step:
+    - `/opsx-propose`
+    
