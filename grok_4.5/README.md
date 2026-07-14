@@ -12,3 +12,5 @@ This project used the open-weight model Grok 4.5 on High level.  I'm developing 
     - `/openspec-propose`
 3. Apply step:
     - `/openspec-apply-change`
+4. Archive step:
+    - `/openspec-archive-change`
