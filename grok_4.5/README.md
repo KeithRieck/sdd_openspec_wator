@@ -14,3 +14,4 @@ This project used the open-weight model Grok 4.5 on High level.  I'm developing 
     - `/openspec-apply-change`
 4. Archive step:
     - `/openspec-archive-change`
+    - Based on the OpenRouter activity page, I used 7.69m tokens and the total cost was $8.14.

@@ -42,3 +42,4 @@ This project used the open-weight model GLM-5.2 on Medium level.  I'm developing
     - `/openspec-archive-change`
 5. Another bug.
     - After asking DeepSeek to do a code review of the Javscript, it finds that PhaserButtons may become disfunctional after the page is resized.  A little user testing verfies that this is a real problem.  I have the AI fix it.
+    - Based on the OpenRouter activity page, I used 11.3m tokens and the total cost was $1.85.
