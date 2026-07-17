@@ -1,4 +1,4 @@
-Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/deepseek/index.html
+Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/deepseek_v4/index.html
 
 # Wa-Tor simulations with DeepSeek
 Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation that emphasizes correct predator-prey cellular automaton behavior.

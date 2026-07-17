@@ -1,4 +1,4 @@
-Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/gemini/index.html
+Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/gemini_3.5_flash/index.html
 
 # Wa-Tor simulations With Gemini
 Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation that emphasizes correct predator-prey cellular automaton behavior.

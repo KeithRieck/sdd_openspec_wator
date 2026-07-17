@@ -1,8 +1,8 @@
 Hosted at:  
 * https://keithrieck.github.io/sdd_openspec_wator/gpt_5.5/index.html
 * https://keithrieck.github.io/sdd_openspec_wator/opus_4.8/index.html
-* https://keithrieck.github.io/sdd_openspec_wator/gemini/index.html 
-* https://keithrieck.github.io/sdd_openspec_wator/deepseek/index.html 
+* https://keithrieck.github.io/sdd_openspec_wator/gemini_3.5_flash/index.html 
+* https://keithrieck.github.io/sdd_openspec_wator/deepseek_v4/index.html
 * https://keithrieck.github.io/sdd_openspec_wator/copilot/index.html
 * https://keithrieck.github.io/sdd_openspec_wator/glm_5.2/index.html
 * https://keithrieck.github.io/sdd_openspec_wator/grok_4.5/index.html
