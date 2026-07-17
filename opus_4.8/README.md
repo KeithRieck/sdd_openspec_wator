@@ -1,4 +1,4 @@
-Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/claude/index.html
+Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/opus_4.8/index.html
 
 # Wa-Tor simulations with Claude Code.
 Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation that emphasizes correct predator-prey cellular automaton behavior.
