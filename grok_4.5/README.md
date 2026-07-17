@@ -15,3 +15,5 @@ This project used the open-weight model Grok 4.5 on High level.  I'm developing 
 4. Archive step:
     - `/openspec-archive-change`
     - Based on the OpenRouter activity page, I used 7.69m tokens and the total cost was $8.14.
+
+The code generated here seems to have fewer problems any any of the other recent Wator apps.  I'm not sure exactly why it cost more than Opus-4.8, but it could be that I'm not executing each project as a scientifically identical experiment.

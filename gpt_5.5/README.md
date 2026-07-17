@@ -1,4 +1,4 @@
-Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/codex/index.html
+Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/gpt_5.5/index.html
 
 # Wa-Tor simulations with OpenAI Codex
 Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation that emphasizes correct predator-prey cellular automaton behavior.
