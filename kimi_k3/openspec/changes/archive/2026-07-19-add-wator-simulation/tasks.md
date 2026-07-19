@@ -58,5 +58,5 @@
 ## 8. Documentation & Verification
 
 - [x] 8.1 Add JSDoc to every class, all static methods, and public methods over 8 lines with AC traceability comments (AS-R6, design D7; AC 54, 55)
-- [ ] 8.2 Manual browser verification: run through all 57 PRD acceptance criteria; verify long-run stability, extinction auto-pause, and both layout modes
-- [ ] 8.3 Verify static deployment from repo subpath (relative paths, no build step) (AS-R3)
+- [x] 8.2 Manual browser verification: run through all 57 PRD acceptance criteria; verify long-run stability, extinction auto-pause, and both layout modes
+- [x] 8.3 Verify static deployment from repo subpath (relative paths, no build step) (AS-R3)
