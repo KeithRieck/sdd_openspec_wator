@@ -11,3 +11,5 @@ This project used the open-weight model [Kimi K3](https://artificialanalysis.ai/
 2. Proposal step:
     - `/openspec-propose`
     - `The code should be object oriented and make good use of Javascript classes. The design should delegate shark and fish behavior to classes extending the Entity class`
+3. Apply step:
+    - `/openspec-apply-change`
