@@ -8,13 +8,16 @@
 
 ## 2. Simulation Engine
 
-- [ ] 2.1 Create `src/simulation/WatorSimulation.js` with entity registry (Map by id), flat grid array of entity references, and position indexing (SE-R1, SE-R3; AC 4, 27)
-- [ ] 2.2 Implement `reset()` / constructor initialization: random non-overlapping placement at configured densities (SE-R2; AC 6, 7)
-- [ ] 2.3 Implement toroidal orthogonal `neighbors()` helper (SE-R4; AC 10)
-- [ ] 2.4 Implement `stepChronon()`: snapshot IDs, Fisher–Yates shuffle, skip dead/eaten/newborn entities (SE-R5; AC 11–13)
-- [ ] 2.5 Implement fish action: random empty-cell move, breeding on move, blocked-reset and aging rules (SE-R6; AC 14–17)
-- [ ] 2.6 Implement shark action in fixed order: energy decrement → starvation removal → eat/move → breeding with `initialSharkEnergy` newborn (SE-R7, SE-R8; AC 18–26)
-- [ ] 2.7 Implement extinction detection and terminal status reporting including same-chronon collapse (SE-R9; AC 37–40)
+- [ ] 2.1 Create `src/simulation/Entity.js` abstract base class: id, pos, breedAge, bornChronon, shared movement/breeding plumbing (SE-R1, SE-R3, SE-R3a; AC 4, 27)
+- [ ] 2.2 Create `src/simulation/Fish.js` extending `Entity` with fish act/spawn behavior (SE-R3a, SE-R6)
+- [ ] 2.3 Create `src/simulation/Shark.js` extending `Entity` with energy, eating, and shark act/spawn behavior (SE-R3a, SE-R7, SE-R8)
+- [ ] 2.4 Create `src/simulation/WatorSimulation.js` with entity registry (Map by id), flat grid array of entity references, position indexing, and shared helpers (`neighbors`, `moveEntity`, `addEntity`, `removeEntity`) (SE-R1, SE-R3; AC 4, 27)
+- [ ] 2.5 Implement `reset()` / constructor initialization: random non-overlapping placement at configured densities (SE-R2; AC 6, 7)
+- [ ] 2.6 Implement toroidal orthogonal `neighbors()` helper (SE-R4; AC 10)
+- [ ] 2.7 Implement `stepChronon()`: snapshot IDs, Fisher–Yates shuffle, skip dead/eaten/newborn entities, polymorphic `entity.act(sim)` dispatch (SE-R5, SE-R3a; AC 11–13)
+- [ ] 2.8 Implement `Fish.act()`: random empty-cell move, breeding on move, blocked-reset and aging rules (SE-R6; AC 14–17)
+- [ ] 2.9 Implement `Shark.act()` in fixed order: energy decrement → starvation removal → eat/move → breeding with `initialSharkEnergy` newborn (SE-R7, SE-R8; AC 18–26)
+- [ ] 2.10 Implement extinction detection and terminal status reporting including same-chronon collapse (SE-R9; AC 37–40)
 
 ## 3. Scenes & Rendering
 

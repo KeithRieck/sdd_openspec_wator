@@ -21,6 +21,29 @@ Greenfield static web app implementing the Wa-Tor predator-prey cellular automat
 
 ```mermaid
 classDiagram
+    class Entity {
+        <<abstract>>
+        +id: number
+        +pos: number
+        +breedAge: number
+        +bornChronon: number
+        +type: string
+        +act(sim)*
+        -breedReady() boolean
+        -breedReset()
+        -spawn(sim, pos)* Entity
+    }
+    class Fish {
+        +type = "fish"
+        +act(sim)
+        -spawn(sim, pos) Fish
+    }
+    class Shark {
+        +energy: number
+        +type = "shark"
+        +act(sim)
+        -spawn(sim, pos) Shark
+    }
     class WatorSimulation {
         +width: number
         +height: number
@@ -32,18 +55,10 @@ classDiagram
         +reset()
         +stepChronon() ChrononResult
         +counts() Object
-        -actFish(e)
-        -actShark(e)
-        -neighbors(pos) Array
-        -moveEntity(e, to)
-    }
-    class Entity {
-        +id: number
-        +type: "fish"|"shark"
-        +pos: number
-        +breedAge: number
-        +energy?: number
-        +bornChronon: number
+        +neighbors(pos) Array
+        +moveEntity(e, to)
+        +removeEntity(e)
+        +addEntity(e, pos)
     }
     class Config {
         <<module src/config.js>>
@@ -54,11 +69,17 @@ classDiagram
         SHARK_ENERGY_COST
         SPEEDS COLORS HISTORY_LENGTH
     }
+    Entity <|-- Fish
+    Entity <|-- Shark
     WatorSimulation --> Entity
     WatorSimulation --> Config
 ```
 
-The engine imports nothing from Phaser (AC 4). `grid` is a flat `width*height` array of **direct entity references or `null`**; `entities` (Map by id) is the canonical registry. Positions are integer indices; toroidal wrapping is computed in `neighbors()` (AC 10, 27).
+The engine imports nothing from Phaser (AC 4). `grid` is a flat `width*height` array of **direct entity references or `null`**; `entities` (Map by id) is the canonical registry. Positions are integer indices; toroidal wrapping is computed in `WatorSimulation.neighbors()` (AC 10, 27).
+
+Behavior is delegated to the entity classes: `WatorSimulation.stepChronon()` handles turn-order mechanics (snapshot, shuffle, skip rules) and calls `entity.act(sim)`; `Fish.act()` and `Shark.act()` implement their species-specific rules using shared helpers (`moveEntity`, `neighbors`, `addEntity`, `removeEntity`) exposed by the simulation. Shared movement/breeding plumbing lives in the `Entity` base class; species differences (eating, energy, breed thresholds, spawn type) live in the subclasses.
+
+*Alternative considered:* behavior as switch-on-type functions inside `WatorSimulation` — rejected: an `Entity` class hierarchy keeps species rules cohesive and matches the OO direction for the codebase.
 
 *Alternative considered:* grid of IDs with map lookups on every neighbor access — rejected: extra indirection on the hot path with no benefit since entity objects are already unique.
 
@@ -66,9 +87,9 @@ The engine imports nothing from Phaser (AC 4). `grid` is a flat `width*height` a
 
 `stepChronon()`:
 1. Snapshot current entity IDs; shuffle (Fisher–Yates with `Math.random`).
-2. For each id: skip if entity no longer exists (died/eaten) or `bornChronon === currentChronon` (newborn, AC 12).
-3. Fish action: pick random adjacent empty cell; move. If breeding-ready, leave a newborn fish in the old cell and reset `breedAge = 0`; if breeding-ready but blocked, reset `breedAge = 0` anyway (AC 16); otherwise age.
-4. Shark action order (fixed, AC 18–26): decrement energy by cost → if energy ≤ 0, remove without moving → else prefer random adjacent fish cell (move, eat, `energy += gain`) else random adjacent empty cell → breeding handled identically to fish; newborn shark gets `initialSharkEnergy`.
+2. For each id: skip if entity no longer exists (died/eaten) or `bornChronon === currentChronon` (newborn, AC 12); otherwise call `entity.act(sim)`.
+3. `Fish.act()`: pick random adjacent empty cell; move. If breeding-ready, leave a newborn fish in the old cell and reset `breedAge = 0`; if breeding-ready but blocked, reset `breedAge = 0` anyway (AC 16); otherwise age.
+4. `Shark.act()` order (fixed, AC 18–26): decrement energy by cost → if energy ≤ 0, remove without moving → else prefer random adjacent fish cell (move, eat, `energy += gain`) else random adjacent empty cell → breeding handled identically to fish; newborn shark gets `initialSharkEnergy`.
 5. Increment chronon; return `{ chronon, fish, sharks, terminal }` where terminal is `fish-extinct | sharks-extinct | collapsed | null` (AC 37–40).
 
 *Alternative considered:* processing sharks before fish (classic Wa-Tor variants) — rejected; PRD mandates randomized interleaved order (AC 11).

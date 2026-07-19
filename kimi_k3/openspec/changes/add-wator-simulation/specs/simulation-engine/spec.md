@@ -27,6 +27,17 @@ Simulation state SHALL use a flat grid array plus entity records containing ID, 
 - **WHEN** an entity moves from cell A to cell B
 - **THEN** cell A SHALL be null, cell B SHALL reference the entity, and the entity record's position SHALL equal B
 
+### Requirement: SE-R3a Object-oriented entity model
+The engine SHALL be object oriented using JavaScript classes: an `Entity` base class SHALL hold shared state and behavior (ID, position, breed age, movement and breeding plumbing), and `Fish` and `Shark` classes SHALL extend `Entity` and implement their species-specific behavior (eating, energy management, breed thresholds, spawn type) in subclass methods; the simulation SHALL invoke per-entity behavior polymorphically rather than via type-switching code.
+
+#### Scenario: SE-R3a.1 Class hierarchy
+- **WHEN** the engine source is inspected
+- **THEN** `Fish` and `Shark` SHALL be declared as subclasses of `Entity`
+
+#### Scenario: SE-R3a.2 Polymorphic dispatch
+- **WHEN** a chronon executes an entity's turn
+- **THEN** the simulation SHALL invoke the entity's own action method without branching on entity type
+
 ### Requirement: SE-R4 Neighbor evaluation
 Movement SHALL consider only orthogonal neighbors (north, east, south, west) with toroidal edge wrapping (PRD AC 10).
 

@@ -7,7 +7,7 @@ The project needs its first working deliverable: a browser-based Wa-Tor predator
 ## What Changes
 
 - New static web app: `index.html`, `src/main.js`, `src/config.js`, `sw.js`, `manifest.webmanifest`, `assets/` (PRD AC #2).
-- Framework-independent Wa-Tor simulation engine (`src/simulation/WatorSimulation.js`) implementing toroidal grid, fish/shark movement, breeding, starvation, and per-chronon randomized turn order (PRD AC #4, #6–#27).
+- Framework-independent, object-oriented Wa-Tor simulation engine (`src/simulation/`) implementing toroidal grid, fish/shark movement, breeding, starvation, and per-chronon randomized turn order, with behavior delegated to `Fish` and `Shark` classes extending an `Entity` base class (PRD AC #4, #6–#27).
 - Phaser 4 (CDN) rendering layer using `Graphics` drawing only — no sprites, no grid lines, no movement animation (PRD AC #3, #28–#29, #50).
 - Phaser-native UI: stats panel (left), controls (right), speed row (`1x/5x/10x/30x/60x`), Play/Pause, Step, Reset, status display with auto-pause on extinction (PRD AC #30–#43).
 - Rolling 500-chronon population history chart across the bottom (PRD AC #44–#47).

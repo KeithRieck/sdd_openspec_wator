@@ -10,3 +10,4 @@ This project used the open-weight model [Kimi K3](https://artificialanalysis.ai/
     - `/openspec-explore I want to create a web app that runs the wa-tor simulation, using the requirements from  the prd-v001.md file.`
 2. Proposal step:
     - `/openspec-propose`
+    - `The code should be object oriented and make good use of Javascript classes. The design should delegate shark and fish behavior to classes extending the Entity class`
