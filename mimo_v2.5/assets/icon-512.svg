@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="80" fill="#001a33"/>
+  <!-- Fish (green circles) -->
+  <circle cx="160" cy="200" r="40" fill="#33cc33" opacity="0.9"/>
+  <circle cx="240" cy="260" r="36" fill="#33cc33" opacity="0.7"/>
+  <circle cx="130" cy="320" r="30" fill="#33cc33" opacity="0.5"/>
+  <!-- Sharks (blue circles, slightly larger) -->
+  <circle cx="350" cy="180" r="50" fill="#3399ff" opacity="0.9"/>
+  <circle cx="300" cy="290" r="44" fill="#3399ff" opacity="0.7"/>
+  <circle cx="380" cy="350" r="38" fill="#3399ff" opacity="0.5"/>
+</svg>
