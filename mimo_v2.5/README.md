@@ -11,7 +11,7 @@ This project used the open-weight model [MiMo-V2.5-Pro](https://artificialanalys
     - `The result should be object oriented and make good use of Javascript classes. Assume that 'entity records' means objects that are instances of classes that extend from a common entity class, e.g. Shark and Fish may be classes extending Entity.`
 2. Propose step:
     - `/openspec-propose`
-    - No [Mermaid](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#creating-mermaid-diagrams) diagrams in the [design](./openspec/changes/archive/2026-07-19-add-wator-simulation/design.md) document.
+    - No [Mermaid](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#creating-mermaid-diagrams) diagrams in the [design](./openspec/changes/archive/2026-07-26-initial-wator-app/design.md) document.
     - No requirements numbers in the specs, so no cross references in the design.
 3. Apply step:
     - `/openspec-apply-change`
