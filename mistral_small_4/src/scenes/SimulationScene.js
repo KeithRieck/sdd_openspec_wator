@@ -20,6 +20,13 @@ import {
  */
 export class SimulationScene extends Phaser.Scene {
   /**
+   * Create the SimulationScene with unique key
+   */
+  constructor() {
+    super({ key: 'SimulationScene' });
+  }
+  
+  /**
    * Create the scene
    */
   create() {

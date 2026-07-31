@@ -6,6 +6,14 @@
  * Phaser scene for booting the application
  */
 export class BootScene extends Phaser.Scene {
+
+  /**
+   * Create the BootScene with unique key
+   */
+  constructor() {
+    super({ key: 'BootScene' });
+  }
+
   /**
    * Preload assets
    */
