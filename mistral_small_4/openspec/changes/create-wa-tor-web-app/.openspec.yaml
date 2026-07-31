@@ -34,14 +34,74 @@ description: |
 owner: system
 tasks:
   - id: 1
-    title: Create proposal.md
-    status: done
-    artifact: proposal
+    title: Create directory structure
+    status: not-started
+    artifact: tasks
   - id: 2
-    title: Create design.md
-    status: done
-    artifact: design
+    title: Create HTML entry point (index.html)
+    status: not-started
+    artifact: tasks
   - id: 3
-    title: Create tasks.md
-    status: done
+    title: Create PWA files (sw.js, manifest.webmanifest, assets/)
+    status: not-started
+    artifact: tasks
+  - id: 4
+    title: Implement config.js with constants
+    status: not-started
+    artifact: tasks
+  - id: 5
+    title: Implement Entity base class
+    status: not-started
+    artifact: tasks
+  - id: 6
+    title: Implement Fish class extending Entity
+    status: not-started
+    artifact: tasks
+  - id: 7
+    title: Implement Shark class extending Entity
+    status: not-started
+    artifact: tasks
+  - id: 8
+    title: Implement EntityManager for entity lifecycle
+    status: not-started
+    artifact: tasks
+  - id: 9
+    title: Implement WatorSimulation core engine
+    status: not-started
+    artifact: tasks
+  - id: 10
+    title: Implement BootScene.js
+    status: not-started
+    artifact: tasks
+  - id: 11
+    title: Implement SimulationScene.js with UI layout
+    status: not-started
+    artifact: tasks
+  - id: 12
+    title: Implement main.js entry point
+    status: not-started
+    artifact: tasks
+  - id: 13
+    title: Manual testing - Simulation correctness
+    status: not-started
+    artifact: tasks
+  - id: 14
+    title: Manual testing - UI functionality
+    status: not-started
+    artifact: tasks
+  - id: 15
+    title: Manual testing - Performance
+    status: not-started
+    artifact: tasks
+  - id: 16
+    title: Manual testing - Layout and responsiveness
+    status: not-started
+    artifact: tasks
+  - id: 17
+    title: Code review and cleanup
+    status: not-started
+    artifact: tasks
+  - id: 18
+    title: Documentation and finalization
+    status: not-started
     artifact: tasks
