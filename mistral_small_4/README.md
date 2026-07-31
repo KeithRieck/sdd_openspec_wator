@@ -11,4 +11,9 @@ This project used the open-weight model [Mistral Small 4](hhttps://artificialana
     - `The result should be object oriented and make good use of Javascript classes. Assume that 'entity records' means objects that are instances of classes that extend from a common entity class, e.g. Shark and Fish may be classes extending Entity.`
 2. Propose step:
     - `/openspec-propose`
-  
+    - This time it created a large [`.openspec.yaml`](mistral_small_4/openspec/changes/create-wa-tor-web-app/.openspec.yaml) file.
+    - This time the design contains a lot of code.  Also, it tends towards ASCII art instead of Mermaid diagrams.
+    - So far, this has cost 16 cents.
+3. Apply step:
+    - `/openspec-apply-change`
+    

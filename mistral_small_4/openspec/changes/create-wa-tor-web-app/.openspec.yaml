@@ -1,0 +1,47 @@
+name: create-wa-tor-web-app
+status: planned
+schema: spec-driven
+created: 2026-07-31
+creator: GitHub Copilot
+context: |
+  This change implements a browser-based Wa-Tor simulation web app using Phaser 4.x
+  and object-oriented JavaScript classes as specified in prd-v001.md.
+
+  Key requirements:
+  - Object-oriented design with Entity base class
+  - Fish and Shark classes extending Entity
+  - Phaser 4.x from CDN with ES2020 modules
+  - Three-column UI layout (left stats, middle canvas, right controls+chart)
+  - Graphics-based rendering (no sprites, no grid lines)
+  - Population history chart showing fish and shark populations
+  - Speed controls (1x, 5x, 10x, 30x, 60x)
+  - Play/pause, single-step, reset controls
+
+description: |
+  Implement a browser-based Wa-Tor predator-prey cellular automaton simulation
+  with Phaser 4.x. The simulation emphasizes correct predator-prey behavior with
+  fish and sharks moving on a toroidal grid according to classic Wa-Tor rules.
+
+  Architecture uses object-oriented design with Entity as base class, Fish and
+  Shark as subclasses, and EntityManager for entity lifecycle management.
+
+  UI features three-column layout with statistics on left, simulation canvas
+  in middle, and controls (top-right) plus population chart (bottom-right).
+
+  All rendering uses Phaser Graphics API with simple colored circles for fish
+  and sharks. No DOM overlays, no keyboard shortcuts, no build step.
+
+owner: system
+tasks:
+  - id: 1
+    title: Create proposal.md
+    status: done
+    artifact: proposal
+  - id: 2
+    title: Create design.md
+    status: done
+    artifact: design
+  - id: 3
+    title: Create tasks.md
+    status: done
+    artifact: tasks
