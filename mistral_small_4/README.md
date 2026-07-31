@@ -19,3 +19,7 @@ This project used the open-weight model [Mistral Small 4](hhttps://artificialana
     - `/openspec-apply-change`
     - The resulting code doesn't work. This code had the most problems of any previous app.
         - `The scene classes each need a constructor that gives them a unique key.`
+        - `Within the gameLoop function, remove the code that creates new events.`
+        - `Phaser scene objects should have an update function.  Add an update function to SimulationScene.  The gameLoop function should be called from update but not from create.`
+        - `The speed controls should determine how many chronons execute per second.  The step control should only be available when the simulation is paused.  The step control should execute exactly one chronon.`
+        - Speed is still wrong.  Plus, I had to fix a syntax error in the code.

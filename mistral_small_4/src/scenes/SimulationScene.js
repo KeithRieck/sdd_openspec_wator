@@ -12,7 +12,10 @@ import {
   SHARK_RADIUS,
   FISH_COLOR,
   SHARK_COLOR,
-  WATER_COLOR
+  WATER_COLOR,
+  CANVAS_WIDTH,
+  CANVAS_HEIGHT,
+  CONTROLS_WIDTH
 } from '../config.js';
 
 /**
@@ -23,7 +26,11 @@ export class SimulationScene extends Phaser.Scene {
    * Create the SimulationScene with unique key
    */
   constructor() {
-    super({ key: 'SimulationScene' });
+    super({
+      key: 'SimulationScene',
+      width: CANVAS_WIDTH + CONTROLS_WIDTH,
+      height: CANVAS_HEIGHT
+    });
   }
   
   /**
@@ -33,19 +40,25 @@ export class SimulationScene extends Phaser.Scene {
     // Create simulation
     this.simulation = new WatorSimulation();
     
-    // Create graphics for rendering
+    // Create graphics for rendering - centered simulation canvas
     this.graphics = this.add.graphics();
     
-    // Set up controls
+    // Set up controls in right column
     this.setupControls();
     
-    // Set up stats display
+    // Set up stats display in left column
     this.setupStats();
     
-    // Set up population chart
+    // Set up population chart below simulation
     this.setupPopulationChart();
-    
-    // Start game loop
+  }
+  
+  /**
+   * Update function called by Phaser game loop
+   * @param {number} time - Current timestamp
+   * @param {number} delta - Time elapsed since last update
+   */
+  update(time, delta) {
     this.gameLoop();
   }
   
@@ -54,7 +67,7 @@ export class SimulationScene extends Phaser.Scene {
    */
   setupControls() {
     // Create control buttons in right column
-    const rightColumnX = this.sys.game.config.width - 200;
+    const rightColumnX = CANVAS_WIDTH + 20;
     
     // Title
     this.add.text(rightColumnX, 20, 'Controls:', { color: '#ffffff' });
@@ -64,7 +77,7 @@ export class SimulationScene extends Phaser.Scene {
       .setInteractive()
       .on('pointerdown', () => this.togglePause());
     
-    // Single step button
+    // Single step button (only visible when paused)
     this.stepButton = this.add.text(rightColumnX, 80, 'Step', { color: '#00ff00' })
       .setInteractive()
       .on('pointerdown', () => this.simulation.singleStep());
@@ -91,13 +104,36 @@ export class SimulationScene extends Phaser.Scene {
         this.speedText.setText(`Speed: ${speed}x`);
       });
     });
+    
+    // Initialize step button visibility based on pause state
+    this.updateStepButtonVisibility();
   }
+  
+  /**
+   * Toggle pause state
+   */
+  togglePause() {
+    this.simulation.isRunning = !this.simulation.isRunning;
+    this.pauseButton.setText(this.simulation.isRunning ? 'Pause' : 'Resume');
+    this.pauseButton.setColor(this.simulation.isRunning ? '#ff0000' : '#00ff00');
+    this.updateStepButtonVisibility();
+  }
+  
+  /**
+   * Update step button visibility based on simulation state
+   */
+  updateStepButtonVisibility() {
+    if (this.stepButton) {
+      this.stepButton.setVisible(!this.simulation.isRunning);
+    }
+  }
+  
   
   /**
    * Set up population statistics display
    */
   setupStats() {
-    // Left column stats
+    // Left column stats - positioned to the left of simulation canvas
     this.fishText = this.add.text(20, 20, 'Fish: 0', { color: '#00ff00' });
     this.sharkText = this.add.text(20, 50, 'Sharks: 0', { color: '#0000ff' });
     this.chrononText = this.add.text(20, 80, 'Chronon: 0', { color: '#ffffff' });
@@ -108,6 +144,7 @@ export class SimulationScene extends Phaser.Scene {
    */
   setupPopulationChart() {
     // Create a simple line chart using Phaser graphics
+    // Position chart below the simulation canvas
     this.chartGraphics = this.add.graphics();
     this.chartGraphics.lineStyle(2, 0xffffff);
     
@@ -146,13 +183,6 @@ export class SimulationScene extends Phaser.Scene {
     this.renderSimulation();
     this.updateStats();
     this.renderPopulationChart();
-    
-    // Continue loop
-    this.time.addEvent({
-      delay: 16, // ~60fps
-      loop: true,
-      callback: () => this.gameLoop()
-    });
   }
   
   /**

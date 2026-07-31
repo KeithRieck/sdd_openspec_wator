@@ -89,8 +89,6 @@ export class WatorSimulation {
    * Process one chronon
    */
   step() {
-    if (!this.isRunning) return;
-    
     this.chronon++;
     
     // Process all entities
@@ -98,6 +96,21 @@ export class WatorSimulation {
     
     // Update statistics
     this.recordPopulationHistory();
+  }
+  
+  /**
+   * Process exactly one chronon (for step control)
+   */
+  singleStep() {
+    this.step();
+  }
+  
+  /**
+   * Set simulation speed
+   * @param {number} speed - Chronons per second
+   */
+  setSpeed(speed) {
+    this.speed = speed;
   }
   
   /**

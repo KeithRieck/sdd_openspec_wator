@@ -48,4 +48,12 @@ export const FISH_RADIUS = 4;
 export const SHARK_RADIUS = 6;
 export const FISH_COLOR = 0x00ff00;  // Green
 export const SHARK_COLOR = 0x0000ff; // Blue
+
+/**
+ * Canvas dimensions
+ * @constant {number}
+ */
+export const CANVAS_WIDTH = 800;
+export const CANVAS_HEIGHT = 600;
+export const CONTROLS_WIDTH = 200;
 export const WATER_COLOR = 0x87ceeb; // Sky blue
