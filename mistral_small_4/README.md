@@ -23,3 +23,6 @@ This project used the open-weight model [Mistral Small 4](hhttps://artificialana
         - `Phaser scene objects should have an update function.  Add an update function to SimulationScene.  The gameLoop function should be called from update but not from create.`
         - `The speed controls should determine how many chronons execute per second.  The step control should only be available when the simulation is paused.  The step control should execute exactly one chronon.`
         - Speed is still wrong.  Plus, I had to fix a syntax error in the code.
+        - `Change the layout so the controls and history chart do not overlap the simulation canvas.  The simulation canvas should be in the middle.`
+        - The layout is still wrong.
+    - So far, this has cost 38 cents.
