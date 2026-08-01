@@ -14,3 +14,6 @@ OpenAI was running a sale on [GPT-5.6 Luna Pro](https://artificialanalysis.ai/mo
     - `/openspec-apply-change`
     - The speed buttons work, but other buttons do not.
     - `The Pause and Reset buttons do not work.`
+    - So far, this has cost 97 cents.  Still cheap, but more than expected.
+4. Archive step:
+    - `/openspec-archive-change`
