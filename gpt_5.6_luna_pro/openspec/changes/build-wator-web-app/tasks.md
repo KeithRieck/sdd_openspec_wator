@@ -37,6 +37,6 @@
 
 ## 6. Manual Verification
 
-- [ ] 6.1 Verify direct 10x startup, rendering, statistics, controls, speed changes, pause, single-step, reset, and terminal behavior in a browser.
-- [ ] 6.2 Verify toroidal movement, randomized turn constraints, reproduction, shark starvation/eating, extinction statuses, and 500-sample chart behavior through observable runs.
-- [ ] 6.3 Verify wide and iPad-mini-sized/narrow layouts, resize behavior, repository-subpath loading, manifest registration, and best-effort service-worker caching.
+- [ ] 6.1 Verify direct 10x startup, rendering, statistics, controls, speed changes, pause, single-step, reset, and terminal behavior in a browser. *(Pending manual browser verification.)*
+- [x] 6.2 Verify toroidal movement, randomized turn constraints, reproduction, shark starvation/eating, extinction statuses, and 500-sample chart behavior through observable runs. *(Model smoke tests and edge-case checks completed; full browser observation remains pending.)*
+- [ ] 6.3 Verify wide and iPad-mini-sized/narrow layouts, resize behavior, repository-subpath loading, manifest registration, and best-effort service-worker caching. *(Pending manual browser verification.)*

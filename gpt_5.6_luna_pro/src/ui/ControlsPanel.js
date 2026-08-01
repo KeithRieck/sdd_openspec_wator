@@ -65,12 +65,17 @@ class PanelButton {
     this.background = scene.add.graphics();
     this.text = scene.add.text(0, 0, label, { fontFamily: 'system-ui, sans-serif', fontSize: '13px', color: '#e6f4ff' }).setOrigin(0.5);
     this.container.add([this.background, this.text]);
-    this.container.setSize(80, 30).setInteractive({ useHandCursor: true });
+    this.width = 80;
+    this.height = 30;
+    this.container.setSize(this.width, this.height);
+    this.container.setInteractive(
+      new Phaser.Geom.Rectangle(-this.width / 2, -this.height / 2, this.width, this.height),
+      Phaser.Geom.Rectangle.Contains,
+      { useHandCursor: true },
+    );
     this.container.on('pointerdown', () => { if (!this.disabled) this.callback(); });
     this.container.on('pointerover', () => { if (!this.disabled) this.hover = true; this.draw(); });
     this.container.on('pointerout', () => { this.hover = false; this.draw(); });
-    this.width = 80;
-    this.height = 30;
     this.disabled = false;
     this.selected = false;
     this.hover = false;
@@ -78,7 +83,13 @@ class PanelButton {
   }
 
   setPosition(x, y) { this.container.setPosition(x + this.width / 2, y + this.height / 2); }
-  setSize(width, height) { this.width = width; this.height = height; this.container.setSize(width, height); this.draw(); }
+  setSize(width, height) {
+    this.width = width;
+    this.height = height;
+    this.container.setSize(width, height);
+    this.container.input.hitArea.setTo(-width / 2, -height / 2, width, height);
+    this.draw();
+  }
   setLabel(label) { this.label = label; this.text.setText(label); }
   setDisabled(disabled) { this.disabled = disabled; this.draw(); }
   setSelected(selected) { this.selected = selected; this.draw(); }
