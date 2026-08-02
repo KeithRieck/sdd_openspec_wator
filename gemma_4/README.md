@@ -15,3 +15,7 @@ This project used the open-weight model [Gemma 4](https://artificialanalysis.ai/
  3. Apply step
     - `/openspec-apply-change`
     - Processing is _really_ slow.  At first, it pauses after each task to wait for my response; I have to tell it to stop pausing.
+    - The 'main.js' file didn't reference the other modules correclty. I fixed this by hand.
+    - Gemma put all three entity classes into one file: `Entity.js`
+    - Gemma didn't follow the requirements regarding layout.  It put controls, stats, and population all on the right column.  Also, dynamnic resizing the window does not work.
+    - Also, it made the shark and fish circles way too big.  I fix this by hand also.

@@ -1,7 +1,7 @@
-import { BootScene } from './BootScene.js';
-import { SimulationScene } from './SimulationScene.js';
-import { WatorSimulation } from '../simulation/WatorSimulation.js';
-import { CONFIG } from '../config.js';
+import { BootScene } from './scenes/BootScene.js';
+import { SimulationScene } from './scenes/SimulationScene.js';
+import { WatorSimulation } from './simulation/WatorSimulation.js';
+import { CONFIG } from './config.js';
 
 /**
  * Main entry point for the Wa-Tor Phaser application.

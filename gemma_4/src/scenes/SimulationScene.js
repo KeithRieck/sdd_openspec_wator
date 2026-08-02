@@ -209,10 +209,10 @@ export class SimulationScene extends Phaser.Scene {
             
             if (entity instanceof Fish) {
                 this.worldGraphics.fillStyle(CONFIG.fishColor, 1);
-                this.worldGraphics.fillCircle(x + scale/2, y + scale/2, CONFIG.fishRadius * (scale/2));
+                this.worldGraphics.fillCircle(x + scale/2, y + scale/2, CONFIG.fishRadius * (scale/5));
             } else if (entity instanceof Shark) {
                 this.worldGraphics.fillStyle(CONFIG.sharkColor, 1);
-                this.worldGraphics.fillCircle(x + scale/2, y + scale/2, CONFIG.sharkRadius * (scale/2));
+                this.worldGraphics.fillCircle(x + scale/2, y + scale/2, CONFIG.sharkRadius * (scale/5));
             }
         }
     }
