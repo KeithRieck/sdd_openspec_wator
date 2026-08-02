@@ -8,4 +8,7 @@ This project used the open-weight model [Inkling Small](https://artificialanalys
 # Development:
 1. Exploration step:
     - `/openspec-explore I want to create a web app that runs the wa-tor simulation, using the requirements from  the prd-v001.md file.`
-
+2. Propose step:
+    - `/openspec-propose`
+    - The resulting markdown documents are really minimal, hardly anything at all.
+    
