@@ -19,3 +19,4 @@ This project used the open-weight model [Gemma 4](https://artificialanalysis.ai/
     - Gemma put all three entity classes into one file: `Entity.js`
     - Gemma didn't follow the requirements regarding layout.  It put controls, stats, and population all on the right column.  Also, dynamnic resizing the window does not work.
     - Also, it made the shark and fish circles way too big.  I fix this by hand also.
+    - `The auto-pause logic for shark or fix extinction is not working.   See item 37 in the PRD.   Fix the code to pause execution if either the shark or fish populations go to zero.`

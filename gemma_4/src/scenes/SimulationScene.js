@@ -17,6 +17,7 @@ export class SimulationScene extends Phaser.Scene {
 
         // Simulation state
         this.isPaused = false;
+        this.isTerminal = false;
         this.simulationSpeed = CONFIG.defaultSpeed;
         this.lastStepTime = 0;
 
@@ -54,7 +55,9 @@ export class SimulationScene extends Phaser.Scene {
 
         // Stats
         this.statsText = this.add.text(startX, startY, '', { fontSize: '16px', color: '#fff' });
-        startY += 60;
+        startY += 40;
+        this.statusText = this.add.text(startX, startY, '', { fontSize: '16px', fontWeight: 'bold', color: '#ffff00' });
+        startY += 40;
 
         // Controls
         const createButton = (label, y, callback) => {
@@ -125,7 +128,7 @@ export class SimulationScene extends Phaser.Scene {
     }
 
     update(time, delta) {
-        if (this.isPaused) return;
+        if (this.isPaused || this.isTerminal) return;
 
         // Calculate interval based on speed (e.g., 10x means 1 step every 100ms if base is 1s)
         // Base speed 1x = 1 step per second.
@@ -143,6 +146,22 @@ export class SimulationScene extends Phaser.Scene {
     updateStats() {
         const { fish, sharks } = this.sim.getPopulation();
         this.statsText.setText(`Fish: ${fish}\nSharks: ${sharks}`);
+
+        if (fish === 0 && sharks === 0) {
+            this.statusText.setText('Status: Ecosystem collapsed');
+            this.isTerminal = true;
+            this.isPaused = true;
+        } else if (fish === 0) {
+            this.statusText.setText('Status: Fish extinct');
+            this.isTerminal = true;
+            this.isPaused = true;
+        } else if (sharks === 0) {
+            this.statusText.setText('Status: Sharks extinct');
+            this.isTerminal = true;
+            this.isPaused = true;
+        } else {
+            this.statusText.setText(`Status: ${this.isPaused ? 'Paused' : 'Running'}`);
+        }
     }
 
     updateChart() {
@@ -218,17 +237,27 @@ export class SimulationScene extends Phaser.Scene {
     }
 
     togglePause() {
+        if (this.isTerminal) return;
         this.isPaused = !this.isPaused;
+        this.updateStats();
     }
 
     stepOnce() {
+        if (this.isTerminal) return;
         this.sim.step();
         this.render();
+        this.updateStats();
+        this.updateChart();
     }
 
     reset() {
+        this.isTerminal = false;
+        this.isPaused = false;
         this.sim.initialize();
+        this.history = [];
         this.render();
+        this.updateStats();
+        this.updateChart();
     }
 
     setSpeed(speed) {
