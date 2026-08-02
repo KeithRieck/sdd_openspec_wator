@@ -3,7 +3,7 @@ Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/deepseek_v4/index.ht
 # Wa-Tor simulations with DeepSeek
 Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation that emphasizes correct predator-prey cellular automaton behavior.
 
-This project used DeepSeek V4 Pro.   I use [OpenCode](https://opencode.ai/) to interface with DeepSeek.
+This project used the Chinese open weight model [DeepSeek V4 Pro](https://artificialanalysis.ai/models/deepseek-v4-pro-non-reasoning/providers).   I use [OpenCode](https://opencode.ai/) to interface with DeepSeek.
 
 # Development:
 1. First step:

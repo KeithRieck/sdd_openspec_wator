@@ -3,7 +3,7 @@ Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/glm_5.2/index.html
 # Wa-Tor simulations with GLM-5.2
 Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation that emphasizes correct predator-prey cellular automaton behavior.
 
-This project used the open-weight model GLM-5.2 on Medium level.  I'm developing with Visual Studio Code's [chat panel](https://code.visualstudio.com/docs/chat/chat-overview).
+This project used the Chinese open-weight model [GLM-5.2](https://artificialanalysis.ai/models/glm-5-2) on Medium level.  I'm developing with Visual Studio Code's [chat panel](https://code.visualstudio.com/docs/chat/chat-overview).
 
 # First iteration: Initial Development:
 1. Exploration step:
