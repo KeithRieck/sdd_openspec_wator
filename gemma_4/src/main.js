@@ -12,7 +12,7 @@ const config = {
         mode: Phaser.Scale.RESIZE,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
-    parent: 'phaser-app',
+    parent: 'game-container',
     backgroundColor: '#000000',
     scene: [BootScene, SimulationScene],
     physics: {
