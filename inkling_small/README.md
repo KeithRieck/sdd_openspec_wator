@@ -15,5 +15,15 @@ This project used the open-weight model [Inkling Small](https://artificialanalys
     - Again, Inkling responded very quickly and did minimal effort.
     - `For now and for all future steps, read the AGENTS.md into your context window.`
     - Once again, really quick.  This doesn't give me much confidence.
-    
+ 3. Apply step:
+    - `/openspec-apply-change`
+    - Inkling asks me which task to start.
+    - `Build the engine module.  Make good use of object orientation in the code.  The Fish and Shark classes should extend from a parent Entity class.`
+    - Inkling creates the classes, but with no contents.
+    - `Split out the Entity, Shark, and Fish classes as separate class files.  The engine.js file should contain an Engine class that executes the wator simulation.   The Entity, Shark, and Fish classes should contain all logic to implement required functions.`
+    - Inkling isn't even trying.
+    - `Implement code within existing classes to execute wator functions.`
+    - Inkling adds JSDoc and methods, but the classes have obvious syntax errors.   It keeps asking me if it should move on to the next task.
+
+At this point, I give up.  Inkling Small is plainly not suited for coding this project.  OpenRouter reports that we have used only 1.1m tokens.  The cost for this is so small it doesn't even register.
 
