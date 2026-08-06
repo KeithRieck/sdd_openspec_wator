@@ -3,7 +3,7 @@ Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/gemma_4/index.html
 # Wa-Tor simulations with Gemma 4
 Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation that emphasizes correct predator-prey cellular automaton behavior.
 
-This project used the open-weight model [Gemma 4](https://artificialanalysis.ai/models/gemma-4-12b/providers) developed by Google in the United States.  I'm developing with the Visual Studio Code (1.130.0) [chat panel](https://code.visualstudio.com/docs/chat/chat-overview).
+This project used the open-weight model [Gemma 4 31B](https://artificialanalysis.ai/models/gemma-4-31b)  developed by Google in the United States.  I'm developing with the Visual Studio Code (1.130.0) [chat panel](https://code.visualstudio.com/docs/chat/chat-overview).
 
 # Development:
 1. Exploration step:
