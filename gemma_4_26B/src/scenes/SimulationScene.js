@@ -179,6 +179,9 @@ export class SimulationScene extends Phaser.Scene {
             color: '#ffffff'
         });
 
+        // Button text objects - we'll manage these in a map to avoid recreating them
+        this.buttonTexts = new Map();
+
         // Button hit areas
         this.buttons = [];
 
@@ -242,9 +245,9 @@ export class SimulationScene extends Phaser.Scene {
 
         // Action Buttons (Vertical Stack)
         const actionButtons = [
-            { label: this.isRunning ? 'Pause' : 'Play', action: () => { this.isRunning = !this.isRunning; } },
-            { label: 'Step', action: () => { this.simulation.advanceChronon(); this.render(); }, disabled: this.isRunning },
-            { label: 'Reset', action: () => { this.simulation.reset(); this.isRunning = true; } }
+            { id: 'play-pause', label: this.isRunning ? 'Pause' : 'Play', action: () => { this.isRunning = !this.isRunning; } },
+            { id: 'step', label: 'Step', action: () => { this.simulation.advanceChronon(); this.render(); }, disabled: this.isRunning },
+            { id: 'reset', label: 'Reset', action: () => { this.simulation.reset(); this.isRunning = true; } }
         ];
 
         actionButtons.forEach((btn, i) => {
@@ -256,10 +259,15 @@ export class SimulationScene extends Phaser.Scene {
             this.uiGraphics.fillStyle(btn.disabled ? 0x555555 : 0x888888);
             this.uiGraphics.fillRect(bx, by, bw, bh);
             
-            // We'll use a separate text object or just draw labels if we had a text-graphics tool.
-            // For now, I'll add temporary text objects for buttons.
-            const label = this.add.text(bx + 5, by + 5, btn.label, { fontSize: '14px', color: '#000' });
-            label.setDepth(1);
+            // Update or create text object
+            let text = this.buttonTexts.get(btn.id);
+            if (!text) {
+                text = this.add.text(bx + 5, by + 5, btn.label, { fontSize: '14px', color: '#000' });
+                text.setDepth(1);
+                this.buttonTexts.set(btn.id, text);
+            }
+            text.setPosition(bx + 5, by + 5);
+            text.setText(btn.label);
 
             this.buttons.push({ x: bx, y: by, w: bw, h: bh, callback: btn.action });
         });
@@ -269,6 +277,7 @@ export class SimulationScene extends Phaser.Scene {
         const speedY = y + actionButtons.length * 40 + 20;
         
         speedOptions.forEach((speed, i) => {
+            const id = `speed-${speed}`;
             const bx = x + i * 60;
             const by = speedY;
             const bw = 50;
@@ -277,8 +286,15 @@ export class SimulationScene extends Phaser.Scene {
             this.uiGraphics.fillStyle(this.currentSpeed === speed ? 0xaaaaaa : 0x666666);
             this.uiGraphics.fillRect(bx, by, bw, bh);
             
-            const label = this.add.text(bx + 5, by + 5, `${speed}x`, { fontSize: '14px', color: '#000' });
-            label.setDepth(1);
+            // Update or create text object
+            let text = this.buttonTexts.get(id);
+            if (!text) {
+                text = this.add.text(bx + 5, by + 5, `${speed}x`, { fontSize: '14px', color: '#000' });
+                text.setDepth(1);
+                this.buttonTexts.set(id, text);
+            }
+            text.setPosition(bx + 5, by + 5);
+            text.setText(`${speed}x`);
 
             this.buttons.push({ x: bx, y: by, w: bw, h: bh, callback: () => { this.currentSpeed = speed; } });
         });
