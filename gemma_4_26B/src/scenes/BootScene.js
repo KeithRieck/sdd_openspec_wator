@@ -1,7 +1,7 @@
 /**
  * BootScene handles the initial loading and setup of the application.
  */
-export default class BootScene extends Phaser.Scene {
+export class BootScene extends Phaser.Scene {
     constructor() {
         super('BootScene');
     }

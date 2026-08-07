@@ -1,11 +1,12 @@
 import { CONFIG } from '../config.js';
 import { WatorSimulation } from '../simulation/WatorSimulation.js';
+import { Fish, Shark } from '../simulation/Entities.js';
 
 /**
  * SimulationScene is the main scene for the Wa-Tor simulation.
  * It handles the simulation loop, rendering, and user interaction.
  */
-export default class SimulationScene extends Phaser.Scene {
+export class SimulationScene extends Phaser.Scene {
     constructor() {
         super('SimulationScene');
     }
@@ -139,7 +140,7 @@ export default class SimulationScene extends Phaser.Scene {
         this.worldGraphics.clear();
 
         // Draw water background
-        this.worldGraphics.setFillStyle(CONFIG.visuals.waterColor);
+        this.worldGraphics.fillStyle(CONFIG.visuals.waterColor);
         this.worldGraphics.fillRect(offsetX, offsetY, width * scale, height * scale);
 
         // Draw entities
@@ -148,10 +149,10 @@ export default class SimulationScene extends Phaser.Scene {
             const posY = offsetY + entity.y * scale + scale / 2;
 
             if (entity instanceof Fish) {
-                this.worldGraphics.setFillStyle(CONFIG.visuals.fishColor);
+                this.worldGraphics.fillStyle(CONFIG.visuals.fishColor);
                 this.worldGraphics.fillCircle(posX, posY, CONFIG.visuals.fishRadius);
             } else {
-                this.worldGraphics.setFillStyle(CONFIG.visuals.sharkColor);
+                this.worldGraphics.fillStyle(CONFIG.visuals.sharkColor);
                 this.worldGraphics.fillCircle(posX, posY, CONFIG.visuals.sharkRadius);
             }
         });
@@ -224,7 +225,7 @@ export default class SimulationScene extends Phaser.Scene {
         const y = isWide ? 20 : worldArea.height + 20;
 
         // Draw stats background
-        this.uiGraphics.setFillStyle(0x222222, 0.5);
+        this.uiGraphics.fillStyle(0x222222, 0.5);
         this.uiGraphics.fillRect(x - 10, y - 10, statsWidth, 120);
 
         const text = `Chronon: ${stats.chronon}\nFish: ${stats.fishCount}\nSharks: ${stats.sharkCount}\nStatus: ${stats.status}`;
@@ -252,7 +253,7 @@ export default class SimulationScene extends Phaser.Scene {
             const bw = 100;
             const bh = 30;
 
-            this.uiGraphics.setFillStyle(btn.disabled ? 0x555555 : 0x888888);
+            this.uiGraphics.fillStyle(btn.disabled ? 0x555555 : 0x888888);
             this.uiGraphics.fillRect(bx, by, bw, bh);
             
             // We'll use a separate text object or just draw labels if we had a text-graphics tool.
@@ -273,7 +274,7 @@ export default class SimulationScene extends Phaser.Scene {
             const bw = 50;
             const bh = 30;
 
-            this.uiGraphics.setFillStyle(this.currentSpeed === speed ? 0xaaaaaa : 0x666666);
+            this.uiGraphics.fillStyle(this.currentSpeed === speed ? 0xaaaaaa : 0x666666);
             this.uiGraphics.fillRect(bx, by, bw, bh);
             
             const label = this.add.text(bx + 5, by + 5, `${speed}x`, { fontSize: '14px', color: '#000' });
@@ -299,7 +300,7 @@ export default class SimulationScene extends Phaser.Scene {
         const chartH = chartHeight;
 
         // Draw chart background
-        this.chartGraphics.setFillStyle(0x111111, 0.8);
+        this.chartGraphics.fillStyle(0x111111, 0.8);
         this.chartGraphics.fillRect(chartX, chartY, chartW, chartH);
 
         // Find max population for scaling
@@ -313,7 +314,7 @@ export default class SimulationScene extends Phaser.Scene {
         const scaleY = chartH / maxPop;
 
         const drawLine = (type, color) => {
-            this.chartGraphics.setLineStyle(2, color);
+            this.chartGraphics.lineStyle(2, color);
             this.chartGraphics.beginPath();
 
             for (let i = 0; i < history.length; i++) {

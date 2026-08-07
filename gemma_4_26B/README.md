@@ -17,4 +17,6 @@ One motivation here is to see if the output is differently from Gemma 4 31B.
  3. Apply step
     - `/openspec-apply-change`
     - Processing is also _really_ slow.  It constantly pauses.
+    - `The manifest says there should be icon files in the assets folder .  Create those files.`
+    - There are many more little errors that are easier to fix by hand.
     - So far, this has all cost 55 cents.
