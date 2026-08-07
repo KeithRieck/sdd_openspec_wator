@@ -54,6 +54,11 @@ export class SimulationScene extends Phaser.Scene {
 
         // Button rectangles for hit detection
         this.buttons = {};
+
+        // Text objects for UI
+        this.statsTexts = [];
+        this.speedTexts = [];
+        this.actionTexts = {};
     }
 
     /**
@@ -305,8 +310,20 @@ export class SimulationScene extends Phaser.Scene {
         ];
 
         let lineY = y + STATS_MARGIN + STATS_FONT_SIZE;
+        
+        // Clear existing stats texts
+        for (const text of this.statsTexts) {
+            text.destroy();
+        }
+        this.statsTexts = [];
+        
         for (const line of lines) {
-            this.statsGraphics.fillStyle(line, x + STATS_MARGIN, lineY);
+            const text = this.add.text(x + STATS_MARGIN, lineY, line, {
+                font: `${STATS_FONT_SIZE}px ${TEXT_FONT}`,
+                fill: STATS_TEXT_COLOR.toString(16),
+                fontStyle: 'bold'
+            });
+            this.statsTexts.push(text);
             lineY += STATS_FONT_SIZE + 5;
         }
     }
@@ -341,13 +358,11 @@ export class SimulationScene extends Phaser.Scene {
             this.controlsGraphics.fillRect(buttonX, buttonY, BUTTON_WIDTH, BUTTON_HEIGHT);
 
             // Draw button text
-            this.controlsGraphics.fillStyle(CONTROLS_TEXT_COLOR);
-            this.controlsGraphics.font = `${CONTROLS_FONT_SIZE}px ${TEXT_FONT}`;
-            this.controlsGraphics.fillStyle(
-                `${speed}x`,
-                buttonX + BUTTON_WIDTH / 2 - 10,
-                buttonY + BUTTON_HEIGHT / 2 + 5
-            );
+            const speedText = this.add.text(buttonX + BUTTON_WIDTH / 2 - 10, buttonY + BUTTON_HEIGHT / 2 + 5, `${speed}x`, {
+                font: `${CONTROLS_FONT_SIZE}px ${TEXT_FONT}`,
+                fill: CONTROLS_TEXT_COLOR.toString(16)
+            });
+            this.speedTexts.push({ name: buttonName, text: speedText });
 
             // Store button rect for hit detection
             this.buttons[buttonName] = {
@@ -391,13 +406,11 @@ export class SimulationScene extends Phaser.Scene {
         this.controlsGraphics.fillRect(x + CONTROLS_MARGIN, y, width, BUTTON_HEIGHT);
 
         // Draw button text
-        this.controlsGraphics.fillStyle(enabled ? CONTROLS_TEXT_COLOR : 0x333333);
-        this.controlsGraphics.font = `${CONTROLS_FONT_SIZE}px ${TEXT_FONT}`;
-        this.controlsGraphics.fillStyle(
-            text,
-            x + CONTROLS_MARGIN + width / 2 - 20,
-            y + BUTTON_HEIGHT / 2 + 5
-        );
+        const actionText = this.add.text(x + CONTROLS_MARGIN + width / 2 - 20, y + BUTTON_HEIGHT / 2 + 5, text, {
+            font: `${CONTROLS_FONT_SIZE}px ${TEXT_FONT}`,
+            fill: (enabled ? CONTROLS_TEXT_COLOR : 0x333333).toString(16)
+        });
+        this.actionTexts[name] = actionText;
 
         // Store button rect for hit detection
         this.buttons[name] = {
