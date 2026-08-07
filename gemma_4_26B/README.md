@@ -5,6 +5,8 @@ Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation
 
 This project used the open-weight model [Gemma 4 26B](https://artificialanalysis.ai/models/gemma-4-26b-a4b) on 'High' level, developed by Google in the United States.  I'm developing with the Visual Studio Code (1.130.0) [chat panel](https://code.visualstudio.com/docs/chat/chat-overview).
 
+One motivation here is to see if the output is differently from Gemma 4 31B.
+
 # Development:
 1. Exploration step:
     - `/openspec-explore I want to create a web app that runs the wa-tor simulation, using the requirements from  the prd-v001.md file.`
@@ -12,4 +14,7 @@ This project used the open-weight model [Gemma 4 26B](https://artificialanalysis
 2. Propose step:
     - `/openspec-propose`
    - `Add a class diagram to design.md in mermaid format.`
-   
+ 3. Apply step
+    - `/openspec-apply-change`
+    - Processing is also _really_ slow.  It constantly pauses.
+    - So far, this has all cost 55 cents.
