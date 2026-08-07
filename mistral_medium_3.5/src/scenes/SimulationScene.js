@@ -150,8 +150,8 @@ export class SimulationScene extends Phaser.Scene {
                 break;
         }
 
-        // Re-render controls after any button click
-        this.drawControls();
+        // Update stats after any button click that affects state
+        this.updateStatsText();
     }
 
     /**
@@ -159,6 +159,7 @@ export class SimulationScene extends Phaser.Scene {
      */
     handlePlayPause() {
         this.isRunning = !this.isRunning;
+        this.updateStatsText();
     }
 
     /**
@@ -167,6 +168,7 @@ export class SimulationScene extends Phaser.Scene {
     handleStep() {
         if (!this.isRunning) {
             this.simulation.step();
+            this.updateStatsText();
         }
     }
 
@@ -176,6 +178,7 @@ export class SimulationScene extends Phaser.Scene {
     handleReset() {
         this.simulation = new WatorSimulation(GRID_WIDTH, GRID_HEIGHT);
         this.isRunning = true;
+        this.updateStatsText();
     }
 
     /**
@@ -198,9 +201,35 @@ export class SimulationScene extends Phaser.Scene {
         // Accumulator pattern for consistent chronon timing
         this.accumulator += delta;
 
+        let stepped = false;
         while (this.accumulator >= this.chrononInterval) {
             this.simulation.step();
             this.accumulator -= this.chrononInterval;
+            stepped = true;
+        }
+
+        // Update stats display when simulation steps
+        if (stepped) {
+            this.updateStatsText();
+        }
+    }
+
+    /**
+     * Updates the stats text display with current simulation state.
+     */
+    updateStatsText() {
+        const state = this.simulation.getState();
+        const status = state.extinctStatus || (this.isRunning ? 'Running' : 'Paused');
+        
+        const lines = [
+            `Chronon: ${state.chronon}`,
+            `Fish: ${state.fishCount}`,
+            `Sharks: ${state.sharkCount}`,
+            `Status: ${status}`
+        ];
+
+        for (let i = 0; i < this.statsTexts.length && i < lines.length; i++) {
+            this.statsTexts[i].setText(lines[i]);
         }
     }
 
@@ -216,6 +245,20 @@ export class SimulationScene extends Phaser.Scene {
         this.statsGraphics.clear();
         this.controlsGraphics.clear();
         this.chartGraphics.clear();
+
+        // Destroy existing text objects
+        for (const text of this.statsTexts) {
+            text.destroy();
+        }
+        for (const { text } of this.speedTexts) {
+            text.destroy();
+        }
+        for (const text of Object.values(this.actionTexts)) {
+            text.destroy();
+        }
+        this.statsTexts = [];
+        this.speedTexts = [];
+        this.actionTexts = {};
 
         // Calculate layout
         const chartHeight = CHART_HEIGHT;
@@ -298,10 +341,6 @@ export class SimulationScene extends Phaser.Scene {
         this.statsGraphics.fillStyle(WATER_COLOR);
         this.statsGraphics.fillRect(x, y, width, height);
 
-        this.statsGraphics.fillStyle(STATS_TEXT_COLOR);
-        this.statsGraphics.font = `${STATS_FONT_SIZE}px ${TEXT_FONT}`;
-        this.statsGraphics.fontStyle = 'bold';
-
         const lines = [
             `Chronon: ${state.chronon}`,
             `Fish: ${state.fishCount}`,
@@ -311,16 +350,10 @@ export class SimulationScene extends Phaser.Scene {
 
         let lineY = y + STATS_MARGIN + STATS_FONT_SIZE;
         
-        // Clear existing stats texts
-        for (const text of this.statsTexts) {
-            text.destroy();
-        }
-        this.statsTexts = [];
-        
         for (const line of lines) {
             const text = this.add.text(x + STATS_MARGIN, lineY, line, {
                 font: `${STATS_FONT_SIZE}px ${TEXT_FONT}`,
-                fill: STATS_TEXT_COLOR.toString(16),
+                fill: '#' + STATS_TEXT_COLOR.toString(16).padStart(6, '0'),
                 fontStyle: 'bold'
             });
             this.statsTexts.push(text);
@@ -360,7 +393,7 @@ export class SimulationScene extends Phaser.Scene {
             // Draw button text
             const speedText = this.add.text(buttonX + BUTTON_WIDTH / 2 - 10, buttonY + BUTTON_HEIGHT / 2 + 5, `${speed}x`, {
                 font: `${CONTROLS_FONT_SIZE}px ${TEXT_FONT}`,
-                fill: CONTROLS_TEXT_COLOR.toString(16)
+                fill: '#' + CONTROLS_TEXT_COLOR.toString(16).padStart(6, '0')
             });
             this.speedTexts.push({ name: buttonName, text: speedText });
 
@@ -406,9 +439,10 @@ export class SimulationScene extends Phaser.Scene {
         this.controlsGraphics.fillRect(x + CONTROLS_MARGIN, y, width, BUTTON_HEIGHT);
 
         // Draw button text
+        const color = enabled ? CONTROLS_TEXT_COLOR : 0x333333;
         const actionText = this.add.text(x + CONTROLS_MARGIN + width / 2 - 20, y + BUTTON_HEIGHT / 2 + 5, text, {
             font: `${CONTROLS_FONT_SIZE}px ${TEXT_FONT}`,
-            fill: (enabled ? CONTROLS_TEXT_COLOR : 0x333333).toString(16)
+            fill: '#' + color.toString(16).padStart(6, '0')
         });
         this.actionTexts[name] = actionText;
 
