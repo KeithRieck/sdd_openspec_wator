@@ -12,3 +12,5 @@ This project used the open-weight model [Mistral Medium 3.5](https://artificiala
 2. Propose step:
     - `/openspec-propose`
     - `Add a class diagram to design.md in mermaid format.`
+ 3. Apply step
+    - `/openspec-apply-change`
