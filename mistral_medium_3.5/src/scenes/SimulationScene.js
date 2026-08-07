@@ -306,7 +306,7 @@ export class SimulationScene extends Phaser.Scene {
 
         let lineY = y + STATS_MARGIN + STATS_FONT_SIZE;
         for (const line of lines) {
-            this.statsGraphics.fillText(line, x + STATS_MARGIN, lineY);
+            this.statsGraphics.fillStyle(line, x + STATS_MARGIN, lineY);
             lineY += STATS_FONT_SIZE + 5;
         }
     }
@@ -343,7 +343,7 @@ export class SimulationScene extends Phaser.Scene {
             // Draw button text
             this.controlsGraphics.fillStyle(CONTROLS_TEXT_COLOR);
             this.controlsGraphics.font = `${CONTROLS_FONT_SIZE}px ${TEXT_FONT}`;
-            this.controlsGraphics.fillText(
+            this.controlsGraphics.fillStyle(
                 `${speed}x`,
                 buttonX + BUTTON_WIDTH / 2 - 10,
                 buttonY + BUTTON_HEIGHT / 2 + 5
@@ -393,7 +393,7 @@ export class SimulationScene extends Phaser.Scene {
         // Draw button text
         this.controlsGraphics.fillStyle(enabled ? CONTROLS_TEXT_COLOR : 0x333333);
         this.controlsGraphics.font = `${CONTROLS_FONT_SIZE}px ${TEXT_FONT}`;
-        this.controlsGraphics.fillText(
+        this.controlsGraphics.fillStyle(
             text,
             x + CONTROLS_MARGIN + width / 2 - 20,
             y + BUTTON_HEIGHT / 2 + 5

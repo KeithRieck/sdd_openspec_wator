@@ -14,3 +14,4 @@ This project used the open-weight model [Mistral Medium 3.5](https://artificiala
     - `Add a class diagram to design.md in mermaid format.`
  3. Apply step
     - `/openspec-apply-change`
+    - The resulting code doesn't work.   I fix some problems by hand.
