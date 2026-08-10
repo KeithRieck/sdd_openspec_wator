@@ -13,6 +13,7 @@ Hosted at:
 * https://keithrieck.github.io/sdd_openspec_wator/gemma_4/index.html
 * https://keithrieck.github.io/sdd_openspec_wator/gemma_4_26B/index.html
 * https://keithrieck.github.io/sdd_openspec_wator/mistral_medium_3.5/index.html
+* https://keithrieck.github.io/sdd_openspec_wator/mistral_small_4/index.html
 
 
 # Wa-Tor simulations
@@ -100,3 +101,5 @@ This version of the project used the open-weight model [Grok 4.5](https://artifi
 ## Visual Studio Code with Mistral Small 4
 
 ## Visual Studio Code with Gemma 4
+
+## Visual Studio Code with Muse Spark 1.2
