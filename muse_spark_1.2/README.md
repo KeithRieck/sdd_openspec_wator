@@ -9,3 +9,6 @@ This project used the model [Muse Spark 1.2](https://artificialanalysis.ai/model
 # Development:
 1. Exploration step:
     - `/openspec-explore I want to create a web app that runs the wa-tor simulation, using the requirements from  the prd-v001.md file.`
+    - `The code should be object oriented and make good use of Javascript classes. Assume that 'entity records' means objects that are instances of classes that extend from a common entity class, e.g. Shark and Fish may be classes extending Entity.`
+2. Propose step:
+    - `/openspec-propose`
