@@ -14,3 +14,7 @@ This project used the model [Muse Spark 1.2](https://artificialanalysis.ai/model
     - `/openspec-propose`
 3. Apply step:
     - `/openspec-apply-change`
+4. Archive step:
+    - `/openspec-archive-change`
+
+The exercise has cost $2.16.
