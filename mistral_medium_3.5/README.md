@@ -15,3 +15,4 @@ This project used the open-weight model [Mistral Medium 3.5](https://artificiala
  3. Apply step
     - `/openspec-apply-change`
     - The resulting code doesn't work.   I fix some problems by hand.
+    - `In Phaser 4.1, you must add text to the screen. You may need to update those text objects as statistics change.`
