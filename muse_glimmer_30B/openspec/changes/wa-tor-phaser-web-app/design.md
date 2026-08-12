@@ -71,7 +71,7 @@ classDiagram
         #bornThisChronon: boolean
         +constructor(id,type,x,y)
         +getId(): number
-        +getPosition(): {x,y}
+        +getPosition(): x,y
         +ageOneChronon()
         +canBreed(breedTime): boolean
         +resetBreedAge()
