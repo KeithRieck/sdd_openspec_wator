@@ -16,3 +16,5 @@ This project used the open weight model [Muse Glimmer 30B](https://artificialana
 3. Apply step:
     - `/openspec-apply-change`
     - Similar to the problem I saw with the Gemma projects, this model pauses after every few tasks.  I need to tell it to proceed.
+    - The PWA icons are missing from the `assets` folder.  
+    - `Create a src/main.js file that will configure and create the Phaser.Game object. It should also register the service worker when the page loads.`
