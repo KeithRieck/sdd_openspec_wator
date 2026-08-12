@@ -14,6 +14,7 @@ Hosted at:
 * https://keithrieck.github.io/sdd_openspec_wator/gemma_4_26B/index.html
 * https://keithrieck.github.io/sdd_openspec_wator/mistral_medium_3.5/index.html
 * https://keithrieck.github.io/sdd_openspec_wator/mistral_small_4/index.html
+* https://keithrieck.github.io/sdd_openspec_wator/muse_spark_1.2/index.html
 
 
 # Wa-Tor simulations
