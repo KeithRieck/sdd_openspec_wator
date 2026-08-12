@@ -13,3 +13,6 @@ This project used the open weight model [Muse Glimmer 30B](https://artificialana
 2. Propose step:
     - `/openspec-propose`
     - `Add a class diagram to design.md in mermaid format.`
+3. Apply step:
+    - `/openspec-apply-change`
+    - Similar to the problem I saw with the Gemma projects, this model pauses after every few tasks.  I need to tell it to proceed.
