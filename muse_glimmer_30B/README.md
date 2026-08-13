@@ -18,3 +18,7 @@ This project used the open weight model [Muse Glimmer 30B](https://artificialana
     - Similar to the problem I saw with the Gemma projects, this model pauses after every few tasks.  I need to tell it to proceed.
     - The PWA icons are missing from the `assets` folder.  
     - `Create a src/main.js file that will configure and create the Phaser.Game object. It should also register the service worker when the page loads.`
+    - The code now runs the simulation, but the layout is wrong.  Stats are overlapping the World display.  The controls and population graph are missing.  There is no code for controls.  The renderHistory function is empty.
+    - Cost so far is $1.31.
+    - `Implement the control buttons.  Implement history rendering.  Change the layout so the stats are left of the world grid, the controls are right of the world grid, and the history chart is below the world grid.`
+    - Strangely, fixing this is costing a lot more than the initial build.  VS Code appears to be rereading the Simulation.js over and over.
