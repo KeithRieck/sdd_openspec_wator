@@ -21,4 +21,8 @@ This project used the open weight model [Muse Glimmer 30B](https://artificialana
     - The code now runs the simulation, but the layout is wrong.  Stats are overlapping the World display.  The controls and population graph are missing.  There is no code for controls.  The renderHistory function is empty.
     - Cost so far is $1.31.
     - `Implement the control buttons.  Implement history rendering.  Change the layout so the stats are left of the world grid, the controls are right of the world grid, and the history chart is below the world grid.`
-    - Strangely, fixing this is costing a lot more than the initial build.  VS Code appears to be rereading the Simulation.js over and over.
+    - Strangely, fixing this is costing a lot more than the initial build.  VS Code appears to be rereading the Simulation.js over and over.  Just this bug fix has cost $5.31.
+4. Archive step:
+    - `/openspec-archive-change`
+
+The exercise has cost $6.62.
