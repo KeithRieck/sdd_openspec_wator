@@ -9,4 +9,7 @@ This project used the open weight model [Nemotron 3 Ultra](https://artificialana
 # Development:
 1. Exploration step:
     - `/openspec-explore I want to create a web app that runs the wa-tor simulation, using the requirements from  the prd-v001.md file.`
+    - In this case, Nemotron asked some simple questions, but then immedietly jumped into creating the proposal and spec.   The VS Code chat window appeared to fall into a loop and wouldn't stop.  I had to kill VS Code and restart.
     - `The code should be object oriented and make good use of Javascript classes. Assume that 'entity records' means objects that are instances of classes that extend from a common entity class, e.g. Shark and Fish may be classes extending Entity.`
+    - Nemotron continued generating the design, even though I didn't ask it to do so.
+    - Next, it started generating the code, which I didn't OK.

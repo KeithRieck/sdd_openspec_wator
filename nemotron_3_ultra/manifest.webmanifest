@@ -1,0 +1,27 @@
+{
+    "name": "Wa-Tor Simulation",
+    "short_name": "Wa-Tor",
+    "description": "A browser-based Wa-Tor predator-prey cellular automaton simulation",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#001133",
+    "theme_color": "#001133",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "assets/icon-192.svg",
+            "sizes": "192x192",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "assets/icon-512.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["simulation", "education", "science"],
+    "screenshots": [],
+    "shortcuts": []
+}
