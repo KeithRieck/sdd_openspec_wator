@@ -5,6 +5,11 @@
 * When creating any diagrams in markdown files, use Mermaid instead of ASCII diagrams, whenever possible.
 * When archiving changes, move files and directories using `git mv`.
 
+## Workflow Rules
+* **ALWAYS use `openspec-explore` skill first** when the user wants to discuss design, architecture, or requirements before implementing. Do NOT proceed to implementation (propose/apply) without explicit user confirmation after exploration.
+* If the user asks a design question or wants to "think through" something, enter explore mode - do not create proposals, specs, or write code.
+* Only use `openspec-propose` or `openspec-apply-change` after the user explicitly says to proceed with a change.
+
 ## Code comments
 * Documentation comments should be Javadoc for Java or JSDoc for Javascript/Typescript or Documentation strings for Python.
 * All classes must have class level documentation comments.
