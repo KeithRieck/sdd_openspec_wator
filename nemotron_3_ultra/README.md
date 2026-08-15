@@ -18,4 +18,4 @@ This project used the open weight model [Nemotron 3 Ultra](https://artificialana
     - Nemotron works through the task list and checks everything off.
     - This time, Nemotron did the archive step without my asking.
 
-This has cost $1.29.  Nemotron has been amazingly fast.  The resulting app works really well.
+This has cost $1.76.  Nemotron has been amazingly fast.  The resulting app works pretty well.
