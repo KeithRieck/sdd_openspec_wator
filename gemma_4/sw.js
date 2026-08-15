@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wator-sim-v1';
+const CACHE_NAME = 'wator-v1-gemma';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',

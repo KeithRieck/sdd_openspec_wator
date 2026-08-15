@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wator-v1';
+const CACHE_NAME = 'wator-v1-muse-spark';
 const CDN_PHASER = 'https://cdn.jsdelivr.net/npm/phaser@4.1.0/dist/phaser.min.js';
 const ASSETS = [
   './',

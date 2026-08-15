@@ -4,7 +4,7 @@
  * CDN). First load without a prior cache depends on network
  * availability (AS-R8 / AC 56, 57).
  */
-const CACHE_NAME = 'wator-shell-v1';
+const CACHE_NAME = 'wator-v1-kimi';
 const SHELL = [
   './',
   './index.html',

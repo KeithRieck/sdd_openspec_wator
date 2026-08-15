@@ -4,7 +4,7 @@
  * Note: Phaser CDN script is cross-origin and not cached by this SW.
  */
 
-const CACHE_NAME = 'wator-simulation-v1';
+const CACHE_NAME = 'wator-v1-nemotron';
 const APP_SHELL = [
     '/',
     '/index.html',

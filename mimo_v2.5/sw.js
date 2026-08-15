@@ -5,7 +5,7 @@
  * depends on browser cache behavior for offline availability.
  */
 
-const CACHE_NAME = 'wa-tor-v1';
+const CACHE_NAME = 'wtor-v1-mimo';
 const APP_SHELL = [
   './',
   './index.html',

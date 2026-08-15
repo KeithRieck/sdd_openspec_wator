@@ -7,7 +7,7 @@
  * app works offline once Phaser has been fetched at least once.
  */
 
-const CACHE_NAME = 'wator-v1';
+const CACHE_NAME = 'wator-v1-glm';
 
 /** App shell URLs to cache on install (same-origin). */
 const APP_SHELL = [

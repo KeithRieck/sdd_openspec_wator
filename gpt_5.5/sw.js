@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wator-v1-codex';
+const CACHE_NAME = 'wator-v1-gpt';
 const APP_SHELL = [
   "./",
   "./index.html",

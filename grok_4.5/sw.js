@@ -3,7 +3,7 @@
  * Caches same-origin assets; CDN Phaser may still require network on first load.
  */
 
-const CACHE_NAME = 'wator-shell-v1';
+const CACHE_NAME = 'wator-v1-grok';
 const APP_SHELL = [
   './',
   './index.html',

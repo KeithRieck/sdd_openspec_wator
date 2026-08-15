@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wator-shell-v1';
+const CACHE_NAME = 'wator-v1-luna';
 const APP_SHELL = [
   './',
   './index.html',

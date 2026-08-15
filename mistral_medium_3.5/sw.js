@@ -3,7 +3,7 @@
  * Caches app shell and same-origin assets for offline support.
  */
 
-const CACHE_NAME = 'wator-v1';
+const CACHE_NAME = 'wator-v1-mistral';
 const APP_SHELL = [
     '/',
     '/index.html',

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wator-v1';
+const CACHE_NAME = 'wator-v1-muse-glimmer';
 const ASSETS = ['/', '/index.html', '/src/main.js', '/src/config.js', '/manifest.webmanifest'];
 
 self.addEventListener('install', event => {
