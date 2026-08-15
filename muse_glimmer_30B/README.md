@@ -25,4 +25,6 @@ This project used the open weight model [Muse Glimmer 30B](https://artificialana
 4. Archive step:
     - `/openspec-archive-change`
 
-The exercise has cost $6.62.
+The exercise has cost $6.62, a lot more than the [Muse Spark](../muse_spark_1.2/README.md) effort.  And, it still doesn't really work right.
+
+ It looks like _debugging_ with an AI is much more expensive than initial code generation. 
