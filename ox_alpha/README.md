@@ -17,7 +17,9 @@ OpenRouter announced a sale on an "unreleased frontier model" with a codename of
     - `/opsx-apply`
     - Reasonably quick to generate code.
     - The `SimulationScene.js` file has a bad import statment that kept it from loading.  I also fixed this by hand.
-    - `The drawWorld function is called, but o fish or sharks are displayed on the #sym:worldGfx  object.  After 5 chronons, all the sharks die.`
+    - `The drawWorld function is called, but no fish or sharks are displayed on the #sym:worldGfx  object.  After 5 chronons, all the sharks die.`
     - `The blue and green circles for sharks and fish are huge, and they extend far beyond the dispaly.  They must be small enough to display the whole world on one screen.`
     - `None of the buttons do anything.  Clicking on a #soes not call the expected function.`
     - `To @sym:Entity , add abstract properties for circle radius and color.  Override these appropriately in the Shark and Fish classes.  Change the SimulationScene.drawWorld function to use these values when drawing circles.`
+    The model forgets to add an import for the `RENDER` object to the Shark class, although it does correctly impot in the Fish class.
+    

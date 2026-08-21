@@ -4,6 +4,7 @@
 
 import { Entity } from './Entity.js';
 import { SIM } from '../config.js';
+import { RENDER } from '../config.js';
 
 /**
  * Numeric type code identifying shark entities.
