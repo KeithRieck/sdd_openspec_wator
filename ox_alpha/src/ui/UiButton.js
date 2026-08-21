@@ -46,8 +46,12 @@ export class UiButton {
     this.text.setOrigin(0.5, 0.5);
 
     this.rect = { x, y, w, h };
-    this.text.setInteractive(new Phaser.Geom.Rectangle(x, y, w, h), Phaser.Geom.Rectangle.Contains);
-    this.text.on('pointerdown', () => {
+    // Dedicated input zone sized to the button. A Zone's hit area is
+    // its own local rectangle, so clicks register regardless of the
+    // label text's origin or position.
+    this.zone = scene.add.zone(x + w / 2, y + h / 2, w, h).setOrigin(0.5);
+    this.zone.setInteractive();
+    this.zone.on('pointerdown', () => {
       if (this.enabled) {
         this.onClick();
       }
@@ -66,7 +70,10 @@ export class UiButton {
    */
   setRect(x, y, w, h) {
     this.rect = { x, y, w, h };
-    this.text.setInteractive(new Phaser.Geom.Rectangle(x, y, w, h), Phaser.Geom.Rectangle.Contains);
+    this.zone.setPosition(x + w / 2, y + h / 2);
+    this.zone.setSize(w, h);
+    // Re-apply the input hit area after resizing the zone.
+    this.zone.setInteractive();
     this.redraw();
   }
 
@@ -139,5 +146,6 @@ export class UiButton {
   destroy() {
     this.gfx.destroy();
     this.text.destroy();
+    this.zone.destroy();
   }
 }

@@ -81,7 +81,7 @@ export class SimulationScene extends Phaser.Scene {
    */
   buildPanels() {
     const viewport = this.getViewport();
-    const layout = solveLayout(viewport.width, viewport.height, this.sim.width / this.sim.height);
+    const layout = solveLayout(viewport.width, viewport.height, this.sim.width, this.sim.height);
     /** @type {StatsPanel} Left-side population readouts. */
     this.statsPanel = new StatsPanel(this, layout.stats);
     /** @type {ControlPanel} Right-side action and speed controls. */
@@ -119,7 +119,7 @@ export class SimulationScene extends Phaser.Scene {
    */
   applyLayout() {
     const viewport = this.getViewport();
-    const layout = solveLayout(viewport.width, viewport.height, this.sim.width / this.sim.height);
+    const layout = solveLayout(viewport.width, viewport.height, this.sim.width, this.sim.height);
     /** @type {{cell: number, offsetX: number, offsetY: number}} World scale. */
     this.worldScale = layout.worldScale;
     this.statsPanel.layout(layout.stats);
