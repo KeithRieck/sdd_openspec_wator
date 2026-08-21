@@ -52,6 +52,26 @@ export class Entity {
   }
 
   /**
+   * Rendering radius factor for this entity, expressed as a fraction
+   * of the grid cell size. Subclasses override with a positive number.
+   *
+   * @returns {number} Radius factor (fraction of a cell).
+   */
+  get radiusFactor() {
+    throw new Error('Entity.radiusFactor must be overridden by subclasses');
+  }
+
+  /**
+   * Rendering fill color for this entity. Subclasses override with a
+   * unique numeric color value.
+   *
+   * @returns {number} Numeric fill color.
+   */
+  get color() {
+    throw new Error('Entity.color must be overridden by subclasses');
+  }
+
+  /**
    * Template method advancing this entity one chronon (AC 11-26).
    *
    * Sequence: pre-act hook (may kill the entity, e.g. shark starvation)

@@ -7,8 +7,6 @@
 
 import { SIM, SPEED, RENDER, UI } from '../config.js';
 import { WatorSimulation } from '../simulation/WatorSimulation.js';
-import { Fish } from '../simulation/Fish.js';
-import { Shark } from '../simulation/Shark.js';
 import { solveLayout } from '../ui/LayoutSolver.js';
 import { StatsPanel } from '../ui/StatsPanel.js';
 import { ControlPanel } from '../ui/ControlPanel.js';
@@ -273,18 +271,12 @@ export class SimulationScene extends Phaser.Scene {
 
     const g = this.worldGfx;
     g.clear();
-    const fishR = Math.max(1, cell * RENDER.fishRadiusFactor);
-    const sharkR = Math.max(1, cell * RENDER.sharkRadiusFactor);
     for (const entity of this.sim.entities.values()) {
       const x = offsetX + (entity.pos % this.sim.width) * cell + cell / 2;
       const y = offsetY + Math.floor(entity.pos / this.sim.width) * cell + cell / 2;
-      if (entity.type === Fish.prototype.type) {
-        g.fillStyle(RENDER.fishColor, 1);
-        g.fillCircle(x, y, fishR);
-      } else if (entity.type === Shark.prototype.type) {
-        g.fillStyle(RENDER.sharkColor, 1);
-        g.fillCircle(x, y, sharkR);
-      }
+      const radius = Math.max(1, cell * entity.radiusFactor);
+      g.fillStyle(entity.color, 1);
+      g.fillCircle(x, y, radius);
     }
   }
 }

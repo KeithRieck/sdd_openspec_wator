@@ -48,6 +48,24 @@ export class Shark extends Entity {
   }
 
   /**
+   * Returns the shark rendering radius factor.
+   *
+   * @returns {number} Fraction of a cell used as the circle radius.
+   */
+  get radiusFactor() {
+    return RENDER.sharkRadiusFactor;
+  }
+
+  /**
+   * Returns the shark rendering color.
+   *
+   * @returns {number} Numeric fill color for shark circles.
+   */
+  get color() {
+    return RENDER.sharkColor;
+  }
+
+  /**
    * Drains one unit of energy before any movement or eating (AC 18).
    * A shark reaching zero energy dies immediately without moving or
    * eating (AC 19).

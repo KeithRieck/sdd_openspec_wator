@@ -3,6 +3,7 @@
  */
 
 import { Entity } from './Entity.js';
+import { RENDER } from '../config.js';
 
 /**
  * Numeric type code identifying fish entities.
@@ -39,6 +40,24 @@ export class Fish extends Entity {
    */
   get type() {
     return FISH_TYPE;
+  }
+
+  /**
+   * Returns the fish rendering radius factor.
+   *
+   * @returns {number} Fraction of a cell used as the circle radius.
+   */
+  get radiusFactor() {
+    return RENDER.fishRadiusFactor;
+  }
+
+  /**
+   * Returns the fish rendering color.
+   *
+   * @returns {number} Numeric fill color for fish circles.
+   */
+  get color() {
+    return RENDER.fishColor;
   }
 
   /**
