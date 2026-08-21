@@ -29,7 +29,7 @@ The project implements the Wa-Tor simulation defined in `prd-v001.md` as a stati
 
 ### D2. Entity class hierarchy with template-method act cycle
 
-```
+```mermaid
 classDiagram
     class Entity {
         <<abstract>>
