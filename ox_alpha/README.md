@@ -3,7 +3,7 @@ Hosted at:  https://keithrieck.github.io/sdd_openspec_wator/ox_alpha/index.html
 # Wa-Tor simulations with Ox Alpha
 Create a browser-based [Wa-Tor](https://en.wikipedia.org/wiki/Wa-Tor) simulation that emphasizes correct predator-prey cellular automaton behavior.
 
-OpenRouter announced a sale on an "unreleased frontier model" with a codename of "Ox Alpha".  For the next couple of days it will be free. I'm running it on 'High' level.  I'm developing with the Visual Studio Code (1.130.0) [chat panel](https://code.visualstudio.com/docs/chat/chat-overview).
+OpenRouter announced a sale on an "unreleased frontier model" with a codename of "Ox Alpha". This model has a context window of a million tokens and it is created for coding and agentic work. For the next couple of days it will be free. I'm running it on 'High' level.  I'm developing with the Visual Studio Code (1.134.0) [chat panel](https://code.visualstudio.com/docs/chat/chat-overview).
 
 
 # Development:
@@ -13,3 +13,8 @@ OpenRouter announced a sale on an "unreleased frontier model" with a codename of
 2. Propose step:
     - `/openspec-propose`
     - Weirdly, it generated a Mermaid diagram, but didn't properly specify the triple-tick for Markdown interpretation. I fixed this by hand.
+3. Apply step:
+    - `/opsx-apply`
+    - Reasonably quick to generate code.
+    - The `SimulationScene.js` file has a bad import statment that kept it from loading.  I also fixed this by hand.
+    - `The drawWorld function is called, but o fish or sharks are displayed on the #sym:worldGfx  object.  After 5 chronons, all the sharks die.`
