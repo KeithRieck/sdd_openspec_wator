@@ -1,12 +1,29 @@
-import { COLORS, LAYOUT } from '../config.js';
-
 /**
  * A Phaser-native button rendered as a rounded rectangle with a text label.
  *
  * Provides familiar OS-style visual states: normal, hover, active/pressed,
  * disabled, and selected (for segmented controls like the speed buttons).
  * All drawing uses Phaser Graphics and Text; no DOM elements.
+ *
+ * This class is self-contained: all default colors, font size, and corner
+ * radius are hard-coded here. An optional `style` object may be passed to
+ * override any subset of these values.
  */
+
+/** Default style values used when no style (or a partial style) is given. */
+const DEFAULT_STYLE = {
+    bg: 0x1e4976,
+    hover: 0x2a6a9e,
+    active: 0x163a5c,
+    disabled: 0x2a2a2a,
+    selected: 0x4caf50,
+    selectedBorder: 0x66bb6a,
+    border: 0x1e4976,
+    textColor: '#e0e0e0',
+    fontSize: 16,
+    cornerRadius: 8
+};
+
 export default class PhaserButton {
     /**
      * Create a button in a scene.
@@ -18,8 +35,10 @@ export default class PhaserButton {
      * @param {number} height - Button height.
      * @param {string} label - Button label text.
      * @param {Function} onClick - Callback invoked on click (no args).
+     * @param {Object|null} [style=null] - Optional style overrides. Unspecified keys fall back to the
+     *   defaults above.
      */
-    constructor(scene, x, y, width, height, label, onClick) {
+    constructor(scene, x, y, width, height, label, onClick, style = null) {
         this.scene = scene;
         this.x = x;
         this.y = y;
@@ -32,12 +51,14 @@ export default class PhaserButton {
         this.hovered = false;
         this.pressed = false;
 
+        this.style = style ? { ...DEFAULT_STYLE, ...style } : { ...DEFAULT_STYLE };
+
         this.bg = scene.add.graphics();
         this.bg.setPosition(x, y);
         this.text = scene.add.text(x + width / 2, y + height / 2, label, {
             fontFamily: 'Arial, sans-serif',
-            fontSize: `${LAYOUT.fontSize}px`,
-            color: '#e0e0e0'
+            fontSize: `${this.style.fontSize}px`,
+            color: this.style.textColor
         });
         this.text.setOrigin(0.5, 0.5);
 
@@ -82,23 +103,23 @@ export default class PhaserButton {
      */
     draw() {
         this.bg.clear();
-        let fill = COLORS.buttonBg;
+        let fill = this.style.bg;
         if (!this.enabled) {
-            fill = COLORS.buttonDisabled;
+            fill = this.style.disabled;
         } else if (this.selected) {
-            fill = COLORS.buttonSelected;
+            fill = this.style.selected;
         } else if (this.pressed) {
-            fill = COLORS.buttonActive;
+            fill = this.style.active;
         } else if (this.hovered) {
-            fill = COLORS.buttonHover;
+            fill = this.style.hover;
         }
 
         const alpha = this.enabled ? 1.0 : 0.5;
         this.bg.fillStyle(fill, alpha);
-        this.bg.fillRoundedRect(0, 0, this.width, this.height, LAYOUT.cornerRadius);
+        this.bg.fillRoundedRect(0, 0, this.width, this.height, this.style.cornerRadius);
 
         // Border: stronger for selected, subtle otherwise.
-        const borderColor = this.selected ? COLORS.buttonSelectedBorder : COLORS.panelBorder;
+        const borderColor = this.selected ? this.style.selectedBorder : this.style.border;
         this.bg.lineStyle(2, borderColor, alpha);
         this.bg.strokeRoundedRect(0, 0, this.width, this.height, LAYOUT.cornerRadius);
 
