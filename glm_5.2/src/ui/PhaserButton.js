@@ -51,7 +51,17 @@ export default class PhaserButton {
         this.hovered = false;
         this.pressed = false;
 
-        this.style = style ? { ...DEFAULT_STYLE, ...style } : { ...DEFAULT_STYLE };
+        // Start from defaults, then apply only the provided (non-nullish)
+        // overrides so any missing or empty properties fall back to
+        // DEFAULT_STYLE values.
+        this.style = { ...DEFAULT_STYLE };
+        if (style) {
+            for (const key of Object.keys(DEFAULT_STYLE)) {
+                if (style[key] !== undefined && style[key] !== null) {
+                    this.style[key] = style[key];
+                }
+            }
+        }
 
         this.bg = scene.add.graphics();
         this.bg.setPosition(x, y);
@@ -121,7 +131,7 @@ export default class PhaserButton {
         // Border: stronger for selected, subtle otherwise.
         const borderColor = this.selected ? this.style.selectedBorder : this.style.border;
         this.bg.lineStyle(2, borderColor, alpha);
-        this.bg.strokeRoundedRect(0, 0, this.width, this.height, LAYOUT.cornerRadius);
+        this.bg.strokeRoundedRect(0, 0, this.width, this.height, this.style.cornerRadius);
 
         this.text.setText(this.label);
         this.text.setAlpha(this.enabled ? 1.0 : 0.5);
