@@ -88,7 +88,7 @@ class Grid {
      * Create a new grid.
      * @param {number} width - Grid width in cells
      * @param {number} height - Grid height in cells
-     * @param {Uint16Array} data - Flat array storing entity IDs (0 = empty)
+     * @param {Uint32Array} data - Flat array storing entity IDs (0 = empty)
      * @param {Map<number, Entity>} entities - Map of entity ID to entity instance
      * @param {Function} getNextEntityId - Function to get next unique entity ID
      */
@@ -231,8 +231,11 @@ export class WatorSimulation {
         this._width = config.GRID_WIDTH;
         this._height = config.GRID_HEIGHT;
 
-        // Flat grid array: Uint16Array for memory efficiency, stores entity IDs (0 = empty)
-        this._gridData = new Uint16Array(this._width * this._height);
+        // Flat grid array: Uint32Array for memory efficiency, stores entity IDs (0 = empty).
+        // Uint32 is required because entity IDs increase monotonically and are never recycled;
+        // a Uint16Array would silently wrap IDs >= 65536 (ToUint16), corrupting grid lookups
+        // and orphaning entities in the _entities map.
+        this._gridData = new Uint32Array(this._width * this._height);
 
         // Map of entity ID -> Entity instance for O(1) lookup
         this._entities = new Map();
@@ -435,7 +438,7 @@ export class WatorSimulation {
 
     /**
      * Get the flat grid data array (entity IDs, 0 = empty).
-     * @returns {Uint16Array}
+     * @returns {Uint32Array}
      */
     getGridData() {
         return this._gridData;
