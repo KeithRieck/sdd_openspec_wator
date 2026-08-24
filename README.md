@@ -18,6 +18,7 @@ Hosted at:
 * https://keithrieck.github.io/sdd_openspec_wator/muse_glimmer_30B/index.html
 * https://keithrieck.github.io/sdd_openspec_wator/nemotron_3_ultra/index.html
 * https://keithrieck.github.io/sdd_openspec_wator/ox_alpha/index.html
+* https://keithrieck.github.io/sdd_openspec_wator/grok_4.6/index.html
 
 
 # Wa-Tor simulations
