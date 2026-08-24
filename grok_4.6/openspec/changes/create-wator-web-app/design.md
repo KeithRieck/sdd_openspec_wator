@@ -157,8 +157,8 @@ Required paths from `wator-app` requirement 2, plus UI classes:
 `BootScene` exists to satisfy the project Phaser convention. It does not show a landing page (`wator-app` requirement 1). Its last `create()` action starts `SimulationScene`, which immediately `reset()`s a running world at `10x`.
 
 ### 12. Subpath-safe PWA
-Do not create new icon artwork. The manifest MUST use the existing `assets/icon-192.png` and `assets/icon-512.png` files
-All app URLs are relative. Service worker registration uses `new URL('sw.js', import.meta.url)` or an equivalent relative path from `src/main.js`. The manifest `start_url` and `scope` are relative (`./`). The worker caches the app shell and same-origin assets only. Phaser remains a CDN resource; offline start is best-effort (`wator-app` requirement 14). Icons are two-tone circle marks suggesting fish and shark.
+
+All app URLs are relative. Service worker registration uses `new URL('../sw.js', import.meta.url)` from `src/main.js`. The manifest `start_url` and `scope` are relative (`./`). The worker caches the app shell and same-origin assets only. Phaser remains a CDN resource; offline start is best-effort (`wator-app` requirement 14). Do not create new icon artwork. The manifest MUST use the existing `assets/icon-192.png` and `assets/icon-512.png` files.
 
 ### 13. Documentation comments
 

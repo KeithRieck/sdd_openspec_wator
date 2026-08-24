@@ -33,9 +33,9 @@ flowchart LR
 - None. `openspec/specs/` is empty.
 
 ## Impact
-`src/ui/` helpers, `sw.js`, and `manifest.webmanifest`.
+
+- Greenfield application files: `index.html`, `src/main.js`, `src/config.js`, `src/simulation/`, `src/scenes/`, `src/ui/` helpers, `sw.js`, and `manifest.webmanifest`.
 - Reuse existing `src/ui/PhaserButton.js` and existing `assets/icon-192.png` plus `assets/icon-512.png`.
 - Runtime dependency: Phaser 4.1.0 from the jsDelivr CDN. No Node.js runtime dependency.
 - Deployable as a static site from this repository subpath.
-- Norepository subpath.
-- No existing application code, APIs, or main specs are modified.
+- No main specs are modified.
