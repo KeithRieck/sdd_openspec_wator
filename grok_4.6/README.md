@@ -15,3 +15,7 @@ This project used the open-weight model [Grok 4.6](https://artificialanalysis.ai
     - So far, we have spent $1.59 on Grok.
 3. Apply step: Generate Code
     - `/openspec-apply-change `
+    - The code works really well.  So far, this has cost $3.18.
+4. Archive step
+    - `/openspec-archive-change`
+    - After archiving, the total cost has been $3.65.   Possibly, we should use a cheaper model for archiving.

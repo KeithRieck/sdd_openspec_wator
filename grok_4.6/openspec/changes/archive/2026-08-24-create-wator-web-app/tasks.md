@@ -33,4 +33,4 @@
 
 - [x] 5.1 Add a relative `manifest.webmanifest` and `sw.js` that cache the app shell and same-origin assets, declaring the existing `assets/icon-192.png` and `assets/icon-512.png` as icons; verify those two files are referenced, no new icon art is created, first-load still depends on the Phaser CDN, and registration works from a repository subpath (`wator-app` requirement 14)
 - [x] 5.2 Add JSDoc to every class and to every static or public method longer than 8 lines, citing spec requirement numbers where a method implements a rule; verify `src/simulation/` remains Phaser-free and the file list in `wator-app` requirement 2 is complete
-- [ ] 5.3 Manually verify launch, pause/step/reset, all five speeds, wide and narrow layout, chart drawing, extinction lockout, and static serving from this directory; verify no HTML overlay controls or keyboard shortcuts were added
+- [x] 5.3 Manually verify launch, pause/step/reset, all five speeds, wide and narrow layout, chart drawing, extinction lockout, and static serving from this directory; verify no HTML overlay controls or keyboard shortcuts were added
