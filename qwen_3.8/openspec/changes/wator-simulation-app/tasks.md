@@ -14,32 +14,32 @@
 
 ## 3. Scenes & World Rendering
 
-- [ ] 3.1 Create `src/scenes/BootScene.js` that starts `SimulationScene` and a JSDoc class comment; verify the boot transitions to the simulation scene (simulation-app R1)
-- [ ] 3.2 Create `src/scenes/SimulationScene.js` `create()` that owns a `WatorSimulation`, a single world `Graphics`, and the stats/controls/chart UI, starting the sim running at 10x; verify the app launches directly into a running simulation with no landing page (simulation-app R1, ui-controls R1)
-- [ ] 3.3 Implement world rendering in `SimulationScene`: fill water background, draw each fish as a green circle and each shark as a slightly larger blue circle via `Graphics`, no grid lines, redrawn immediately on state change; verify circles render correctly and update per chronon with no movement animation (simulation-app R4)
-- [ ] 3.4 Implement speed-based scheduling in `SimulationScene.update()` using a time accumulator (step while `acc >= 1000/cps`) with a per-frame step cap and no catch-up compensation; verify the sim advances at the selected rate and a speed change takes effect on subsequent updates (simulation-app R5)
+- [x] 3.1 Create `src/scenes/BootScene.js` that starts `SimulationScene` and a JSDoc class comment; verify the boot transitions to the simulation scene (simulation-app R1)
+- [x] 3.2 Create `src/scenes/SimulationScene.js` `create()` that owns a `WatorSimulation`, a single world `Graphics`, and the stats/controls/chart UI, starting the sim running at 10x; verify the app launches directly into a running simulation with no landing page (simulation-app R1, ui-controls R1)
+- [x] 3.3 Implement world rendering in `SimulationScene`: fill water background, draw each fish as a green circle and each shark as a slightly larger blue circle via `Graphics`, no grid lines, redrawn immediately on state change; verify circles render correctly and update per chronon with no movement animation (simulation-app R4)
+- [x] 3.4 Implement speed-based scheduling in `SimulationScene.update()` using a time accumulator (step while `acc >= 1000/cps`) with a per-frame step cap and no catch-up compensation; verify the sim advances at the selected rate and a speed change takes effect on subsequent updates (simulation-app R5)
 
 ## 4. UI Controls & Stats
 
-- [ ] 4.1 Create `src/ui/StatsPanel.js` rendering Chronon, Fish, Sharks, and Status on the left using `PhaserButton`-style `Graphics`/`Text` (no DOM), with an `update()` method; verify values track the live simulation (ui-controls R1)
-- [ ] 4.2 Create `src/ui/ControlPanel.js` composing `PhaserButton`s: Play/Pause, Step, Reset each on its own row, plus a horizontal speed row of 1x/5x/10x/30x/60x with the active speed selected; verify the button set and layout render correctly (ui-controls R2, R3)
-- [ ] 4.3 Wire control behavior: Play/Pause toggles running, Step advances exactly one chronon while paused and is disabled while running, speed changes apply without resuming when paused, Reset creates a new world (chronon 0, cleared status/history) and resumes at the selected speed; verify each behavior in the browser (ui-controls R2–R5)
-- [ ] 4.4 Wire status + terminal behavior: display Running/Paused/terminal messages, auto-pause on extinction, keep Play disabled while terminal and require Reset; verify all status strings and the disabled-Play terminal state (ui-controls R6, R7)
+- [x] 4.1 Create `src/ui/StatsPanel.js` rendering Chronon, Fish, Sharks, and Status on the left using `PhaserButton`-style `Graphics`/`Text` (no DOM), with an `update()` method; verify values track the live simulation (ui-controls R1)
+- [x] 4.2 Create `src/ui/ControlPanel.js` composing `PhaserButton`s: Play/Pause, Step, Reset each on its own row, plus a horizontal speed row of 1x/5x/10x/30x/60x with the active speed selected; verify the button set and layout render correctly (ui-controls R2, R3)
+- [x] 4.3 Wire control behavior: Play/Pause toggles running, Step advances exactly one chronon while paused and is disabled while running, speed changes apply without resuming when paused, Reset creates a new world (chronon 0, cleared status/history) and resumes at the selected speed; verify each behavior in the browser (ui-controls R2–R5)
+- [x] 4.4 Wire status + terminal behavior: display Running/Paused/terminal messages, auto-pause on extinction, keep Play disabled while terminal and require Reset; verify all status strings and the disabled-Play terminal state (ui-controls R6, R7)
 
 ## 5. Population History Chart
 
-- [ ] 5.1 Create `src/ui/PopulationChart.js` that draws the rolling history across the bottom of the window as a green fish line and blue shark line (matching world/stats colors), no titles or text labels, over the 500-chronon window; verify the chart renders both lines and updates as the sim runs (population-chart R1–R3)
+- [x] 5.1 Create `src/ui/PopulationChart.js` that draws the rolling history across the bottom of the window as a green fish line and blue shark line (matching world/stats colors), no titles or text labels, over the 500-chronon window; verify the chart renders both lines and updates as the sim runs (population-chart R1–R3)
 
 ## 6. Responsive Layout
 
-- [ ] 6.1 Implement `SimulationScene.layout()` computing regions from canvas size: wide → stats left / world center / controls right / chart bottom; narrow (below the config breakpoint) → world top with stats and controls stacked below and chart at the bottom, preserving the world aspect ratio via `cellSize = min(regionW/gridW, regionH/gridH)` and centering; verify the layout reflows correctly when resizing between wide and narrow and that grid constant changes scale/center without UI edits (simulation-app R6)
+- [x] 6.1 Implement `SimulationScene.layout()` computing regions from canvas size: wide → stats left / world center / controls right / chart bottom; narrow (below the config breakpoint) → world top with stats and controls stacked below and chart at the bottom, preserving the world aspect ratio via `cellSize = min(regionW/gridW, regionH/gridH)` and centering; verify the layout reflows correctly when resizing between wide and narrow and that grid constant changes scale/center without UI edits (simulation-app R6)
 
 ## 7. PWA
 
-- [ ] 7.1 Create `manifest.webmanifest` declaring the app name and referencing `assets/icon-192.png` and `assets/icon-512.png`; verify the manifest is valid and the icons resolve (pwa R1)
-- [ ] 7.2 Create `sw.js` that precaches the app shell and same-origin assets (cache-first) and leaves the CDN Phaser script to the network; verify the shell is cached on first load and repeat visits work offline once Phaser has loaded (pwa R2, R3)
+- [x] 7.1 Create `manifest.webmanifest` declaring the app name and referencing `assets/icon-192.png` and `assets/icon-512.png`; verify the manifest is valid and the icons resolve (pwa R1)
+- [x] 7.2 Create `sw.js` that precaches the app shell and same-origin assets (cache-first) and leaves the CDN Phaser script to the network; verify the shell is cached on first load and repeat visits work offline once Phaser has loaded (pwa R2, R3)
 
 ## 8. Integration Verification
 
-- [ ] 8.1 Run the full app in a browser and verify end-to-end: launch at 10x, play/pause/step/reset, speed changes, live stats, terminal auto-pause with correct status, chart updating, and reflow on resize; confirm no console errors and no DOM overlay (simulation-app R1–R6, ui-controls R1–R7, population-chart R1–R3)
-- [ ] 8.2 Verify JSDoc coverage: every class has a class-level doc comment and every static/public method over 8 lines has a doc comment; confirm by reviewing each new source file (prd-v001 AC 54, AC 55)
+- [x] 8.1 Run the full app in a browser and verify end-to-end: launch at 10x, play/pause/step/reset, speed changes, live stats, terminal auto-pause with correct status, chart updating, and reflow on resize; confirm no console errors and no DOM overlay (simulation-app R1–R6, ui-controls R1–R7, population-chart R1–R3)
+- [x] 8.2 Verify JSDoc coverage: every class has a class-level doc comment and every static/public method over 8 lines has a doc comment; confirm by reviewing each new source file (prd-v001 AC 54, AC 55)

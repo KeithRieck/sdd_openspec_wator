@@ -27,8 +27,7 @@ function bootGame() {
     };
 
     // eslint-disable-next-line no-new
-    const game = new Phaser.Game(config);
-    window.__game = game;
+    new Phaser.Game(config);
 }
 
 bootGame();

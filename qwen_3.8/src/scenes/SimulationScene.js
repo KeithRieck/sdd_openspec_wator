@@ -122,8 +122,9 @@ export default class SimulationScene extends Phaser.Scene {
             this.chart.setPosition(pad, H - chartH - pad, W - pad * 2, chartH);
         } else {
             // Narrow: world on top, stats + controls side by side below,
-            // chart at the bottom.
-            const bottomH = chartH + LAYOUT.buttonHeight * 3 + LAYOUT.gap * 4 + pad * 4;
+            // chart at the bottom. Reserve room for the full control panel
+            // (which is taller than the stats panel) plus the chart.
+            const bottomH = chartH + this.controls.height + pad * 3;
             const worldH = H - bottomH;
             worldRegion = { x: pad, y: pad, w: W - pad * 2, h: worldH };
 
