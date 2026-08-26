@@ -16,3 +16,8 @@ This project used the Chinese open-weight model [Qwen3.8 27B](https://artificial
 3. Apply step: Generate code
     - `/openspec-apply-change`
     - Code generation was really slow, and the OpenRouter connection kept failing.
+    - Total cost so far is $2.43
+4. Archive step:
+    - `/openspec-archive-change`
+    - This step generally always takes longer than you would have expected and costs a little more than you would think it will.
+    - Final cost for this project was $3.00 exactly.
