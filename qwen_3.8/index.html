@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wa-Tor Simulation</title>
+    <meta name="description" content="A browser-based Wa-Tor predator-prey cellular automaton simulation.">
+    <meta name="theme-color" content="#0b2545">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="assets/icon-192.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #0b2545;
+        }
+        #phaser-canvas {
+            display: block;
+        }
+    </style>
+    <!-- Phaser 4.x from CDN (simulation-app R2, pwa R3). -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@4.1.0/dist/phaser.min.js"></script>
+</head>
+<body>
+    <!-- The app boots as ES2020 modules; all UI is Phaser-native (simulation-app R2, R3). -->
+    <script type="module" src="src/main.js"></script>
+    <script>
+        // Register the service worker for lightweight PWA support (pwa R2).
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(() => {
+                    // Best-effort: PWA support is optional (pwa R3).
+                });
+            });
+        }
+    </script>
+</body>
+</html>

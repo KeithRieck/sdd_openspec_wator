@@ -10,5 +10,9 @@ This project used the Chinese open-weight model [Qwen3.8 27B](https://artificial
 1. Exploration step:
     - `/openspec-explore I want to create a web app that runs the wa-tor simulation, using the requirements from  the prd-v001.md file.`
     - Qwen correctly decomposed Entity into Shark and Fish classes already.  It also detected the PhaserButton class and the icons under the assets directory.
-1. Propose step: Generate documents
+2. Propose step: Generate documents
     - `/openspec-propose`
+    - So far, processing has cost 42 cents.
+3. Apply step: Generate code
+    - `/openspec-apply-change`
+    - Code generation was really slow, and the OpenRouter connection kept failing.
