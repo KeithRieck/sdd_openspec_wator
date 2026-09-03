@@ -351,7 +351,7 @@ export class SimulationScene extends Phaser.Scene {
         }
         this.running = !this.running;
         if (this.running) {
-            this.lastStepTime = this.time;
+            this.lastStepTime = this.time.now;
         }
         this.render();
     }
@@ -373,7 +373,7 @@ export class SimulationScene extends Phaser.Scene {
         this.simulation.reset();
         this.running = true;
         this.speed = config.DEFAULT_SPEED;
-        this.lastStepTime = this.time;
+        this.lastStepTime = this.time.now;
         this.render();
     }
 
