@@ -210,7 +210,8 @@ export class SimulationScene extends Phaser.Scene {
 
         // Update stats display when simulation steps
         if (stepped) {
-            this.updateStatsText();
+           this.updateStatsText();
+           this.drawAll();
         }
     }
 
@@ -260,7 +261,13 @@ export class SimulationScene extends Phaser.Scene {
         this.speedTexts = [];
         this.actionTexts = {};
 
-        // Calculate layout
+        this.drawAll();
+    }
+
+    drawAll() {
+        const width = this.scale.width;
+        const height = this.scale.height;
+
         const chartHeight = CHART_HEIGHT;
         const availableHeight = height - chartHeight - CHART_MARGIN * 2;
 

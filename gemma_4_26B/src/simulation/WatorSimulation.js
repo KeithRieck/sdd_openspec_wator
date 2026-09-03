@@ -45,6 +45,13 @@ export class WatorSimulation {
                 }
             }
         }
+
+        // Requirement 12: The initial population is not born mid-chronon, so clear
+        // the newborn flag so these entities act starting with the first chronon.
+        for (const entity of this.entities.values()) {
+            entity.isNewborn = false;
+        }
+
         this._recordHistory();
     }
 
@@ -183,10 +190,19 @@ export class WatorSimulation {
             // Requirement 13: Skip if entity died/eaten before its turn
             if (!entity) continue;
             
-            // Requirement 12: Prevent newborns from acting
+            // Requirement 12: Prevent newborns from acting within the same chronon.
+            // An entity's isNewborn flag is cleared at the end of the chronon so it
+            // may act from the next chronon onward.
             if (entity.isNewborn) continue;
             
             entity.act(this);
+        }
+
+        // Requirement 12: Clear the newborn flag on all surviving entities after the
+        // turn loop so entities born this chronon can act next chronon. Without this,
+        // newborn flags clear only inside act() and unbred initial entities stay frozen.
+        for (const entity of this.entities.values()) {
+            entity.isNewborn = false;
         }
 
         this._checkExtinction();
