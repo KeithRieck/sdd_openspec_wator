@@ -5,7 +5,7 @@
  */
 
 const CACHE_NAME = 'wator-v1-nemotron';
-const APP_SHELL = [
+const ASSETS = [
     '/',
     '/index.html',
     '/src/main.js',
@@ -30,7 +30,7 @@ self.addEventListener('install', (event) => {
         caches.open(CACHE_NAME)
             .then((cache) => {
                 console.log('Caching app shell');
-                return cache.addAll(APP_SHELL.map(url => new Request(url, { credentials: 'same-origin' })));
+                return cache.addAll(ASSETS.map(url => new Request(url, { credentials: 'same-origin' })));
             })
             .then(() => self.skipWaiting())
     );

@@ -10,7 +10,7 @@
 const CACHE_NAME = 'wator-shell-v1';
 
 /** App shell and same-origin assets to precache (pwa R2). */
-const SHELL_ASSETS = [
+const ASSETS = [
     'index.html',
     'manifest.webmanifest',
     'src/main.js',
@@ -32,7 +32,7 @@ const SHELL_ASSETS = [
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then((cache) => cache.addAll(SHELL_ASSETS))
+            .then((cache) => cache.addAll(ASSETS))
             .then(() => self.skipWaiting())
     );
 });

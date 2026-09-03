@@ -10,7 +10,7 @@
 const CACHE_NAME = 'wator-v1-ox-alpha';
 
 /** Same-origin app shell files. */
-const APP_SHELL = [
+const ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
@@ -39,7 +39,7 @@ self.addEventListener('install', (event) => {
     (async () => {
       const cache = await caches.open(CACHE_NAME);
       // Cache the app shell first; never let one failure abort install.
-      await Promise.allSettled(APP_SHELL.map((url) => cache.add(url)));
+      await Promise.allSettled(ASSETS.map((url) => cache.add(url)));
       try {
         await cache.add(CDN_PHASER);
       } catch {

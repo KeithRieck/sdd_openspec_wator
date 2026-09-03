@@ -4,7 +4,7 @@
  */
 
 const CACHE_NAME = 'wator-v1-mistral';
-const APP_SHELL = [
+const ASSETS = [
     '/',
     '/index.html',
     '/src/main.js',
@@ -24,7 +24,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
-                return cache.addAll(APP_SHELL);
+                return cache.addAll(ASSETS);
             })
     );
 });

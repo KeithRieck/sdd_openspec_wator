@@ -1,6 +1,6 @@
 const CACHE_NAME = 'wator-v1-deepseek';
 
-const PRECACHE_URLS = [
+const ASSETS = [
     './', './index.html', './src/main.js', './src/config.js',
     './src/simulation/WatorSimulation.js', './src/scenes/BootScene.js',
     './src/scenes/SimulationScene.js', './manifest.webmanifest',
@@ -9,7 +9,7 @@ const PRECACHE_URLS = [
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_URLS).catch(() => {}))
+        caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS).catch(() => {}))
     );
     self.skipWaiting();
 });

@@ -24,3 +24,5 @@ OpenRouter announced a sale on an "unreleased frontier model" with a codename of
     The model forgets to add an import for the `RENDER` object to the Shark class, although it does correctly impot in the Fish class.
 4. Archive step:
     - `/openspec-archive-change`
+
+After a couple weeks, we find out that ox alpha is GLM-5.3-flash, from z.ai.

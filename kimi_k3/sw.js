@@ -5,7 +5,7 @@
  * availability (AS-R8 / AC 56, 57).
  */
 const CACHE_NAME = 'wator-v1-kimi';
-const SHELL = [
+const ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
@@ -25,7 +25,7 @@ const SHELL = [
 /** Installs by pre-caching the app shell. */
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting()),
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting()),
   );
 });
 

@@ -1,5 +1,5 @@
 const CACHE_NAME = 'wator-v1-gemma';
-const ASSETS_TO_CACHE = [
+const ASSETS = [
   '/',
   '/index.html',
   '/src/main.js',
@@ -10,7 +10,7 @@ const ASSETS_TO_CACHE = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
+      return cache.addAll(ASSETS);
     })
   );
 });

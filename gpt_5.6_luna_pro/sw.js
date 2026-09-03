@@ -1,5 +1,5 @@
 const CACHE_NAME = 'wator-v1-luna';
-const APP_SHELL = [
+const ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
@@ -19,7 +19,7 @@ const APP_SHELL = [
 ];
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)));
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)));
   self.skipWaiting();
 });
 

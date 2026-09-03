@@ -10,7 +10,7 @@
 const CACHE_NAME = 'wator-v1-glm';
 
 /** App shell URLs to cache on install (same-origin). */
-const APP_SHELL = [
+const ASSETS = [
     './',
     './index.html',
     './manifest.webmanifest',
@@ -37,7 +37,7 @@ const PHASER_CDN_URL = 'https://cdn.jsdelivr.net/npm/phaser@4.1.0/dist/phaser.mi
  */
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL))
+        caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
     );
     self.skipWaiting();
 });

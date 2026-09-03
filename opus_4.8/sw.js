@@ -6,9 +6,9 @@
  * CDN (cross-origin); it is intentionally not precached, so first-load and
  * offline behavior depend on whether the browser has cached that script.
  */
-const CACHE = 'wator-v1-claude';
+const CACHE_NAME = 'wator-v1-claude';
 
-const SHELL = [
+const ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
@@ -24,7 +24,7 @@ const SHELL = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting())
   );
 });
 
@@ -33,7 +33,7 @@ self.addEventListener('activate', (event) => {
     caches
       .keys()
       .then((keys) =>
-        Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
+        Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
       )
       .then(() => self.clients.claim())
   );
@@ -51,7 +51,7 @@ self.addEventListener('fetch', (event) => {
       return fetch(request)
         .then((response) => {
           const copy = response.clone();
-          caches.open(CACHE).then((cache) => cache.put(request, copy));
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
           return response;
         })
         .catch(() => cached);
