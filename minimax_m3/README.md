@@ -9,4 +9,15 @@ This project used the Chinese open-weight model [MiniMax-M3](https://artificiala
 # Development:
 1. Exploration step:
     - `/openspec-explore I want to create a web app that runs the wa-tor simulation, using the requirements from  the prd-v001.md file.`
-    - Qwen correctly decomposed Entity into Shark and Fish classes already.  It also detected the PhaserButton class and the icons under the assets directory.
+    - Although I did not OK this, it appears that MiniMax went and read the directory for the Qwen project, which is proactive, but kind of cheating.
+    - MiniMax correctly decomposed Entity into Shark and Fish classes already.  
+    - `Use only information and files beneath the minimax_m3 directory. Do not consult any other wator projects on the file systems.`
+    - `Use the src/ui/PhaserButton.js for the buttons on the ui. Use the image files under the assets directory for the PWA icons.`
+    - After adding these two constraints, MiniMax took a **long** time to reconsider everything.  It may have been stuck in a loop; I had to finally stop it.
+2. Propose step: Generating Documents
+    - `/openspec-propose`
+    - This appears to be another model that must be constantly told not to pause and to proceed.
+    - The resulting design.md file contains lots of mermaid diagrams, including a sequence diagram.
+3. Apply step: Generating Code
+    - `/openspec-apply-change`
+
