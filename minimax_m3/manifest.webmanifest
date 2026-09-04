@@ -1,0 +1,23 @@
+{
+    "name": "Wa-Tor Simulation",
+    "short_name": "Wa-Tor",
+    "description": "Browser-based Wa-Tor predator-prey cellular automaton simulation.",
+    "start_url": "/sdd_openspec_wator/minimax_m3/index.html",
+    "scope": "/sdd_openspec_wator/minimax_m3/",
+    "display": "standalone",
+    "orientation": "any",
+    "background_color": "#0d2a4a",
+    "theme_color": "#0d2a4a",
+    "icons": [
+        {
+            "src": "assets/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

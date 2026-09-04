@@ -17,7 +17,7 @@ This project used the Chinese open-weight model [MiniMax-M3](https://artificiala
 2. Propose step: Generating Documents
     - `/openspec-propose`
     - This appears to be another model that must be constantly told not to pause and to proceed.
-    - The resulting design.md file contains lots of mermaid diagrams, including a sequence diagram.
+    - The resulting [`design.md`](./openspec/changes/add-wa-tor-simulation/design.md) file contains lots of mermaid diagrams, including a sequence diagram.
 3. Apply step: Generating Code
     - `/openspec-apply-change`
 

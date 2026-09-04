@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wa-Tor Simulation</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#0d2a4a">
+    <!-- Phaser 4.x loaded from CDN; not precached by the service worker. -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@4.1.0/dist/phaser.min.js"></script>
+</head>
+<body style="margin:0;padding:0;background:#0d2a4a;overflow:hidden;">
+    <div id="game" style="width:100vw;height:100vh;"></div>
+    <script type="module" src="src/main.js"></script>
+    <script>
+        // Register the service worker for PWA shell caching. Scope is fixed
+        // to the GitHub Pages subpath so the SW controls exactly the paths
+        // it can precache.
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sdd_openspec_wator/minimax_m3/sw.js', {
+                    scope: '/sdd_openspec_wator/minimax_m3/'
+                }).catch(err => {
+                    console.warn('Service worker registration failed:', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
