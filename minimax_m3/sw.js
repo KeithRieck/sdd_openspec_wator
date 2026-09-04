@@ -9,14 +9,14 @@
  * visited the page at least once online; first-load or offline-before-cached
  * behavior depends on network availability for Phaser.
  */
-const CACHE_NAME = 'wator-shell-v1';
+const CACHE_NAME = 'wator-v1-minimax-m3';
 
 /**
  * The set of URLs to precache on install. Relative paths are resolved
  * against the service worker's scope, which is
  * /sdd_openspec_wator/minimax_m3/. Add new same-origin shell files here.
  */
-const PRECACHE_URLS = [
+const ASSETS = [
     './',
     './index.html',
     './manifest.webmanifest',
@@ -35,7 +35,7 @@ const PRECACHE_URLS = [
 
 self.addEventListener('install', event => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then(cache => cache.addAll(PRECACHE_URLS))
+        caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
     );
     self.skipWaiting();
 });

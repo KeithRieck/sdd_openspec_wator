@@ -39,8 +39,8 @@ export const SHARK_COLOR = 0x2196f3;
 export const WATER_COLOR = 0x0d2a4a;
 
 /** Radius (in world pixels) for drawing fish and sharks at scale=1. */
-export const FISH_RADIUS = 4;
-export const SHARK_RADIUS = 6;
+export const FISH_RADIUS = 3;
+export const SHARK_RADIUS = 4;
 
 /** Number of chronon samples retained in the rolling history ring buffer. */
 export const HISTORY_WINDOW = 500;
