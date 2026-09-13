@@ -16,7 +16,7 @@ Time passes in discrete jumps, which I shall call chronons. During each chronon 
 2. At each chronon, each shark is deprived of a unit of energy.
 3. Upon reaching zero energy, a shark dies.
 4. If a shark moves to a square occupied by a fish, it eats the fish and earns a certain amount of energy.
-Once a shark has survived a certain number of chronons it may reproduce in exactly the same way as the fish.
+Once a shark has survived a certain number of chronons it may reproduce in exactly the same way as the fish, and moving onto a square occupied by a fish counts as a successful move for the purpose of reproduction.
 
 ## Goals
 - Emphasize simulation correctness while keeping the app user-friendly.
@@ -52,6 +52,8 @@ Once a shark has survived a certain number of chronons it may reproduce in exact
     - Assume the minimum tablet CSS viewport dimensions are for an iPad mini: `744 x 1133` CSS pixels.
     - Icon design should show circles suggesting the shark and fish symbols.
 - Initial randomness uses `Math.random()`.
+- Exactly one random-number generator serves the whole simulation. Every random choice, including initialization, movement selection, and turn-order shuffling, draws from that single source.
+- The simulation is object oriented. Entities are instances of JavaScript classes that extend a common `Entity` base class, for example `Fish extends Entity` and `Shark extends Entity`.
 - Default grid dimensions are `100 x 70`.
 - Default fish density is `30%`.
 - Default shark density is `5%`.
@@ -91,11 +93,14 @@ Once a shark has survived a certain number of chronons it may reproduce in exact
 20. IF a shark has adjacent fish after surviving the energy decrement, THEN the system SHALL move the shark to a randomly selected adjacent fish cell and remove the eaten fish.
 21. WHEN a shark eats a fish, THEN the system SHALL add `sharkEnergyGain` to the shark energy.
 22. IF a shark has no adjacent fish and has at least one adjacent empty cell, THEN the system SHALL move the shark to a randomly selected adjacent empty cell.
-23. IF a shark is breeding-ready and successfully moves, THEN the system SHALL leave a newborn shark in the old cell and reset the parent shark breed timer to `0`.
+23. IF a shark is breeding-ready and successfully moves, THEN the system SHALL leave a newborn shark in the old cell and reset the parent shark breed timer to `0`. A shark that eats a fish counts as having successfully moved.
 24. WHEN a newborn shark is created, THEN the system SHALL initialize the newborn shark energy to `initialSharkEnergy`.
 25. IF a shark is breeding-ready and cannot move, THEN the system SHALL reset the shark breed timer to `0`.
 26. IF a shark is not breeding-ready and cannot move, THEN the system SHALL continue aging the shark breed timer.
-27. WHERE simulation state is stored, THEN the system SHALL use a flat grid array plus entity records containing ID, type, position, breed age, and shark energy when applicable.
+27. WHERE simulation state is stored, THEN the system SHALL use a flat grid array plus entity objects that are instances of classes extending a common `Entity` base class, where each entity carries an ID, a position, and a breed age, and a shark entity additionally carries energy.
+27a. WHERE the flat grid array is defined, THEN the system SHALL store one slot per cell, containing the occupying entity ID or an `empty` marker.
+27b. WHERE entity position is stored, THEN the system SHALL store the flat grid array index of the entity's cell.
+27c. WHERE the grid array and the entity objects are related, THEN the system SHALL keep them consistent, so that the entity ID stored in a cell matches the entity occupying that cell.
 28. WHEN the world is rendered, THEN the system SHALL draw empty water as the background and draw fish and sharks as abstract circles with no grid lines.
 29. WHEN the world advances by one or more chronons, THEN the system SHALL render immediate state updates without per-cell movement animation.
 30. WHERE population stats appear, THEN the system SHALL place Chronon, Fish, Sharks, and Status on the left side of the main world display.
@@ -126,6 +131,10 @@ Once a shark has survived a certain number of chronons it may reproduce in exact
 55. WHERE static methods and public methods exceed 8 lines, THEN the system SHALL document them with JSDoc-style comments.
 56. WHERE PWA support is implemented, THEN the system SHALL include a manifest and service worker that cache the app shell and same-origin assets.
 57. IF the CDN Phaser script has not already been successfully loaded and cached, THEN the system SHALL allow first-load or offline behavior to depend on network availability.  
+58. WHERE the simulation is implemented, THEN the system SHALL define an `Entity` base class and define `Fish` and `Shark` as classes that extend it.
+59. WHERE the `Entity` base class is defined, THEN the system SHALL expose the shared behavior of entities, including position, breed age, and breeding readiness.
+60. WHERE entity behavior is implemented, THEN the system SHALL let each entity class decide its own action during a chronon.
+61. WHERE random choices are made, THEN the system SHALL draw every random choice from the single random-number generator rather than calling `Math.random()` in more than one place.
 
 ## Risks / Trade-offs
 - Phaser CDN loading keeps the app simple but limits guaranteed offline behavior.
