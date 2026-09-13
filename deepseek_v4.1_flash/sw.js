@@ -12,7 +12,7 @@
  */
 
 /** Cache name; bump to invalidate older cached shells. */
-const CACHE_NAME = 'wator-shell-v1';
+const CACHE_NAME = 'wator-v1-deepseek_v4.1_flash';
 
 /**
  * App shell and same-origin assets to pre-cache.
@@ -20,7 +20,7 @@ const CACHE_NAME = 'wator-shell-v1';
  * These are the files needed to start the app, plus the manifest and the icon
  * files already present in `assets/`.
  */
-const PRECACHE_URLS = [
+const ASSETS = [
     './',
     './index.html',
     './manifest.webmanifest',
@@ -50,7 +50,8 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) =>
             Promise.all(
-                PRECACHE_URLS.map((url) =>
+                ASSETS
+            .map((url) =>
                     cache.add(url).catch(() => {
                         /* Ignore individual failures; the app degrades gracefully. */
                     })

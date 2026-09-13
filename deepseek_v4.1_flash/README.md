@@ -17,3 +17,7 @@ This project used the Chinese open-weight model [DeepSeek v4.1 Flash](https://ar
 3. Apply step:
     - `/openspec-apply-change `
     - DeepSeek does a lot of UI testing.
+    - So far, this has cost $0.59.
+4. Archive step:
+    - `/openspec-archive-change`
+    - Annoyingly, DeepSeek got caught in a loop executing this step.
