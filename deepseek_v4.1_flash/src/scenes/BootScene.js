@@ -17,6 +17,10 @@ export default class BootScene extends Phaser.Scene {
      * Verify the runtime is usable, register the service worker, then start the
      * simulation scene.
      *
+     * The scene switch is deferred to the next tick. Starting another scene
+     * synchronously from `create()` can leave the target scene stuck in its
+     * INIT state in Phaser 4, so the hand-off is queued instead.
+     *
      * @returns {void}
      */
     create() {

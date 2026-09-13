@@ -53,8 +53,8 @@
 
 ## 8. Integration verification
 
-- [ ] 8.1 Verify the complete file organization matches the required list. Verify: `index.html`, `src/main.js`, `src/config.js`, `src/simulation/WatorSimulation.js`, `src/scenes/BootScene.js`, `src/scenes/SimulationScene.js`, `sw.js`, `manifest.webmanifest`, and `assets/` are all present (`app-shell/static-hosting` §2.1).
-- [ ] 8.2 Serve the repository root as a static site and run the app from its subpath in a browser. Verify: the app starts running at `10x`, the world renders, stats update, controls operate, the chart draws, and no 404s or console errors appear (`app-shell/static-hosting` §5.1).
+- [x] 8.1 Verify the complete file organization matches the required list. Verify: `index.html`, `src/main.js`, `src/config.js`, `src/simulation/WatorSimulation.js`, `src/scenes/BootScene.js`, `src/scenes/SimulationScene.js`, `sw.js`, `manifest.webmanifest`, and `assets/` are all present (`app-shell/static-hosting` §2.1).
+- [x] 8.2 Serve the repository root as a static site and run the app from its subpath in a browser. Verify: the app starts running at `10x`, the world renders, stats update, controls operate, the chart draws, and no 404s or console errors appear (`app-shell/static-hosting` §5.1).
 - [ ] 8.3 Run a manual end-to-end pass at both a wide viewport and `744 x 1133`. Verify: every `simulation-ui` scenario holds in both arrangements, and a full run continues until one of the three terminal outcomes is reached and the simulation auto-pauses.
-- [ ] 8.4 Confirm `src/ui/PhaserButton.js` is unmodified and that all documentation requirements hold. Verify: `git diff` shows no changes to that file, and every class and every static or public method longer than eight lines carries a JSDoc comment (`prd` req 54, req 55).
-- [ ] 8.5 Confirm no out-of-scope features were introduced. Verify: no seeded RNG, automated tests, build tooling, TypeScript, DOM overlays over Phaser, keyboard shortcuts, world editing, or debug console API exist in the project.
+- [x] 8.4 Confirm `src/ui/PhaserButton.js` is unmodified and that all documentation requirements hold. Verify: `git diff` shows no changes to that file, and every class and every static or public method longer than eight lines carries a JSDoc comment (`prd` req 54, req 55).
+- [x] 8.5 Confirm no out-of-scope features were introduced. Verify: no seeded RNG, automated tests, build tooling, TypeScript, DOM overlays over Phaser, keyboard shortcuts, world editing, or debug console API exist in the project.

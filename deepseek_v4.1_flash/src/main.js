@@ -28,7 +28,7 @@ import { COLORS } from './config.js';
  * @returns {object} The running Phaser game instance.
  */
 function start() {
-    return new Phaser.Game({
+    const game = new Phaser.Game({
         type: Phaser.AUTO,
         parent: 'game',
         backgroundColor: COLORS.water,
@@ -42,6 +42,8 @@ function start() {
         // owns one single layout description.
         scene: [BootScene, SimulationScene]
     });
+    window.__game = game;
+    return game;
 }
 
 if (typeof Phaser === 'undefined') {

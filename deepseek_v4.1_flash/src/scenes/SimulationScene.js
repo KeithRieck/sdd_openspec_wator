@@ -52,7 +52,7 @@ export default class SimulationScene extends Phaser.Scene {
         this.layout = null;
         this._applyLayout(this.scale.width, this.scale.height);
 
-        this.scale.on('resize', (size) => this._applyLayout(size.width, size.height));
+        this.scale.on('resize', (gameSize) => this._applyLayout(gameSize.width, gameSize.height));
 
         this._render();
     }

@@ -16,3 +16,4 @@ This project used the Chinese open-weight model [DeepSeek v4.1 Flash](https://ar
     - `/openspec-propose`
 3. Apply step:
     - `/openspec-apply-change `
+    - DeepSeek does a lot of UI testing.
