@@ -1,0 +1,44 @@
+# Tasks
+
+## 1. App Shell and Configuration
+
+- [ ] 1.1 Create `index.html` loading `phaser@4.1.0` from `https://cdn.jsdelivr.net/npm/phaser@4.1.0/dist/phaser.min.js` via a CDN script tag and booting `src/main.js` as an ES2020 module; verify by loading the page and confirming no console errors and the module executes (spec Req 2.1)
+- [ ] 1.2 Create `src/config.js` exporting all tunables with PRD defaults: grid `100 x 70`, fish density `0.30`, shark density `0.05`, `fishBreedTime = 3`, `sharkBreedTime = 25`, `initialSharkEnergy = 5`, `sharkEnergyGain = 3`, `sharkEnergyCostPerChronon = 1`, speed options `[1, 5, 10, 30, 60]`, default speed `10`, history length `500`, fish/shark/water colors, layout breakpoint; verify each exported value matches `prd-v001.md` (spec Req 30.1)
+- [ ] 1.3 Create `src/main.js` constructing `Phaser.Game` with `BootScene` and `SimulationScene` and full-window scale settings; verify the canvas fills the browser window on load (spec Req 2.3)
+
+## 2. Simulation Engine (Phaser-Free)
+
+- [ ] 2.1 Create `src/simulation/Entity.js`: abstract `Entity` base class with `id`, `pos`, `breedAge`, `bornChronon`, abstract `act()`, `breedReady`, `ageOneChronon()`, `resetBreedTimer()`, and shared `tryMoveOrBreed(emptyNeighbors)` implementing the D3 breed table; verify with a code review against spec Req 12/17 scenarios and JSDoc on class and long methods (spec Req 18, 30.2)
+- [ ] 2.2 Create `src/simulation/WatorSimulation.js` core state: flat `grid` array of ID-or-`EMPTY` slots, `entities` Map, live fish/shark counters, and the three seam methods `moveEntityTo`, `spawnAt`, `removeEntity` as the only mutators of both structures; verify by review that no other code touches `grid` or `entities` (spec Req 19, design D5)
+- [ ] 2.3 Add `neighborCells` (orthogonal N/E/S/W with toroidal wrap), `emptyNeighbors`, `fishNeighbors`, and `randomChoice` drawing from the single injected `rng` defaulting to `Math.random`; verify corner/edge wrapping returns exactly up-to-four neighbors and `Math.random` appears nowhere else (spec Req 3.2, 7.1)
+- [ ] 2.4 Implement `step()`: snapshot entity IDs, Fisher–Yates shuffle via the shared RNG, skip IDs removed earlier in the chronon and entities with `bornChronon === chronon`, dispatch `entity.act()`, then advance `chronon`, record one history sample, and evaluate extinction status; verify newborn deferral and eaten-then-skipped behavior against spec Req 8–10 scenarios (spec Req 8, 9, 10, 27.1, 26)
+- [ ] 2.5 Create `src/simulation/Fish.js` implementing `Fish.act()` per spec Req 11–12: random empty-neighbor move, spawn-on-move when breeding-ready, timer reset when ready-but-blocked, continued aging otherwise; verify each of the three breed scenarios in spec Req 12 plus the blocked-move scenario in Req 11 (spec Req 11, 12)
+- [ ] 2.6 Create `src/simulation/Shark.js` implementing `Shark.act()` in the D4 order: age, energy decrement, starvation removal at `0`, hunt adjacent fish (gain `sharkEnergyGain`) or roam to empty water, then breed with newborn energy `initialSharkEnergy`; verify starvation-before-move, eat-grants-energy, eat-counts-as-move-for-breeding, and newborn energy against spec Req 13–17 scenarios (spec Req 13–17)
+- [ ] 2.7 Add `reset()` creating a fresh world with `30%` fish / `5%` shark random population and chronon `0`, plus the rolling 500-sample history buffer and `status` reporting (`Running`/`Paused`/terminal, auto-pause on extinction); verify a fresh world's cell occupancy matches the densities approximately and history clears on reset (spec Req 6.1, 25, 26, 27.1)
+- [ ] 2.8 Engine isolation check: instantiate `WatorSimulation` in the browser devtools console, run several hundred `step()` calls, and verify population oscillation occurs, the grid/consistency invariant spot-checks hold (`grid[e.pos] === e.id` for sampled entities), and no Phaser symbol is referenced by `src/simulation/` (spec Req 2.2, 19.3)
+
+## 3. Scenes, Rendering, and Controls
+
+- [ ] 3.1 Create `src/scenes/BootScene.js` configuring full-window Phaser scale handling and starting `SimulationScene`; verify the app boots straight into the running scene with no landing or instruction screen at `10x` (spec Req 1.1, 2.3)
+- [ ] 3.2 Implement `SimulationScene` world rendering: one `Graphics` pass of water background, green fish circles, slightly larger blue shark circles, no grid lines; verify visual output matches spec Req 20.1 and updates without movement animation between chronons (spec Req 20.1, 21.1)
+- [ ] 3.3 Implement the frame pump: accumulator of `delta/1000 * speed` chronons per update, batched `sim.step()` calls, exactly one redraw per frame, no throttle catch-up; verify `1x` advances ~1 chronon/sec and `60x` advances ~60 chronons/sec by watching the Chronon counter (spec Req 28.1, 28.2, design D8)
+- [ ] 3.4 Create `src/ui/StatsPanel.js` showing Chronon, Fish, Sharks, and Status in the left column, live-updated; verify values track each chronon and status text follows run state (spec Req 22.1, 26.4)
+- [ ] 3.5 Create `src/ui/HistoryChart.js` drawing green fish and blue shark polylines over the rolling 500-chronon window across the bottom, auto-scaled to the window maximum, with no titles or text labels; verify two colored lines scroll with the simulation and no chart text appears (spec Req 27.1, design D10)
+- [ ] 3.6 Build the control panel with `src/ui/PhaserButton.js`: Play/Pause (label swap), Step, and Reset each on its own row plus the `1x/5x/10x/30x/60x` segmented speed row using `setSelected`; verify layout places controls on the right, exactly these controls exist, and the active speed shows selected (spec Req 23.1)
+- [ ] 3.7 Wire control semantics: Step disabled while running, Step advances exactly one chronon while paused, speed changes apply to subsequent updates without resuming a paused run, default speed `10x` at launch; verify each behavior against spec Req 24.1–24.3 and Req 1.1 (spec Req 24, 1)
+- [ ] 3.8 Wire Reset and terminal behavior: Reset builds a new random world at chronon `0` with cleared history and resumes at the selected speed from any state; extinction auto-pauses with `Sharks extinct` / `Fish extinct` / `Ecosystem collapsed` and keeps Play disabled until Reset; verify each terminal status by forcing populations toward zero in devtools (spec Req 25, 26.1–26.3, 26.5)
+- [ ] 3.9 Implement `layout()` and resize handling: wide three-column layout vs compact reflow (stats+controls top bar, world middle, chart bottom), world scaled by `cellSize = min(availW/cols, availH/rows)` and centered, buttons repositioned via `setPosition`/`setSize`; verify on a wide window and at `744 x 1133` CSS pixels that the world aspect ratio is preserved and all controls remain operable (spec Req 4.1, 5.1, 29.1, 29.2)
+
+## 4. PWA Support
+
+- [ ] 4.1 Create `manifest.webmanifest` with `"start_url": "."`, `"scope": "."`, and relative `assets/icon-192.png` / `assets/icon-512.png` icons; verify the manifest validates in the browser devtools Application panel when served from a subpath (spec Req 31.1, design D12)
+- [ ] 4.2 Create `sw.js` with a versioned cache of the app shell and same-origin assets using relative URLs (cache-first), and register it from `src/main.js` with a relative scope; verify a second load serves the shell from cache via the devtools Network panel (spec Req 31.1)
+- [ ] 4.3 Verify offline behavior: reload with the network disabled after a first successful load and confirm the cached shell loads while a never-cached CDN Phaser script is tolerated as a documented degradation (spec Req 31.2)
+
+## 5. Manual Verification Checklist
+
+- [ ] 5.1 Verify launch and pacing: app starts running at `10x` with no landing page, all five speeds visibly change chronon rate, and a hidden/revealed tab shows no catch-up burst (spec Req 1.1, 28.1, 28.2)
+- [ ] 5.2 Verify breed-timer table D3 in both species: breeding-ready mover spawns and resets to `0`, breeding-ready blocked entity resets to `0` without spawning, non-ready blocked entity keeps aging (spec Req 12.1–12.3, 17.1–17.3)
+- [ ] 5.3 Verify shark lifecycle: energy decrements before movement, zero-energy shark vanishes without moving or eating, eating grants `sharkEnergyGain`, newborn sharks start with `initialSharkEnergy` (spec Req 13.1, 14.1, 15.1, 17.1)
+- [ ] 5.4 Verify stats, chart, and terminal statuses together over a full run to at least one extinction: stats track live, chart shows two rolling lines with correct colors and no labels, and the matching terminal status auto-pauses with Play disabled (spec Req 22.1, 27.1, 26.1–26.5)
+- [ ] 5.5 Verify documentation and consistency conventions: every class has a JSDoc comment, every static/public method over 8 lines has a JSDoc comment, comments trace to spec requirement numbers where appropriate, and `Math.random` is called in exactly one place (spec Req 30.2, 7.1, `AGENTS.md`)
