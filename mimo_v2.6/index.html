@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wa-Tor Simulation</title>
+    <!-- PWA manifest and icons: relative URLs for subpath deployment (spec Req 31.1, design D12). -->
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
+    <meta name="theme-color" content="#0a1c33">
+    <meta name="description" content="Browser-based Wa-Tor predator-prey simulation on a toroidal water world.">
+    <style>
+        /* The Phaser canvas owns the entire app window (spec Req 2.3). */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #0a1c33;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+    <!-- Phaser 4.x from a CDN script tag (spec Req 2.1). Pinned version per prd-v001. -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@4.1.0/dist/phaser.min.js"></script>
+</head>
+<body>
+    <!-- Application entry as an ES2020 module (spec Req 2.1). -->
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>

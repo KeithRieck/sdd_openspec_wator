@@ -12,3 +12,6 @@ This project used the Chinese open-weight model [MiMo-V2.6-Pro](https://artifici
     - `Use the src/ui/PhaserButton.js for the buttons on the ui. Use the image files under the assets directory for the PWA icons.`
 2. Propose step:
     - `/openspec-propose`
+2. Apply step:
+    - `/openspec-apply-change`
+    - So far, this has cost $0.37.
