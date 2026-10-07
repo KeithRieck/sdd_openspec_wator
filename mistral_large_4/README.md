@@ -12,3 +12,14 @@ This project used the open-weight model [Mistral Large 4](https://artificialanal
     - `Use the src/ui/PhaserButton.js for the buttons on the ui. Use the image files under the assets directory for the PWA icons.`
 2. Propose step:
     - `/openspec-propose`
+    - So far, this has cost $0.31.
+3. Apply step:
+    - `/openspec-apply-change`
+    - Finished very quickly.
+    - The cost so far has been $0.91.
+    - Button arrangement wasn't quite right, but I fixed that by hand.
+4. Archive step:
+    - `/openspec-archive-change`
+    - Final cost:  $1.34
+
+
