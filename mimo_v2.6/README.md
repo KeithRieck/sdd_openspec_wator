@@ -17,3 +17,4 @@ This project used the Chinese open-weight model [MiMo-V2.6-Pro](https://artifici
     - So far, this has cost $0.37.
 4. Archive step:
     - `/openspec-archive-change`
+    - Total cost after archiving was $0.48.
