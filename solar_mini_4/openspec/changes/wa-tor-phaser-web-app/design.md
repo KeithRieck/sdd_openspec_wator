@@ -62,13 +62,13 @@ classDiagram
     class Grid {
         +number width
         +number height
-        +Map~number, Entity~ cells
-        +Entity~[]~ entities
+        +Map<number, Entity> cells
+        +Entity[] entities
         +number getFlatIndex(x, y)
-        +Object~x, y~ getCell(x, y)
-        +Entity~[]~ getNeighbors(x, y)
-        +Entity~[]~ getEmptyNeighbors(x, y)
-        +Entity~[]~ getFishNeighbors(x, y)
+        +Object getCell(x, y)
+        +Entity[] getNeighbors(x, y)
+        +Entity[] getEmptyNeighbors(x, y)
+        +Entity[] getFishNeighbors(x, y)
         +void setEntity(entity)
         +void removeEntity(entity)
         +boolean isEmpty(x, y)
@@ -86,9 +86,9 @@ classDiagram
         +number sharkEnergyGain
         +number sharkEnergyCostPerChronon
         +number chronon
-        +Entity~[]~ entities
-        +number~[]~ historyFish
-        +number~[]~ historySharks
+        +Entity[] entities
+        +number[] historyFish
+        +number[] historySharks
         +boolean running
         +boolean paused
         +boolean terminal
@@ -102,7 +102,7 @@ classDiagram
         +void updateStats()
         +void recordHistory()
         +void checkExtinction()
-        +Entity~[]~ getAliveEntities()
+        +Entity[] getAliveEntities()
         +void reset()
     }
 
@@ -110,15 +110,12 @@ classDiagram
         +number next()
         +number nextInt(min, max)
         +boolean nextBoolean()
-        +void shuffle~T~(array)
+        +void shuffle(array)
     }
 
     Entity <|-- Fish
     Entity <|-- Shark
-    Grid --~*~ Entity
-    WatorSimulation --*~> Grid
-    WatorSimulation --*~> RandomGenerator
-    WatorSimulation --*~> Entity
+
 ```
 
 ## Component Interaction Diagram

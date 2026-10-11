@@ -12,4 +12,8 @@ This project used the model [Solar Mini 4](https://artificialanalysis.ai/models/
     - `Make use of the assets and source currently in this directory.  Do not look in other sibling directories.`
     - Solar started should not have started generating documents yet, but it did.
     - It did not use Mermaid for all the diagrams.
-    
+        - `fix the syntax error in #file:design.md in the mermaid class diagram.`
+        - Solar Mini is unable to figure out the problem.
+    - in tasks.md, it incorrectly made tasks for recreating the existing assets and `PhotonButton` class.
+2. Apply step:
+    - `/openspec-apply-change `
