@@ -1,9 +1,9 @@
 // Service worker for PWA app shell caching
 // R15: PWA support - cache app shell and same-origin assets
 
-const CACHE_NAME = 'wa-tor-v1';
+const CACHE_NAME = 'wator-v1-solar-mini-4';
 const APP_SHELL_URL = './index.html';
-const SAME_ORIGIN_ASSETS = [
+const ASSETS = [
     './src/main.js',
     './src/config.js',
     './src/simulation/Entity.js',
@@ -22,7 +22,7 @@ const SAME_ORIGIN_ASSETS = [
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(SAME_ORIGIN_ASSETS);
+            return cache.addAll(ASSETS);
         })
     );
     self.skipWaiting();
