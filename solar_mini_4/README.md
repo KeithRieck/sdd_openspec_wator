@@ -10,3 +10,6 @@ This project used the model [Solar Mini 4](https://artificialanalysis.ai/models/
     - `/openspec-explore I want to create a web app that runs the wa-tor simulation, using the requirements from  the prd-v001.md file.`
     - `The result should be object oriented and make good use of Javascript classes. Assume that 'entity records' means objects that are instances of classes that extend from a common entity class, e.g. Shark and Fish may be classes extending Entity.`
     - `Make use of the assets and source currently in this directory.  Do not look in other sibling directories.`
+    - Solar started should not have started generating documents yet, but it did.
+    - It did not use Mermaid for all the diagrams.
+    
